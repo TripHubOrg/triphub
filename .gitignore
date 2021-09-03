@@ -32,3 +32,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+### TripHub project ###
+src/main/resources/static/js/keys.js
+
