@@ -18,6 +18,9 @@ export default function Navbar(props){
                 <a href="/users" data-link class="p-2" style="text-decoration:none; color:white">Register</a>
             </li>
             <li class="nav-item">
+                <a href="/mapbox" data-link class="p-2" style="text-decoration:none; color:white">Mapbox</a>
+            </li>
+            <li class="nav-item">
                 <a href="/search" data-link class="p-2" style="text-decoration:none; color:white">Search</a>
             </li>
         </ul>
