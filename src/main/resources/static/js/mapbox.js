@@ -1,12 +1,18 @@
-mapboxgl.accessToken = MAPBOX_TOKEN;
+import * as KEYS from "./keys.js";
+
+mapboxgl.accessToken = KEYS;
 
 
-const map = new mapboxgl.Map({
-    container: 'map', // container ID
-    style: 'mapbox://styles/mapbox/streets-v11', // style URL
-    center: [-74.5, 40], // starting position [lng, lat]
-    zoom: 9 // starting zoom
-});
+
+export function Mapbox() {
+    mapboxgl.accessToken = KEYS
+    const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [-74.5, 40], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+}
 
 // addGeocoder();
 // mapEvent();
@@ -20,13 +26,14 @@ const map = new mapboxgl.Map({
 let marker;
 
 
-let geocoder = setGeocoder();
+// let geocoder = setGeocoder();
 AddGeocoder();
 addGeocodeToMap(geocoder);
 
 
 export default function AddGeocoder() {
-    geocoder.addTo('#geocoder-container')
+    var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
+    geocoder.addTo('#geocoder-container');
 }
 
 
@@ -53,8 +60,6 @@ function addGeocodeToMap(geocoder) {
 
         setMarker(event.result.geometry.coordinates);
         marker.setPopup(displayPopup(event.result.place_name));
-
-        fetchForecast(event.result.geometry.coordinates);
 
     });
 }
