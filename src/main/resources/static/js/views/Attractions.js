@@ -41,9 +41,22 @@ function myLoopFunction(features) {
 }
 
 function howItIsDisplayed(data) {
+    $('#smoothSailing').append(displayForCards(data))
+
+    var elements =  $('#smoothSailing')
+    elements.hide();
+        var location = index + 4
+        if (location < elements.length) {
+            elements.slice(index, index + 4).show();
+            index = index + 4;
+        } else {
+            elements.slice(index, elements.length).show();
+            index = 0;
+        }
+        setTimeout(howItIsDisplayed, 500);
+    }
     data.forEach(function (obj) {
         //need to add id to html
-        $('#smoothSailing').append(displayForCards(obj))
     })
 }
 
@@ -92,3 +105,8 @@ function scrolling(){
 
 }
 
+function toggleBTN(){
+    $("#toggleBTN").click(function () {
+        window.location.href = "http://http://localhost:8080/mapbox";
+    })
+}
