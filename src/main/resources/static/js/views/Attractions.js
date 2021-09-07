@@ -18,7 +18,7 @@ function myLoopFunction(features) {
     console.log(features)
     let obj = [];
     for (let i = 0; i < features.list.length; i++) {
-        if (i % 10 === 0) {
+        if (i % 5 === 0) {
             obj.push({
                 country: features.city.country,
                 //for name of attraction
@@ -32,35 +32,35 @@ function myLoopFunction(features) {
                 //oordinates lat
                 lat: features.coordinates[0],
             })
+
         }
+
     }
+
     return obj
 }
 
 function howItIsDisplayed(data) {
     data.forEach(function (obj) {
-        $('#forecast').append(displayForCards(obj))
+        //need to add id to html
+        $('#smoothSailing').append(displayForCards(obj))
     })
 }
 
 
 function displayForCards(data) {
-    let paddy = $(`<div class="card"></div>`);
+    let events = $(`<div class="card"></div>`);
 
-    var sec = data.date;
-    console.log(sec)
-    var date = new Date(sec * 1000);
-    var timestr = date.toLocaleTimeString();
-
-    console.log(date, timestr);
-
-    paddy.append(
+    events.append(
         `<div>
 
-icon start
+(jumbotron thumbnail)
 
-// <div class="date">${data.date}<img src="https://opentripmap.io/openapi.en.json${data.icon}.png" /><br></div>
-icon end 
+from /xid
+
+// <div class="date">${data.date}<img src=${otm} /><br></div>
+
+(jumbotron thumbnail)
 
 <hr>
 
@@ -79,5 +79,16 @@ icon end
 			<div class="tags">Categories: ${data.tags}</div>
 	</div>`
     )
-    return paddy
+    return events
 }
+
+
+function scrolling(){
+    $( "#smoothSailing" ).scroll(function() {
+        $( ".class" ).append( ".class" );
+    });
+
+    // $( "span" ).css( "display", "inline" ).fadeOut( "slow" );
+
+}
+
