@@ -10,6 +10,7 @@ export default function Mapbox(props) {
         zoom: 9 // starting zoom
     });
 
+    addGeocoder();
     mapEvent();
 }
 
