@@ -7,7 +7,7 @@ import Navbar from "./views/partials/navbar.js";
 
 export default function render(props, route) {
     const app = document.querySelector('#app');
-    const title = `REST Blog - ${route.title}`;
+    const title = `TripHub - ${route.title}`;
     history.pushState(props, title, route.uri);
     document.title = title;
 
