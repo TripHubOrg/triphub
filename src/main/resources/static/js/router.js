@@ -4,6 +4,7 @@
  * @returns {*}
  */
 import Home from "./views/home.js";
+import Mapbox from "./mapbox.js";
 
 export default function router(URI) {
     const routes = {
@@ -12,7 +13,14 @@ export default function router(URI) {
             state: {},
             uri: '/',
             title: 'Home',
+        },
+        '/mapbox': {
+            returnView: Mapbox,
+            state: {},
+            uri: '/mapbox',
+            title: 'Mapbox',
         }
+
     }
 
     return routes[URI];
