@@ -1,12 +1,15 @@
 import * as KEYS from "../js/keys.js"
 
 mapboxgl.accessToken = KEYS.mapboxKey();
-let map = createMapbox();
-let geocoder = createGeocoder();
+let map;
+let geocoder;
 let marker;
+let lonlat;
 
 export default function Mapbox() {
-	setGeocoder();Ω
+	map = createMapbox();
+	geocoder = createGeocoder();
+	setGeocoder();
 	addGeocodeToMap(geocoder)
 	// setMarker()
 	// mapEvent();
@@ -41,18 +44,21 @@ export function setGeocoder() {
 
 function addGeocodeToMap(geocoder) {
 	map.addControl(geocoder);
-	// geocoder.addTo('#geocoder-container');
+	geocoder.addTo('#geocoder-container');
 
 	// display results when search
 	geocoder.on('result', function (event) {
-
-		console.log(event.result.place_name);
 		console.log(event);
+		lonlat = event.result.geometry.coordinates;
 
 		setMarker(event.result.geometry.coordinates);
 		marker.setPopup(displayPopup(event.result.place_name));
 
 	});
+}
+
+export function MapBoxCoordinates(){
+	return lonlat;
 }
 
 function setMarker(point) {
@@ -67,15 +73,12 @@ function setMarker(point) {
 function mapEvent() {
 
 	map.on('click', function (event) {
-
 		setMarker(event.lngLat);
 		setMarker(event.lngLat.lng,);
 		setMarker(event.lngLat.lat);
-
 	})
 }
 
 function displayPopup(textDetails) {
-
 	return new mapboxgl.Popup().setHTML(`<p>${textDetails}</p>`).addTo(map);
 }
