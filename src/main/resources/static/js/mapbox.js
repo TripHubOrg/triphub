@@ -1,90 +1,81 @@
-import * as KEYS from "./keys.js";
+import * as KEYS from "../js/keys.js"
 
-mapboxgl.accessToken = KEYS;
-
-
-
-export function Mapbox() {
-    mapboxgl.accessToken = KEYS
-    const map = new mapboxgl.Map({
-        container: 'map', // container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [-74.5, 40], // starting position [lng, lat]
-        zoom: 9 // starting zoom
-    });
-}
-
-// addGeocoder();
-// mapEvent();
-// setGeocoder();
-// addGeocodeToMap(geocoder);
-// setMarker(point);
-// mapEvent();
-// displayPopup(textdetails);
-
-
+mapboxgl.accessToken = KEYS.mapboxKey();
+let map = createMapbox();
+let geocoder = createGeocoder();
 let marker;
 
-
-// let geocoder = setGeocoder();
-AddGeocoder();
-addGeocodeToMap(geocoder);
-
-
-export default function AddGeocoder() {
-    var geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken });
-    geocoder.addTo('#geocoder-container');
+export default function Mapbox() {
+	setGeocoder();Ω
+	addGeocodeToMap(geocoder)
+	// setMarker()
+	// mapEvent();
+	// displayPopup()
 }
 
-
-function setGeocoder() {
-
-    // searchbox for map
-    return new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl,
-        marker: false
-    });
+export function createMapbox() {
+	return new mapboxgl.Map({
+		container: 'map', // container ID
+		style: 'mapbox://styles/mapbox/dark-v10', // style URL
+		center: [-96.283496, 37.230328], // starting position [lng, lat]
+		zoom: 3.5// starting zoom
+	});
 }
 
+export function createGeocoder() {
+	return new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl,
+		marker: false
+	});
+}
+
+export function setGeocoder() {
+	// searchbox for map
+	return new MapboxGeocoder({
+		accessToken: mapboxgl.accessToken,
+		mapboxgl: mapboxgl,
+		marker: false
+	});
+}
 
 function addGeocodeToMap(geocoder) {
+	map.addControl(geocoder);
+	// geocoder.addTo('#geocoder-container');
 
-    map.addControl(geocoder);
+	// display results when search
+	geocoder.on('result', function (event) {
 
-    // display results when search
-    geocoder.on('result', function (event) {
+		console.log(event.result.place_name);
+		console.log(event);
 
-        console.log(event.result.place_name);
-        console.log(event);
+		setMarker(event.result.geometry.coordinates);
+		marker.setPopup(displayPopup(event.result.place_name));
 
-        setMarker(event.result.geometry.coordinates);
-        marker.setPopup(displayPopup(event.result.place_name));
-
-    });
+	});
 }
 
 function setMarker(point) {
 
-    if (!marker) {
-        marker = new mapboxgl.Marker().setLngLat(point).addTo(map);
-    } else {
-        marker.setLngLat(point);
-    }
+	if (!marker) {
+		marker = new mapboxgl.Marker().setLngLat(point).addTo(map);
+	} else {
+		marker.setLngLat(point);
+	}
 }
 
 function mapEvent() {
 
-    map.on('click', function (event) {
+	map.on('click', function (event) {
 
-        setMarker(event.lngLat);
-        setMarker(event.lngLat.lng,);
-        setMarker(event.lngLat.lat);
+		setMarker(event.lngLat);
+		setMarker(event.lngLat.lng,);
+		setMarker(event.lngLat.lat);
 
-    })
+	})
 }
 
 function displayPopup(textDetails) {
 
-    return new mapboxgl.Popup().setHTML(`<p>${textDetails}</p>`).addTo(map);
+	return new mapboxgl.Popup().setHTML(`<p>${textDetails}</p>`).addTo(map);
 }

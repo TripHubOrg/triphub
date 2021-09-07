@@ -3,7 +3,7 @@
  * @param URI
  * @returns {*}
  */
-import Home from "./views/home.js";
+import Home, {BeginAllEvents} from "./views/home.js";
 import Mapbox from "./mapbox.js";
 
 export default function router(URI) {
@@ -13,6 +13,7 @@ export default function router(URI) {
             state: {},
             uri: '/',
             title: 'Home',
+            viewEvent: BeginAllEvents
         },
         '/mapbox': {
             returnView: Mapbox,
