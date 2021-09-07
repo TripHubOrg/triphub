@@ -80,5 +80,3 @@ function addGeocoder() {
 
         return new mapboxgl.Popup().setHTML(`<p>${textDetails}</p>`).addTo(map);
     }
-
-}
