@@ -10,11 +10,12 @@ export default function Mapbox(props) {
         zoom: 9 // starting zoom
     });
 
-
-    let marker;
-
     mapEvent();
 }
+
+let marker;
+
+
     let geocoder = setGeocoder();
     addGeocodeToMap(geocoder);
 
