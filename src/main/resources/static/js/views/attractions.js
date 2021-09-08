@@ -55,24 +55,6 @@ function myLoopFunction(features) {
     return obj
 }
 
-function howItIsDisplayed(data) {
-    $('#smoothSailing').append(displayForCards(data))
-
-    var elements =  $('#smoothSailing')
-    elements.hide();
-        var location = index + 4
-        if (location < elements.length) {
-            elements.slice(index, index + 4).show();
-            index = index + 4;
-        } else {
-            elements.slice(index, elements.length).show();
-            index = 0;
-        }
-        setTimeout(howItIsDisplayed, 500);
-    }
-
-
-
 function displayForCards(data) {
     let events = $(`<div class="card"></div>`);
 
@@ -107,15 +89,37 @@ from /xid
     return events
 }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//***** LOAD MORE ATTRACTIONS FUNCTIONALITY ******
+let attractionsContainer;
+let endOfListDiv;
 
-function scrolling(){
-    $( "#smoothSailing" ).scroll(function() {
-        $( ".class" ).append( ".class" );
-    });
 
-    // $( "span" ).css( "display", "inline" ).fadeOut( "slow" );
+//Will need 2 new variables to setup IntersectionObserver -> "option" & "callback"
 
+let option = {
+    root: null, //This is the viewport, if set to null then it will use the entire document as like the screen to monitor our callback function later
+    rootMargin: '0px', // like in CSS, you can set a margin amount, basically reducing viewport size
+    threshold: 1.0 //Goes from 0 -> 1, this is how much of your 'target' (in this case the last div tag for attractions) needs to be seen in viewport to execute the callback function
 }
+
+//callback needs both of these parameters but we will only be using entry
+let callback = function(entries, observer){
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            //fetch request functions and other stuff would go here
+            //if we put a div at the very end of our page, once the DOM sees that last div when we scroll, it will execute any code in here
+        }
+    })
+}
+
+//Lastly, need to instantiate a new IntersectionObserver object, like in  Java
+let observer = new IntersectionObserver(callback, option)
+//and set target, meaning what the observer will observe for executing callback
+endOfListDiv = document.getElementById('some-div') //will replace this later
+observer.observe(endOfListDiv)
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*****
+
 
 function toggleBTN(){
     $("#toggleBTN").click(function () {
