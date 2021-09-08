@@ -1,4 +1,5 @@
 import * as KEYS from "../js/keys.js"
+import {attractionsRequest} from "./views/Attractions.js";
 
 mapboxgl.accessToken = KEYS.mapboxKey();
 let map;
@@ -50,6 +51,8 @@ function addGeocodeToMap(geocoder) {
 	geocoder.on('result', function (event) {
 		console.log(event);
 		lonlat = event.result.geometry.coordinates;
+		console.log(lonlat)
+		attractionsRequest(lonlat)
 
 		setMarker(event.result.geometry.coordinates);
 		marker.setPopup(displayPopup(event.result.place_name));

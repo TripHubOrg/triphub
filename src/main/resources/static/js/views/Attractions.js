@@ -1,17 +1,30 @@
-function attractionsRequest(coordinates) {
-    $.ajax({
-        url: "https://opentripmap.io/openapi.en.json",
-        type: "GET",
-        data: {
-            APPID: OPEN_TRIPMAP_KEY,
-            lat: coordinates[1],
-            lon: coordinates[0],
-        },
-        success: function (data) {
+export function attractionsRequest(coordinates) {
+    console.log(coordinates)
 
-            howItIsDisplayed(myLoopFunction(data))
+    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&apikey=5ae2e3f221c38a28845f05b64b72b5500852f25750bcf6d74f919cc7`, {
+        headers: {
+            "Content-Type": "application/json"
         }
-    });
+    }).then(response => {
+        response.json().then( data => {
+            console.log(data)
+        })
+    })
+
+
+    // $.ajax({
+    //     url: "https://opentripmap.io/openapi.en.json",
+    //     type: "GET",
+    //     data: {
+    //         APPID: OPEN_TRIPMAP_KEY,
+    //         lat: coordinates[1],
+    //         lon: coordinates[0],
+    //     },
+    //     success: function (data) {
+    //
+    //         howItIsDisplayed(myLoopFunction(data))
+    //     }
+    // });
 }
 
 function myLoopFunction(features) {
