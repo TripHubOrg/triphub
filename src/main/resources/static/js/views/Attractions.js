@@ -55,10 +55,7 @@ function howItIsDisplayed(data) {
         }
         setTimeout(howItIsDisplayed, 500);
     }
-    data.forEach(function (obj) {
-        //need to add id to html
-    })
-}
+
 
 
 function displayForCards(data) {

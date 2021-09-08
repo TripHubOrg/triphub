@@ -15,11 +15,12 @@ export default function router(URI) {
             title: 'Home',
             viewEvent: BeginAllEvents
         },
-        '/mapbox': {
-            returnView: Mapbox,
+        '/home': {
+            returnView: Home,
             state: {},
-            uri: '/mapbox',
-            title: 'Mapbox',
+            uri: '/home',
+            title: 'Home',
+            viewEvent: BeginAllEvents
         }
 
     }
