@@ -33,9 +33,9 @@ export function Register(props) {
 
 function RegisterEvent() {
     $("#register-btn").click(function () {
-       let password = if ( $("#password").val === $("#confirmPassword").val ){
-            $("#password").val()
-        }
+       // let password = if ( $("#password").val === $("#confirmPassword").val ){
+       //      $("#password").val()
+       //  }
 
         let registerUser = {
             username: $("#username").val(),
