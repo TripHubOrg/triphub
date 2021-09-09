@@ -30,6 +30,13 @@ export default function router(URI) {
             uri: '/attractions',
             title: 'Attractions',
             viewEvent: BeginAttractionsEvents
+        },
+        '/register':{
+            returnView: AttractionsView,
+            state: {},
+            uri: '/register',
+            title: 'Register',
+            viewEvent: BeginAttractionsEvents
         }
 
     }

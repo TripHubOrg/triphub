@@ -50,66 +50,6 @@ export function attractionsRequest(coordinates) {
     }
 
 
-function myLoopFunction(features) {
-    console.log(features)
-    let obj = [];
-    for (let i = 0; i < features.list.length; i++) {
-        if (i % 5 === 0) {
-            obj.push({
-                country: features.city.country,
-                //for name of attraction
-                name: features.list[i].dt,
-                //rating
-                rate: features.list[i].dt_txt,
-                // tags/categories
-                tags: features.list[i].tags[0].description,
-                //coordinates long
-                long: features.coordinates[1],
-                //oordinates lat
-                lat: features.coordinates[0],
-            })
-
-        }
-
-    }
-
-    return obj
-}
-
-function displayForCards(data) {
-    let events = $(`<div class="card"></div>`);
-
-    events.append(
-        `<div>
-
-(jumbotron thumbnail)
-
-from /xid
-
-// <div class="date">${data.date}<img src=${otm} /><br></div>
-
-(jumbotron thumbnail)
-
-<hr>
-
-<div class="name">name: ${data.name} F</div>
-
-<hr>
-
-<div class="description">${data.description}</div>
-
-		<hr>
-		
-		<div class="rate">Rate: ${data.rate}</div>
-		
-			<hr>
-			
-			<div class="tags">Categories: ${data.tags}</div>
-	</div>`
-    )
-    return events
-}
-
 // //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // //***** LOAD MORE ATTRACTIONS FUNCTIONALITY ******
 // let attractionsContainer;
@@ -140,11 +80,4 @@ from /xid
 // endOfListDiv = document.getElementById('some-div') //will replace this later
 // observer.observe(endOfListDiv)
 // //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*****
-//
-//
-// // function toggleBTN(){
-// //     $("#toggleBTN").click(function () {
-// //         window.location.href = "http://http://localhost:8080/mapbox";
-// //     })
-// // }
-// }
+
