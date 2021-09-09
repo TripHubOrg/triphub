@@ -5,6 +5,8 @@
  */
 import Home, {BeginAllEvents} from "./views/home.js";
 import Mapbox from "./mapbox.js";
+import AttractionsView, {BeginAttractionsEvents} from "./views/attractions.js";
+
 
 export default function router(URI) {
     const routes = {
@@ -21,6 +23,13 @@ export default function router(URI) {
             uri: '/home',
             title: 'Home',
             viewEvent: BeginAllEvents
+        },
+        '/attractions':{
+            returnView: AttractionsView,
+            state: {},
+            uri: '/attractions',
+            title: 'Attractions',
+            viewEvent: BeginAttractionsEvents
         }
 
     }
