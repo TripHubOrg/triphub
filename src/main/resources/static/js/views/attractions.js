@@ -4,11 +4,12 @@ import createView from "../createView.js";
 
 var attractionsArray;
 var apiKeyArray = [KEYS.openTripMapAPIKeyMoses(), KEYS.openTripMapAPIKeyNathan(), KEYS.openTripMapAPIKeyRaul(), KEYS.openTripMapAPIKeyWagner()];
+var currentKeyIndex;
 
 export function attractionsRequest(coordinates) {
     console.log(coordinates)
 
-    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=150&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
+    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=50&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
         headers: {
             "Content-Type": "application/json"
         }
@@ -17,11 +18,45 @@ export function attractionsRequest(coordinates) {
             console.log(data.features)
            attractionsArray = filteredAttractions(data.features);
             createView("/attractions")
-
+            console.log(attractionsArray)
+            fetchEventDetails(attractionsArray)
 
         })
     })
 }
+
+function fetchEventDetails(attractionList) {
+    if (currentKeyIndex == null){
+        currentKeyIndex = 0;
+    }
+    console.log("Fetch events details called")
+    console.log(attractionList)
+    attractionList.forEach(attraction => {
+        console.log(currentKeyIndex);
+        fetch(`https://api.opentripmap.com/0.1/en/places/xid/${attraction.properties.xid}?apikey=${apiKeyArray[currentKeyIndex]}`, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(response => {
+            response.json().then( data => {
+                console.log(data)
+                renderEventDetails()
+            })
+        })
+        if (currentKeyIndex === 3){
+            currentKeyIndex = 0
+        }else {
+            currentKeyIndex += 1;
+        }
+    })
+}
+
+
+function renderEventDetails(filteredAttraction) {
+
+}
+
+
 
 
 
@@ -36,8 +71,8 @@ function filteredAttractions(attractionsPropertiesArray) {
             notIncluded.push(attraction);
         }
     })
-    console.log(filteredArray);
-    console.log(notIncluded);
+    // console.log(filteredArray);
+    // console.log(notIncluded);
     return filteredArray;
 }
 
