@@ -1,6 +1,6 @@
 import createView from "../createView.js";
 
-export function Register(props) {
+export default function Register(props) {
     return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +14,8 @@ export function Register(props) {
 
 <div id="registerForm">
 
+<label for="full-Name">Full Name</label>
+    <input  id="full-Name" name="full-Name" type="text" class="border border-primary"/>
     <label for="email">Email</label>
     <input  id="email" name="email" type="text" class="border border-primary"/>
     <label for="username">Username</label>
@@ -31,13 +33,14 @@ export function Register(props) {
 </html>`;
 }
 
-function RegisterEvent() {
+export function RegisterEvent() {
     $("#register-btn").click(function () {
        // let password = if ( $("#password").val === $("#confirmPassword").val ){
        //      $("#password").val()
        //  }
 
         let registerUser = {
+            fullname: $("#full-Name").val(),
             username: $("#username").val(),
             password: $("#password").val(),
             confirmPassword: $("#confirmPassword").val(),
