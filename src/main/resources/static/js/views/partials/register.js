@@ -37,7 +37,7 @@ function RegisterEvent() {
             $("#password").val()
         }
 
-        let user = {
+        let registerUser = {
             username: $("#username").val(),
             password: $("#password").val(),
             confirmPassword: $("#confirmPassword").val(),
@@ -48,7 +48,7 @@ function RegisterEvent() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(user)
+            body: JSON.stringify(registerUser)
         }
         console.log(request)
 
@@ -61,9 +61,9 @@ function RegisterEvent() {
 
 function passwordValidation(){
     let ogPass = $("#password").val()
-    let dupPass = $("#password").val()
+    let dupPass = $("#confirmPassword").val()
     let BTN = $("#register-btn").val()
-    let checkMate = document.querySelector("registerForm");
+    let checkMate = document.querySelector("#registerForm");
 
 
     BTN.onclick = function(){
