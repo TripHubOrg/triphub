@@ -3,11 +3,12 @@ import createView from "../createView.js";
 
 
 var attractionsArray;
+var apiKeyArray = [KEYS.openTripMapAPIKeyMoses(), KEYS.openTripMapAPIKeyNathan(), KEYS.openTripMapAPIKeyRaul(), KEYS.openTripMapAPIKeyWagner()];
 
 export function attractionsRequest(coordinates) {
     console.log(coordinates)
 
-    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&apikey=${KEYS.openTripMapAPIKey()}`, {
+    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&limit=100&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
         headers: {
             "Content-Type": "application/json"
         }
@@ -17,9 +18,30 @@ export function attractionsRequest(coordinates) {
            attractionsArray = data.features;
             createView("/attractions")
 
+
         })
     })
 }
+
+
+
+function filteredAttractions(attractionsPropertiesArray) {
+    let filteredArray = [];
+    let notIncluded = [];
+
+    attractionsPropertiesArray.forEach(attraction => {
+        if ( !(attraction.properties.name.length < 1) ){
+            filteredArray.push(attraction);
+        } else {
+            notIncluded.push(attraction);
+        }
+    })
+    console.log(filteredArray);
+    console.log(notIncluded);
+    return filteredArray;
+}
+
+
 
     export default function AttractionsView(props){
         return   `<div class="container border shadow" id="attractionsPage">
@@ -35,6 +57,7 @@ export function attractionsRequest(coordinates) {
 
     export function BeginAttractionsEvents(){
         renderAttractions(attractionsArray)
+        filteredAttractions(attractionsArray)
     }
 
     function renderAttractions(listOfAttractions){
@@ -46,7 +69,6 @@ export function attractionsRequest(coordinates) {
         </div>
         `).join('')}
         `)
-
     }
 
 
