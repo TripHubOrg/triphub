@@ -8,14 +8,14 @@ var apiKeyArray = [KEYS.openTripMapAPIKeyMoses(), KEYS.openTripMapAPIKeyNathan()
 export function attractionsRequest(coordinates) {
     console.log(coordinates)
 
-    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&limit=100&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
+    fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=150&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
         headers: {
             "Content-Type": "application/json"
         }
     }).then(response => {
         response.json().then( data => {
             console.log(data.features)
-           attractionsArray = data.features;
+           attractionsArray = filteredAttractions(data.features);
             createView("/attractions")
 
 
@@ -65,7 +65,7 @@ function filteredAttractions(attractionsPropertiesArray) {
         $("#attractionsList").append(`
         ${listOfAttractions.map(attraction => `
         <div>
-            <div>${attraction.properties.name}</div>
+            <div>name: ${listOfAttractions.indexOf(attraction)} ${attraction.properties.name}</div>
         </div>
         `).join('')}
         `)
