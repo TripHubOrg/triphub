@@ -4,7 +4,7 @@ export default function Home(props) {
 	return `
     <div class="container border shadow" id="homepage">
         <header>
-            <h1>PLan A Trip</h1>
+            <h1>PLAN A TRIP</h1>
         </header>
         <main>
         	<div id="geocoder-container"></div>

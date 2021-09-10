@@ -5,9 +5,32 @@ import createView from "../createView.js";
 var attractionsArray;
 var apiKeyArray = [KEYS.openTripMapAPIKeyMoses(), KEYS.openTripMapAPIKeyNathan(), KEYS.openTripMapAPIKeyRaul(), KEYS.openTripMapAPIKeyWagner()];
 var currentKeyIndex;
+let limit = 100;
 let offset = 0;
 let sliceStart = 0;
 let sliceEnd = 9;
+
+//****************Variables for Infinite Scrolling*************
+let scrollTarget;
+let option = {
+	root: null, //This is the viewport, if set to null then it will use the entire document as like the screen to monitor our callback function later
+	rootMargin: '0px', // like in CSS, you can set a margin amount, basically reducing viewport size
+	threshold: 1.0 //Goes from 0 -> 1, this is how much of your 'target' (in this case the last div tag for attractions) needs to be seen in viewport to execute the callback function
+}
+
+//callback needs both of these parameters but we will only be using entry
+let callback = function(entries, observer){
+	entries.forEach(entry => {
+		if(entry.isIntersecting){
+			//fetch request functions and other stuff would go here
+			//if we put a div at the very end of our page, once the DOM sees that last div when we scroll, it will execute any code in here
+			fetchEventDetails(attractionsArray)
+		}
+	})
+}
+//Lastly, need to instantiate a new IntersectionObserver object, like in  Java
+let observer = new IntersectionObserver(callback, option)
+
 
 //============== INITIAL VIEW BEFORE EVENTS LOAD =====================================================
 export default function AttractionsView(props) {
@@ -24,7 +47,7 @@ export default function AttractionsView(props) {
 //====================================================================================================
 export function attractionsRequest(coordinates) {
 
-	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=50&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
+	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${50}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
 		headers: {
 			"Content-Type": "application/json"
 		}
@@ -35,9 +58,6 @@ export function attractionsRequest(coordinates) {
 
 			//creates view for attractions after response is provided
 			createView("/attractions")
-
-			console.log("ATTRACTIONS ARRAY")
-			console.log(attractionsArray)
 
 			//Will begin to fetch details for first 10 attractions
 			fetchEventDetails(attractionsArray)
@@ -68,6 +88,7 @@ function fetchEventDetails(attractionsList) {
 			currentKeyIndex += 1;
 		}
 	})
+
 	sliceStart = sliceEnd + 1;
 	sliceEnd += 10;
 }
@@ -76,7 +97,6 @@ function fetchEventDetails(attractionsList) {
 function renderEventDetails(filteredAttraction) {
 
 }
-
 
 function filteredAttractions(attractionsPropertiesArray) {
 	let filteredArray = [];
@@ -99,10 +119,12 @@ function filteredAttractions(attractionsPropertiesArray) {
 export function BeginAttractionsEvents() {
 	// renderAttractions(attractionsArray)
 	filteredAttractions(attractionsArray)
+	//and set target, meaning what the observer will observe for executing callback
+	scrollTarget = document.getElementById('endOfList')
+	observer.observe(scrollTarget)
 }
 
 function renderAttraction(attraction) {
-	console.log(attraction)
 	$("#attractionsList").append(`
         <div class="card bg-dark text-white my-3 p-2" style="height: 250px">
         	<img class="card-img img-responsive" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
@@ -114,7 +136,7 @@ function renderAttraction(attraction) {
         </div>
         `)
 }
-
+//check if attraction has an image
 function checkForImage(attraction){
 	if (attraction.hasOwnProperty('preview')){
 		return attraction.preview.source
@@ -124,46 +146,4 @@ function checkForImage(attraction){
 
 }
 
-/*
-* <div class="card bg-dark text-white">
-  <img src="..." class="card-img" alt="...">
-  <div class="card-img-overlay">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text">Last updated 3 mins ago</p>
-  </div>
-</div>
-* */
-
-
-// //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// //***** LOAD MORE ATTRACTIONS FUNCTIONALITY ******
-// let attractionsContainer;
-// let endOfListDiv;
-//
-//
-// //Will need 2 new variables to setup IntersectionObserver -> "option" & "callback"
-//
-// let option = {
-//     root: null, //This is the viewport, if set to null then it will use the entire document as like the screen to monitor our callback function later
-//     rootMargin: '0px', // like in CSS, you can set a margin amount, basically reducing viewport size
-//     threshold: 1.0 //Goes from 0 -> 1, this is how much of your 'target' (in this case the last div tag for attractions) needs to be seen in viewport to execute the callback function
-// }
-//
-// //callback needs both of these parameters but we will only be using entry
-// let callback = function(entries, observer){
-//     entries.forEach(entry => {
-//         if(entry.isIntersecting){
-//             //fetch request functions and other stuff would go here
-//             //if we put a div at the very end of our page, once the DOM sees that last div when we scroll, it will execute any code in here
-//         }
-//     })
-// }
-//
-// //Lastly, need to instantiate a new IntersectionObserver object, like in  Java
-// let observer = new IntersectionObserver(callback, option)
-// //and set target, meaning what the observer will observe for executing callback
-// endOfListDiv = document.getElementById('some-div') //will replace this later
-// observer.observe(endOfListDiv)
-// //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*****
 
