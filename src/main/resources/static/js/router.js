@@ -5,7 +5,9 @@
  */
 import Home, {BeginAllEvents} from "./views/home.js";
 import AttractionsView, {BeginAttractionsEvents} from "./views/attractions.js";
-import Register, {RegisterEvent} from "./views/register.js";
+import Register, {RegisterEvent} from "./views/Register.js";
+import login, {loginEvent} from "./views/login.js";
+import trip from "./views/Trip.js";
 
 
 export default function router(URI) {
@@ -39,11 +41,17 @@ export default function router(URI) {
             viewEvent: RegisterEvent
         },
         '/trip':{
-            returnView: Register,
+            returnView: trip,
             state: {},
             uri: '/trip',
             title: 'Trip',
-            viewEvent: TripEvent,
+        },
+        '/login':{
+            returnView: login,
+            state: {},
+            uri: '/login',
+            title: 'Login',
+            viewEvent: loginEvent
         }
 
     }
