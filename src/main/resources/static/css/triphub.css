@@ -197,7 +197,7 @@ label{box-shadow:9px 9px 25px black;
     width:100%;}
 
 input[type=text], input[type=password]{
-    outline:none;
+    outline:black;
 }
 
 /*Login In View End*/
