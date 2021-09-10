@@ -4,8 +4,8 @@
  * @returns {*}
  */
 import Home, {BeginAllEvents} from "./views/home.js";
-import Mapbox from "./mapbox.js";
 import AttractionsView, {BeginAttractionsEvents} from "./views/attractions.js";
+import Register, {RegisterEvent} from "./views/register.js";
 
 
 export default function router(URI) {
@@ -32,11 +32,11 @@ export default function router(URI) {
             viewEvent: BeginAttractionsEvents
         },
         '/register':{
-            returnView: AttractionsView,
+            returnView: Register,
             state: {},
             uri: '/register',
             title: 'Register',
-            viewEvent: BeginAttractionsEvents
+            viewEvent: RegisterEvent
         }
 
     }
