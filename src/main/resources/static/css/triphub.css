@@ -1,0 +1,203 @@
+/*Scrolling through attractions*/
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+
+
+/* Fading animation */
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* End of Scrolling through attractions*/
+
+
+/*login View*/
+body{
+
+    letter-spacing:2px;
+    padding:25px;
+    font-family: 'Poiret One', cursive;
+    font-weight: 900;
+}
+
+#form{
+    color:white;
+    width:50%;
+    height:35px;
+    padding:11px;
+    font-size:25px;
+    box-shadow:15px 15px 25px black;
+    border:2px solid green;
+    background:green;
+    border-radius:0 100px 0 100px ;
+    animation:example 1s linear alternate;
+}
+@keyframes example {
+    100%{
+        transform:translate3d(0px,0px,0px);
+    }
+
+
+    0%{
+        transform:translate3d(210px,0px,0px);
+    }
+
+}
+
+
+.form-control{
+    width:30%;
+    border-bottom:15px;
+    border: solid green;
+    box-shadow:9px 9px 25px black;
+    margin-bottom:20px;
+    margin-left:10px;
+    border-radius: 30px 0 30px 0;
+    padding:5px 50px 5px 50px;
+}
+.form-control:focus{
+    border: solid red;
+    box-shadow:15px 15px 25px black;
+
+}
+
+
+#login{
+    background:white;
+    box-shadow:9px 9px 25px black;
+    text-decoration:none;
+    border:2px solid green;
+    padding:5px 25px 5px 25px;
+    font-size:15px;
+    color:black;
+    border-radius: 50px 0 50px 0;
+}
+
+#login:focus{
+    border:2px solid red;
+    box-shadow:9px 9px 25px black;
+    box-shadow:15px 15px 25px black;
+
+}
+
+#box{
+    background:white;
+    border:2px solid green;
+    padding:55px;
+    box-shadow:9px 9px 25px black;
+    border-radius: 150px 0 150px 0;
+    width:25%;
+    animation:exam 1s linear alternate;
+}
+
+@keyframes exam {
+    100%{
+        transform:translate3d(0px,0px,0px)
+    }
+
+    0%{
+
+        transform:translate3d(-210px,0px,0px)
+    }
+}
+
+label{box-shadow:9px 9px 25px black;
+    background:green;
+    color:white;
+    padding:10px 50px 10px 50px;
+    border-radius: 50px 0 50px 0;
+    width:100%;}
+
+input[type=text], input[type=password]{
+    outline:none;
+}
+
+/*Login In View End*/

@@ -15,7 +15,7 @@ export default function Navbar(props){
                 <a href="/login" data-link class="p-2" style="text-decoration:none; color:white">Login</a>
             </li>
             <li class="nav-item">
-                <a href="/users" data-link class="p-2" style="text-decoration:none; color:white">Sign up</a>
+                <a href="/register" data-link class="p-2" style="text-decoration:none; color:white">Sign up</a>
             </li>
         </ul>
 </nav>`
