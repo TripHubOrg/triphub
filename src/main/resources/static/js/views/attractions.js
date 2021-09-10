@@ -1,5 +1,6 @@
 import * as KEYS from "../keys.js"
 import createView from "../createView.js";
+import Mapbox from "../mapbox.js";
 
 
 var attractionsArray;
@@ -35,8 +36,11 @@ let observer = new IntersectionObserver(callback, option)
 //============== INITIAL VIEW BEFORE EVENTS LOAD =====================================================
 export default function AttractionsView(props) {
 	return `<div class="container border shadow" id="attractionsPage">
+                    <div id="geocoder-container" class="d-flex justify-content-center my-5"></div>
+   			        <div id="map" style=" visibility: collapse"></div>
                     <header>
                         <h1>Attractions</h1>
+                        <hr>
                     </header>
                     <main>
                         <div id="attractionsList"></div>
@@ -122,6 +126,7 @@ export function BeginAttractionsEvents() {
 	//and set target, meaning what the observer will observe for executing callback
 	scrollTarget = document.getElementById('endOfList')
 	observer.observe(scrollTarget)
+    Mapbox();
 }
 
 function renderAttraction(attraction) {
