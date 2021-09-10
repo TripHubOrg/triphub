@@ -11,6 +11,8 @@ let offset = 0;
 let sliceStart = 0;
 let sliceEnd = 9;
 
+let cardDivs;
+
 //****************Variables for Infinite Scrolling*************
 let scrollTarget;
 let option = {
@@ -20,12 +22,13 @@ let option = {
 }
 
 //callback needs both of these parameters but we will only be using entry
-let callback = function(entries, observer){
+let callback = function (entries, observer) {
 	entries.forEach(entry => {
-		if(entry.isIntersecting){
+		if (entry.isIntersecting) {
 			//fetch request functions and other stuff would go here
 			//if we put a div at the very end of our page, once the DOM sees that last div when we scroll, it will execute any code in here
 			fetchEventDetails(attractionsArray)
+			addAttractionClickEvents()
 		}
 	})
 }
@@ -48,9 +51,9 @@ export default function AttractionsView(props) {
                     </main>
                 </div>`
 }
+
 //====================================================================================================
 export function attractionsRequest(coordinates) {
-
 	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${50}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
 		headers: {
 			"Content-Type": "application/json"
@@ -82,7 +85,7 @@ function fetchEventDetails(attractionsList) {
 			}
 		}).then(response => {
 			response.json().then(data => {
-				console.log(data);
+				// console.log(data);
 				renderAttraction(data)
 			})
 		})
@@ -119,7 +122,6 @@ function filteredAttractions(attractionsPropertiesArray) {
 }
 
 
-
 export function BeginAttractionsEvents() {
 	// renderAttractions(attractionsArray)
 	filteredAttractions(attractionsArray)
@@ -140,10 +142,20 @@ function renderAttraction(attraction) {
             </div>
         </div>
         `)
+	cardDivs = $('.card')
 }
+
+//Click Events for Attractions
+function addAttractionClickEvents() {
+	cardDivs.click(function (){
+		console.log("TEST")
+	})
+}
+
+
 //check if attraction has an image
-function checkForImage(attraction){
-	if (attraction.hasOwnProperty('preview')){
+function checkForImage(attraction) {
+	if (attraction.hasOwnProperty('preview')) {
 		return attraction.preview.source
 	} else {
 		return '#'
