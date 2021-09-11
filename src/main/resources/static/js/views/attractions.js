@@ -136,9 +136,11 @@ function renderAttraction(attraction) {
         <div class="card bg-dark text-white my-3 p-2" style="height: 250px">
         	<img class="card-img img-responsive" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
             <div class="card-img-overlay d-flex align-items-center justify-content-center">
-            		<h1>
-            		${attraction.name}
-					</h1>
+            		<div style="background-color:rgba(255,127,80,0.65)">
+						<h1>
+						${attraction.name}
+						</h1>
+					</div>
             </div>
         </div>
         `)
