@@ -46,20 +46,22 @@ export default function AttractionsView(props) {
                         <hr>
                     </header>
                     <main>
-                        <div id="attractionsList"></div>
+                        <div id="attractionsList" class="row row-cols-1 row-cols-md-2"></div>
                         <div id="endOfList">End of list</div>
                     </main>
                 </div>`
 }
 
-//====================================================================================================
+//===================================================================================
 export function attractionsRequest(coordinates) {
-	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${50}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
+	//&src_geom=wikidata&src_attr=wikidata
+	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${limit}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
 		headers: {
 			"Content-Type": "application/json"
 		}
 	}).then(response => {
 		response.json().then(data => {
+			console.log(data)
 			//returns an array of all attractions from response
 			attractionsArray = filteredAttractions(data.features);
 
@@ -68,7 +70,6 @@ export function attractionsRequest(coordinates) {
 
 			//Will begin to fetch details for first 10 attractions
 			fetchEventDetails(attractionsArray)
-
 		})
 	})
 }
@@ -85,7 +86,7 @@ function fetchEventDetails(attractionsList) {
 			}
 		}).then(response => {
 			response.json().then(data => {
-				// console.log(data);
+				console.log(data);
 				renderAttraction(data)
 			})
 		})
@@ -99,7 +100,6 @@ function fetchEventDetails(attractionsList) {
 	sliceStart = sliceEnd + 1;
 	sliceEnd += 10;
 }
-
 
 function renderEventDetails(filteredAttraction) {
 
@@ -121,7 +121,6 @@ function filteredAttractions(attractionsPropertiesArray) {
 	return filteredArray;
 }
 
-
 export function BeginAttractionsEvents() {
 	// renderAttractions(attractionsArray)
 	filteredAttractions(attractionsArray)
@@ -133,16 +132,18 @@ export function BeginAttractionsEvents() {
 
 function renderAttraction(attraction) {
 	$("#attractionsList").append(`
-        <div class="card bg-dark text-white my-3 p-2" style="height: 250px">
-        	<img class="card-img img-responsive" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
-            <div class="card-img-overlay d-flex align-items-center justify-content-center">
+		<div class="col">
+			<div class="card bg-transparent text-white my-3 p-2 border-0" style="height: 250px">
+        		<img class="card-img img-responsive border" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
+            	<div class="card-img-overlay d-flex align-items-center justify-content-center">
             		<div style="background-color:rgba(255,127,80,0.65)">
-						<h1>
+						<h1 class="text-center">
 						${attraction.name}
 						</h1>
 					</div>
-            </div>
-        </div>
+            	</div>
+        	</div>
+		</div>
         `)
 	cardDivs = $('.card')
 }
