@@ -54,6 +54,7 @@ function addGeocodeToMap(geocoder) {
 		lonlat = event.result.geometry.coordinates;
 		console.log(lonlat)
 		attractionsRequest(lonlat)
+		console.log( $('.card'))
 
 		setMarker(event.result.geometry.coordinates);
 		marker.setPopup(displayPopup(event.result.place_name));
