@@ -2,12 +2,12 @@ export default function login() {
     return `<!DOCTYPE html>
 <html lang="en">
         <title>login form</title>
-        <body>
-            <form name="myform">
+        <div class="container">
+            <form name="myform" >
                 <div>
-                    <p id="form"><i>Login</i></P>
-                    <div id="box">
-                       <label>User name</label>
+                    <h1 id="title">Login</h1>
+                    <div id="box" class="rounded-circle">
+                       <label>Username</label>
                        </br></br>
                        <input type="text" class="form-control" name="user">
                        </br>
@@ -19,7 +19,7 @@ export default function login() {
                     </div>
                </div>
             </form>
-        </body>
+        </div>
 </html>`
 }
 

@@ -9,7 +9,7 @@ export default function Navbar(props){
                 <a href="/" data-link class="p-2" style="text-decoration:none; color:white">Home</a>
             </li>
             <li class="nav-item">
-                <a href="/mapbox" data-link class="p-2" style="text-decoration:none; color:white">Mapbox</a>
+                <a href="/attractions" data-link class="p-2" style="text-decoration:none; color:white">Attractions</a>
             </li>
                <li class="nav-item">
                 <a href="/login" data-link class="p-2" style="text-decoration:none; color:white">Login</a>
