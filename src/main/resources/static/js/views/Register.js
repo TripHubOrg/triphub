@@ -10,71 +10,32 @@ export default function Register(props) {
 <body>
 <h1>Register</h1>
 
-<!--<form id="login-form">-->
-
-<!--<div id="registerForm" class="col-12">-->
-
-<!--    <label for="full-Name">Full Name</label>-->
-<!--    <input  id="full-Name" name="full-Name" type="text" class="border border-primary"/>-->
-<!--    <br>-->
-<!--    <label for="email">Email</label>-->
-<!--    <input  id="email" name="email" type="text" class="border border-primary"/>-->
-<!--    <br>-->
-<!--    <label for="username">Username</label>-->
-<!--    <input  id="username" name="username" type="text" class="border border-primary"/>-->
-<!--    <br>-->
-<!--    <label for="password">Password</label>-->
-<!--    <input id="password" name="password" type="password" class="border border-primary"/>-->
-<!--    <br>-->
-<!--    <label for="confirmPassword">Confirm Password</label>-->
-<!--    <input id="confirmPassword" name="confirmPassword" type="text" class="border border-primary"/>-->
-<!--    <br>-->
-<!--  <button id="register-btn" type="button" class="border border-primary">Register</button>-->
-<!--  -->
-<!--  </div>-->
-
-<!--</form>-->
-
-
 <form class="row g-3">
-  <div class="col-md-6">
+
+  <div class="col-md-12">
+    <label for="full-Name" class="form-label">Full Name</label>
+    <input  id="full-Name" name="full-Name" type="text" class="form-control"/>
+  </div>
+  <div class="col-md-12">
     <label for="inputEmail4" class="form-label">Email</label>
     <input type="email" class="form-control" id="inputEmail4">
+  </div>
+   <div class="col-md-12">
+    <label for="username" class="form-label">Username</label>
+    <input type="text" class="form-control" id="username">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Password</label>
     <input type="password" class="form-control" id="inputPassword4">
   </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
   <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity">
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-    </div>
+    <label for="confirmPassword4" class="form-label">Confirm Password</label>
+    <input type="password" class="form-control" id="confirmPassword4">
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Sign in</button>
   </div>
 </form>
-
 </body>
 </html>`;
 }
