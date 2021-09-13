@@ -42,11 +42,11 @@ export default function AttractionsView(props) {
                     <div id="geocoder-container" class="d-flex justify-content-center my-5"></div>
    			        <div id="map" style=" visibility: collapse"></div>
                     <header>
-                        <h1>Attractions</h1>
+                        <h1 class="attractionsTitle">Attractions</h1>
                         <hr>
                     </header>
                     <main>
-                        <div id="attractionsList" class="row row-cols-1 row-cols-md-2"></div>
+                        <div id="attractionsList" class="row row-cols-sm-1 row-cols-lg-2"></div>
                         <div id="endOfList">End of list</div>
                     </main>
                 </div>`
