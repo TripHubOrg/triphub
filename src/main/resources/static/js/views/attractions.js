@@ -55,12 +55,13 @@ export default function AttractionsView(props) {
 //===================================================================================
 export function attractionsRequest(coordinates) {
 	//&src_geom=wikidata&src_attr=wikidata
-	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${limit}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyRaul()}`, {
+	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${limit}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyMoses()}`, {
 		headers: {
 			"Content-Type": "application/json"
 		}
 	}).then(response => {
 		response.json().then(data => {
+			console.log('FROM ATTRACTIONSREQUEST')
 			console.log(data)
 			//returns an array of all attractions from response
 			attractionsArray = filteredAttractions(data.features);
@@ -145,7 +146,7 @@ function renderAttraction(attraction) {
 					</div>
             	</div>
             	
-            	<div class="card-body isHidden" hidden>
+            	<div class="card-body isHidden">
             		<div class="card-title text-black">${attraction.name}</div>
             		<div class="card-text">TESSTING</div>
 				</div>
@@ -159,8 +160,10 @@ function renderAttraction(attraction) {
 
 //Click Events for Attractions
 function addAttractionClickEvents() {
-	let cardImgOverlay = $(this).children()
-	let cardOverlayHiddenValue = $(this).children('card-img-overlay').children().hasClass('notHidden')
+	let cardImgOverlay = $(this).children('.card-body')
+	console.log(cardImgOverlay)
+
+	let cardOverlayHiddenValue = $(this).children('.card-img-overlay').children().hasClass('notHidden')
 	let cardBody = $(this).children('card-body')
 
 	// if( cardOverlayHiddenValue === true){
@@ -181,7 +184,6 @@ function addAttractionClickEvents() {
 	// 	cardBody.addClass('isHidden')
 	// }
 }
-
 
 //check if attraction has an image
 function checkForImage(attraction) {
