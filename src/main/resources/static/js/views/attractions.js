@@ -9,7 +9,7 @@ var currentKeyIndex;
 let limit = 100;
 let offset = 0;
 let sliceStart = 0;
-let sliceEnd = 9;
+let sliceEnd = 7;
 
 let renderedAttractionInfoList = [];
 
@@ -87,7 +87,7 @@ function fetchEventDetails(attractionsList) {
 			}
 		}).then(response => {
 			response.json().then(data => {
-				// console.log(data);
+				console.log(data);
 				renderAttraction(data)
 			})
 		})
@@ -99,7 +99,7 @@ function fetchEventDetails(attractionsList) {
 	})
 
 	sliceStart = sliceEnd + 1;
-	sliceEnd += 10;
+	sliceEnd += 7;
 
 	addAttractionClickEvents()
 }
@@ -136,53 +136,45 @@ export function BeginAttractionsEvents() {
 function renderAttraction(attraction) {
 	$("#attractionsList").append(`
 		<div class="col">
-			<div class="card bg-transparent text-white my-3 p-2 border-0" style="height: 250px" id="${attraction.xid}">
-        		<img class="card-img img-responsive border" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
-            	<div class="card-img-overlay d-flex align-items-center justify-content-center notHidden">
-            		<div class="title" style="background-color:rgba(255,127,80,0.65)">
+			<div id="card${attraction.xid}" class="card bg-transparent text-white my-3 p-2 border-0" style="height: 250px" id="" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
+				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
+				<div class="card-img-overlay d-flex align-items-center justify-content-center">
+					<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
 						<h1 class="text-center">
-						${attraction.name}
+							${attraction.name}
 						</h1>
-					</div>
-            	</div>
+					</div>	
+				</div>
             	
-            	<div class="card-body isHidden">
-            		<div class="card-title text-black">${attraction.name}</div>
-            		<div class="card-text">TESSTING</div>
+            	<div class="collapse" id="${attraction.xid}">
+            		<div class="card-body">
+            			<div class="card-title text-black">${attraction.name}</div>
+            			<div class="card-text text-black">
+            				<p>${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
+            				<p>${checkForDetails(attraction)}</p>
+						</div>
+					</div>
 				</div>
         	</div>
 		</div>
         `)
 	// renderedAttractionInfoList.push(attraction)
-	$(`#${attraction.xid}`).on("click", addAttractionClickEvents)
+	$(`#card${attraction.xid}`).on("click", addAttractionClickEvents)
 
 }
 
 //Click Events for Attractions
 function addAttractionClickEvents() {
-	let cardImgOverlay = $(this).children('.card-body')
-	console.log(cardImgOverlay)
+	let parent = $(this).children('.card-img-overlay')
+	let child = parent.children()[0]
 
-	let cardOverlayHiddenValue = $(this).children('.card-img-overlay').children().hasClass('notHidden')
-	let cardBody = $(this).children('card-body')
-
-	// if( cardOverlayHiddenValue === true){
-	// 	cardImgOverlay.removeClass('notHidden')
-	// 	cardImgOverlay.addClass('isHidden')
-	// 	cardImgOverlay.attr('hidden')
-	//
-	// 	cardBody.removeAttr('hidden')
-	// 	cardBody.removeClass('isHidden')
-	// 	cardBody.addClass('notHidden')
-	// } else {
-	// 	cardImgOverlay.removeClass('isHidden')
-	// 	cardImgOverlay.addClass('notHidden')
-	// 	cardImgOverlay.removeAttr('hidden')
-	//
-	// 	cardBody.attr('hidden')
-	// 	cardBody.removeClass('notHidden')
-	// 	cardBody.addClass('isHidden')
-	// }
+	if ($(child).hasClass('notHidden')){
+		$(child).prop('hidden', 'true')
+		$(child).removeClass('notHidden')
+	} else {
+		$(child).addClass('notHidden')
+		$(child).removeAttr('hidden')
+	}
 }
 
 //check if attraction has an image
@@ -192,7 +184,14 @@ function checkForImage(attraction) {
 	} else {
 		return '#'
 	}
+}
 
+function checkForDetails(attraction){
+	if (attraction.hasOwnProperty('wikipedia_extracts')){
+		return attraction.wikipedia_extracts.text
+	} else {
+		return ''
+	}
 }
 
 
