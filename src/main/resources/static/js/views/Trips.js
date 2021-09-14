@@ -1,4 +1,4 @@
-export default function trip(props) {
+export default function trips(props) {
     return `<!DOCTYPE html>
 <html lang="en">
     <head>
