@@ -52,7 +52,12 @@ export default function router(URI) {
             uri: '/login',
             title: 'Login',
             viewEvent: loginEvent
-        }
+        },
+        '/triptrack':{
+            returnView: Triptrack,
+            state: {},
+            uri: '/triptrack',
+            title: 'Triptrack',
 
     }
 
