@@ -169,7 +169,7 @@ function addAttractionClickEvents() {
 	let child = parent.children()[0]
 
 	if ($(child).hasClass('notHidden')){
-		$(child).prop('hidden', '')
+		$(child).prop('hidden', 'true')
 		$(child).removeClass('notHidden')
 	} else {
 		$(child).addClass('notHidden')
