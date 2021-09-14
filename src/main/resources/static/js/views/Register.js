@@ -42,9 +42,6 @@ export default function Register(props) {
 
 export function RegisterEvent() {
         $("#register-btn").click(function () {
-            // let password = if ( $("#password").val === $("#confirmPassword").val ){
-            //      $("#password").val()
-            //  }
 
             let registerUser = {
                 fullname: $("#full-Name").val(),
