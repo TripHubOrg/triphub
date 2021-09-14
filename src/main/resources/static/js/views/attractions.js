@@ -136,18 +136,18 @@ export function BeginAttractionsEvents() {
 function renderAttraction(attraction) {
 	$("#attractionsList").append(`
 		<div class="col">
-			<div class="card bg-transparent text-white my-3 p-2 border-0" style="height: 250px" id="${attraction.xid}">
+			<div id="card${attraction.xid}" class="card bg-transparent text-white my-3 p-2 border-0" style="height: 250px" id="" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
 				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
-				<div class="card-img-overlay d-flex align-items-center justify-content-center notHidden">
-					<div class="title" style="background-color:rgba(255,127,80,0.65)">
+				<div class="card-img-overlay d-flex align-items-center justify-content-center">
+					<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
 						<h1 class="text-center">
 							${attraction.name}
 						</h1>
 					</div>	
 				</div>
             	
-            	<div id="isHidden">
-            		<div class="card-body isHidden">
+            	<div class="collapse" id="${attraction.xid}">
+            		<div class="card-body">
             			<div class="card-title text-black">${attraction.name}</div>
             			<div class="card-text text-black">
             				<p>${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
@@ -159,35 +159,22 @@ function renderAttraction(attraction) {
 		</div>
         `)
 	// renderedAttractionInfoList.push(attraction)
-	$(`#${attraction.xid}`).on("click", addAttractionClickEvents)
+	$(`#card${attraction.xid}`).on("click", addAttractionClickEvents)
 
 }
 
 //Click Events for Attractions
 function addAttractionClickEvents() {
-	$(this).children('.isHidden').collapse('toggle')
+	let parent = $(this).children('.card-img-overlay')
+	let child = parent.children()[0]
 
-
-	let cardOverlayHiddenValue = $(this).children('.card-img-overlay').children().hasClass('notHidden')
-	let cardBody = $(this).children('card-body')
-
-	// if( cardOverlayHiddenValue === true){
-	// 	cardImgOverlay.removeClass('notHidden')
-	// 	cardImgOverlay.addClass('isHidden')
-	// 	cardImgOverlay.attr('hidden')
-	//
-	// 	cardBody.removeAttr('hidden')
-	// 	cardBody.removeClass('isHidden')
-	// 	cardBody.addClass('notHidden')
-	// } else {
-	// 	cardImgOverlay.removeClass('isHidden')
-	// 	cardImgOverlay.addClass('notHidden')
-	// 	cardImgOverlay.removeAttr('hidden')
-	//
-	// 	cardBody.attr('hidden')
-	// 	cardBody.removeClass('notHidden')
-	// 	cardBody.addClass('isHidden')
-	// }
+	if ($(child).hasClass('notHidden')){
+		$(child).prop('hidden', '')
+		$(child).removeClass('notHidden')
+	} else {
+		$(child).addClass('notHidden')
+		$(child).removeAttr('hidden')
+	}
 }
 
 //check if attraction has an image
