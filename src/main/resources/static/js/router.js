@@ -9,7 +9,7 @@ import Register, {RegisterEvent} from "./views/Register.js";
 import login, {loginEvent} from "./views/Login.js";
 import trips from "./views/Trips.js";
 import Triptrack from "./views/Triptrack.js";
-
+import {userhomepage} from "./views/Userhomepage.js";
 
 export default function router(URI) {
     const routes = {
@@ -59,6 +59,12 @@ export default function router(URI) {
             state: {},
             uri: '/triptrack',
             title: 'Triptrack'
+        },
+        '/userhomepage': {
+            returnView: userhomepage,
+            state: {},
+            uri: '/userhomepage',
+            title: 'UserHomePage',
         }
     };
     return routes[URI];
