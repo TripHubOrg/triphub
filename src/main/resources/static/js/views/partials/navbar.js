@@ -17,6 +17,9 @@ export default function Navbar(props){
             <li class="nav-item">
                 <a href="/register" data-link class="p-2" style="text-decoration:none; color:white">Sign up</a>
             </li>
+            <li class="nav-item">
+                <a href="/triptrack" data-link class="p-2" style="text-decoration:none; color:white">Triptrack</a>
+            </li>
         </ul>
 </nav>`
 

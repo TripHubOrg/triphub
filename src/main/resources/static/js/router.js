@@ -8,6 +8,7 @@ import AttractionsView, {BeginAttractionsEvents} from "./views/Attractions.js";
 import Register, {RegisterEvent} from "./views/Register.js";
 import login, {loginEvent} from "./views/Login.js";
 import trips from "./views/Trips.js";
+import Triptrack from "./views/Triptrack.js";
 
 
 export default function router(URI) {
@@ -26,41 +27,40 @@ export default function router(URI) {
             title: 'Home',
             viewEvent: BeginAllEvents
         },
-        '/attractions':{
+        '/attractions': {
             returnView: AttractionsView,
             state: {},
             uri: '/attractions',
             title: 'Attractions',
             viewEvent: BeginAttractionsEvents
         },
-        '/register':{
+        '/register': {
             returnView: Register,
             state: {},
             uri: '/register',
             title: 'Register',
             viewEvent: RegisterEvent
         },
-        '/trips':{
+        '/trips': {
             returnView: trips,
             state: {},
             uri: '/trips',
             title: 'Trips',
         },
-        '/login':{
+        '/login': {
             returnView: login,
             state: {},
             uri: '/login',
             title: 'Login',
             viewEvent: loginEvent
         },
-        '/triptrack':{
+        '/triptrack': {
             returnView: Triptrack,
             state: {},
             uri: '/triptrack',
-            title: 'Triptrack',
-
-    }
-
+            title: 'Triptrack'
+        }
+    };
     return routes[URI];
 }
 
