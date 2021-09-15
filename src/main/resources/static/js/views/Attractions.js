@@ -136,8 +136,8 @@ export function BeginAttractionsEvents() {
 function renderAttraction(attraction) {
 	$("#attractionsList").append(`
 		<div class="col">
-			<div id="card${attraction.xid}" class="card bg-transparent text-white my-3 p-2 border-0" style="height: 250px" id="" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
-				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; height:100%; width: 100% text-shadow: 2px 2px grey">
+			<div id="card${attraction.xid}" class="card bg-transparent text-white my-3 p-2 border-0" style="min-height:275px" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
+				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; max-height:70%; width: 100% text-shadow: 2px 2px grey">
 				<div class="card-img-overlay d-flex align-items-center justify-content-center">
 					<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
 						<h1 class="text-center">
@@ -147,7 +147,7 @@ function renderAttraction(attraction) {
 				</div>
             	
             	<div class="collapse" id="${attraction.xid}">
-            		<div class="card-body">
+            		<div class="card card-body">
             			<div class="card-title text-black">${attraction.name}</div>
             			<div class="card-text text-black">
             				<p>${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
