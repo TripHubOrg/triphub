@@ -46,6 +46,7 @@ export default function login() {
 </html>`
 }
 
+//
 function toHomeScreen (){
     $("#go-to-btn").click(function () {
         let home = 'http://localhost:8080/';
