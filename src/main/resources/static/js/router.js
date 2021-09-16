@@ -10,6 +10,8 @@ import login, {loginEvent} from "./views/Login.js";
 import trips from "./views/Trips.js";
 import Triptrack from "./views/Triptrack.js";
 import userhomepage from "./views/Userhomepage.js";
+import Triptrack, {TripTrackOnLoad} from "./views/Triptrack.js";
+
 
 export default function router(URI) {
     const routes = {
@@ -58,14 +60,15 @@ export default function router(URI) {
             returnView: Triptrack,
             state: {},
             uri: '/triptrack',
-            title: 'Triptrack'
+            title: 'Triptrack',
+            viewEvent: TripTrackOnLoad
         },
         '/userhomepage': {
             returnView: userhomepage,
             state: {},
             uri: '/userhomepage',
-            title: 'UserHomePage',
-            viewEvent: loginEvent
+            title: 'UserHomePage',          
+            
         }
     };
     return routes[URI];
