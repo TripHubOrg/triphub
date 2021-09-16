@@ -184,14 +184,14 @@ body{
     }
 }
 
-label{
-    box-shadow:5px 5px 10px black;
-    background: black;
-    color:white;
-    padding:10px;
-    border-radius: 10px;
-    width:30%;
-}
+/*label{*/
+/*    box-shadow:5px 5px 10px black;*/
+/*    background: black;*/
+/*    color:white;*/
+/*    padding:10px;*/
+/*    border-radius: 10px;*/
+/*    width:30%;*/
+/*}*/
 
 input[type=text], input[type=password]{
     outline:black;
@@ -499,3 +499,6 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
 }
 
 /* Navbar End */
+
+
+/****************************** TRIPTRACK ********************************/
