@@ -20,6 +20,9 @@ export default function Navbar(props){
             <li class="nav-item">
                 <a href="/triptrack" data-link class="p-2" style="text-decoration:none; color:white">Triptrack</a>
             </li>
+             <li class="nav-item">
+                <a href="/userhomepage" data-link class="p-2" style="text-decoration:none; color:white">User Home Page</a>
+            </li>
         </ul>
 </nav>`
 
