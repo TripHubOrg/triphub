@@ -1,4 +1,5 @@
 let fakeAttractions =
+
 	{
 		tripLocation: 'Trip 1',
 		tripStart: '2021-09-12',
@@ -54,7 +55,7 @@ export default function Triptrack(props) {
                 <div class="col-12">
                 	<div class="row justify-content-center ">
                         	<label for="fromDate">From</label>
-                        	<input id="fromDate" name="fromDate" type="date">
+                        	<input class="dateInputs" id="fromDate" name="fromDate"> 
                     	<div class="col-3 m-0 p-0">
                         	<label for="toDate">To</label>
                         	<input id="toDate" type="date" value="${fakeAttractions.tripEnd}">
@@ -105,6 +106,13 @@ export default function Triptrack(props) {
             </section>
         </div>
 	`;
+}
+
+export function TripTrackOnLoad(){
+	console.log('IS THIS WORKING')
+	$(document).ready(function (){
+		$('.dateInputs').attr('type', 'date')
+	})
 }
 
 function renderAttractionList(attractions) {
