@@ -9,36 +9,36 @@ let fakeAttractions =
 				id: 1,
 				starDate: '2021-09-13',
 				endDate: '2021-09-13',
-				image: '#',
+				image: '/assets/corgi-laptop.jpeg',
 				address: '123 Quis nostrud exercitation ullamco, ',
-				spotDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Lectus urna duis convallis convallis tellus id interdum velit.'
+				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Lectus urna duis convallis convallis tellus id interdum velit.'
 			},
 			{
 				name: 'Spot2',
 				id: 2,
 				starDate: '2021-09-14',
 				endDate: '2021-09-14',
-				image: '#',
+				image: '/assets/corgi-laptop.jpeg',
 				address: '456 Duis aute irure dolor in reprehenderit',
-				spotDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero nunc consequat interdum varius sit amet mattis. Turpis cursus in hac habitasse platea dictumst quisque sagittis.'
+				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero nunc consequat interdum varius sit amet mattis. Turpis cursus in hac habitasse platea dictumst quisque sagittis.'
 			},
 			{
 				name: 'Spot3',
 				id: 3,
 				starDate: '2021-09-15',
 				endDate: '2021-09-15',
-				image: '#',
+				image: '/assets/corgi-laptop.jpeg',
 				address: '789 Commodo sed egestas egestas fringilla',
-				spotDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi leo urna molestie at elementum eu facilisis. Morbi tristique senectus et netus et malesuada fames ac.'
+				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi leo urna molestie at elementum eu facilisis. Morbi tristique senectus et netus et malesuada fames ac.'
 			},
 			{
 				name: 'Spot4',
 				id: 4,
 				starDate: '2021-09-16',
 				endDate: '2021-09-16',
-				image: '#',
+				image: '/assets/corgi-laptop.jpeg',
 				address: 'Pellentesque eu tincidunt tortor',
-				spotDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque dignissim enim sit amet venenatis urna cursus eget. Neque volutpat ac tincidunt vitae semper quis lectus nulla.'
+				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque dignissim enim sit amet venenatis urna cursus eget. Neque volutpat ac tincidunt vitae semper quis lectus nulla.'
 			}
 		]
 	}
@@ -53,14 +53,12 @@ export default function Triptrack(props) {
                 <h1 class="col-12">${fakeAttractions.tripLocation}</h1>
                 <div class="col-12">
                 	<div class="row justify-content-center ">
-                		<span class="col-3 m-0 p-0">
                         	<label for="fromDate">From</label>
-                        	<input id="fromDate" type="date" value="${fakeAttractions.tripStart}">
-                    	</span>
-                    	<span class="col-3 m-0 p-0">
+                        	<input id="fromDate" name="fromDate" type="date">
+                    	<div class="col-3 m-0 p-0">
                         	<label for="toDate">To</label>
-                        	<input id="toDate" type="date" value="${fakeAttractions.tripEnd}" width="10px">
-                    	</span>
+                        	<input id="toDate" type="date" value="${fakeAttractions.tripEnd}">
+                    	</div>
 					</div>
                     
                 </div>
