@@ -1,5 +1,7 @@
 package com.codeup.capstonestarter.data.trip;
 
-public class TripRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TripRepository extends JpaRepository<Trip,Long> {
 
 }

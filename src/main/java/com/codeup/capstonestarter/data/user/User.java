@@ -1,5 +1,7 @@
 package com.codeup.capstonestarter.data.user;
 
+import com.codeup.capstonestarter.data.trip.Trip;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
@@ -27,6 +29,18 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.USER;
+
+    @ManyToOne
+    @JoinColumn(name = "trips_id")
+    private Trip trips;
+
+    public Trip getTrips() {
+        return trips;
+    }
+
+    public void setTrips(Trip trips) {
+        this.trips = trips;
+    }
 
     public enum Role {USER, ADMIN}
 
