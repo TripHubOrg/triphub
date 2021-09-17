@@ -51,14 +51,6 @@
 // }
 
 
-export default function Navbar(props){
-
-    return `
-     <nav class="sidebar">
-                <div class="dismiss">
-                    <i class="fas fa-arrow-left"></i>
-                </div>
-
                 <div class="logo">
                     <h3><a href="#">Triphub</a></h3>
                 </div>
