@@ -13,11 +13,5 @@ public class ActivityController {
         System.out.println(trip.getStarDate());
     }
 
-    @PutMapping("{/{id}}")
-    private void updateTrips(@PathVariable Long id, @RequestBody Trip whateveriwant) {
-        System.out.println(whateveriwant.getUsers());
-    }
-
-
 }
 
