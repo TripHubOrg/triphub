@@ -432,4 +432,17 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
 /* Navbar End */
 
 
+/***************************** Home.js **********************************/
+
+.home-content { width: 100%; padding: 60px 0 120px 0; }
+
+.home-content h1 { padding-top: 60px; color: #000000; }
+.home-content .description { margin: 30px 0 0 0; padding-bottom: 30px; }
+
+.home-img { max-width: 100%; }
+
+.mapboxgl-ctrl-geocoder--input{background-color: #444444;}
+.mapboxgl-ctrl-geocoder--input::placeholder{color: #ffffff;}
+.mapboxgl-ctrl-geocoder--input:focus {color: #ffffff;}
+
 /****************************** TRIPTRACK ********************************/
