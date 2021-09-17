@@ -14,13 +14,17 @@ public class Trip {
     private User owner;
     private Collection<User> users;
 
-    public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate) {
+    public Trip() {
+    }
+
+    public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate, User owner) {
         this.id = id;
         this.location_id = location_id;
         this.country = country;
         this.timezone = timezone;
         this.starDate = starDate;
         this.endDate = endDate;
+        this.owner = owner;
     }
 
     public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate, Collection<User> users) {
