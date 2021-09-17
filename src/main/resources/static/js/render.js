@@ -3,7 +3,7 @@
  * @param props - the data required for view rendering
  * @param route - the object containing information for the given endpoint
  */
-import Navbar from "./views/partials/navbar.js";
+import Navbar, {navbarEvent} from "./views/partials/navbar.js";
 
 export default function render(props, route) {
     const app = document.querySelector('#app');
@@ -13,7 +13,7 @@ export default function render(props, route) {
 
     // add view and navbar to DOM
     app.innerHTML = `${Navbar(null)} ${route.returnView(props)}`;
-
+    navbarEvent();
     // add events AFTER view is added to DOM
     if (route.viewEvent){
         route.viewEvent();
