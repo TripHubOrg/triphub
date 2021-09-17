@@ -50,7 +50,8 @@
 //     document.getElementById("main").style.marginLeft = "0";
 // }
 
-
+export default function Navbar(props){
+    return `
                 <div class="logo">
                     <h3><a href="#">Triphub</a></h3>
                 </div>
@@ -123,7 +124,7 @@
 
 <!--            </div>-->
     `
-}
+};
 
 export function navbarEvent(){
     $(document).ready(function() {
