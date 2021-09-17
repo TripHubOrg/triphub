@@ -79,12 +79,9 @@ export default function Navbar(props){
                     </li>
                     <li>
                         <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
-                            <i class="fas fa-sync"></i>Other sections
+                            <i class="fas fa-sync"></i>Contact Us
                         </a>
                         <ul class="collapse list-unstyled" id="otherSections">
-                            <li>
-                                <a class="scroll-link" href="">Contact Us</a>
-                            </li>
                             <li>
                                 <a class="scroll-link" href="">Raul</a>
                             </li>

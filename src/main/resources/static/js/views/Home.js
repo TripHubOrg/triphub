@@ -2,17 +2,25 @@ import Mapbox from "../mapbox.js";
 
 export default function Home(props) {
 	return `
-	<div class="container d-flex justify-center my-5">
-		<div class="container border shadow" id="homepage">
-			<header>
-				<h1 class="d-flex justify-content-center align-self-center mt-2 mb-5">PLAN A TRIP</h1>
-			</header>
-			<main>
-				<div id="geocoder-container" class="d-flex justify-content-center my-5"></div>
-				<div id="map" style="visibility: collapse"></div>
-			</main>
+	<div class=" home-content container">
+		<div class="container-fluid">
+			<div class="row d-flex justify-center align-self-center my-5">
+				<div class="col col-md-12 " id="homepage">
+					<header>
+						<h1 class="d-flex justify-content-center mt-2 mb-2">PLAN A TRIP</h1>
+					</header>
+					<div class="description d-flex justify-content-center">Search for a City...</div>
+					<div id="geocoder-container" class="d-flex justify-content-center mt-1 mb-5"></div>
+					<div id="map" style="visibility: collapse"></div>
+				</div>
+			</div>
+			
+			<div>
+				<img src="../assets/blonde-1867768_1920.jpg" alt="" class="home-img" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1440px; height: 810px; z-index: -1; left: 0px; top: -169px;">
+			</div>
 		</div>
-	</div>`;
+	</div>
+`;
 }
 
 export function BeginAllEvents() {
