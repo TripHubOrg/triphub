@@ -1,41 +1,55 @@
 package com.codeup.capstonestarter.data.trip;
 
 import com.codeup.capstonestarter.data.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.persistence.*;
 import java.util.Collection;
 
+@Entity
+@Table(name = "trips")
 public class Trip {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private Long location_id;
+
+    @Column(nullable = false)
     private String country;
+
+    @Column(nullable = false)
     private String timezone;
+
+    @Column(nullable = false)
     private String starDate;
+    @Column(nullable = false)
     private String endDate;
-    private User owner;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.USER;
+
+    public enum Role {USER, ADMIN}
+
+    @OneToMany(mappedBy = "trips")
+    @JsonIgnoreProperties("trips")
     private Collection<User> users;
 
-    public Trip() {
-    }
 
-    public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate, User owner) {
+    public Trip() {}
+
+    public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate) {
         this.id = id;
         this.location_id = location_id;
         this.country = country;
         this.timezone = timezone;
         this.starDate = starDate;
         this.endDate = endDate;
-        this.owner = owner;
     }
 
-    public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate, Collection<User> users) {
-        this.id = id;
-        this.location_id = location_id;
-        this.country = country;
-        this.timezone = timezone;
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.users = users;
-    }
 
     public Long getId() {
         return id;
