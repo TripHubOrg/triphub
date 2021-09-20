@@ -1,6 +1,7 @@
 import * as KEYS from "../keys.js"
 import createView from "../createView.js";
 import Mapbox from "../mapbox.js";
+import {fakeData} from "./Triptrack.js";
 
 
 var attractionsArray = [];
@@ -12,6 +13,7 @@ let sliceStart = 0;
 let sliceEnd = 7;
 
 let renderedAttractionInfoList = [];
+let fakeTripData = fakeData()
 
 //****************Variables for Infinite Scrolling*************
 let scrollTarget;
@@ -137,7 +139,7 @@ function renderAttraction(attraction) {
 	$("#attractionsList").append(`
 		<div class="col">
 			<div id="card${attraction.xid}" class="card bg-transparent text-white my-3 p-2 border-0" style="min-height:275px" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
-				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; max-height:70%; width: 100% text-shadow: 2px 2px grey">
+				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; max-height:300px; width: 100% text-shadow: 2px 2px grey">
 				<div class="card-img-overlay d-flex align-items-center justify-content-center">
 					<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
 						<h1 class="text-center">
@@ -152,6 +154,9 @@ function renderAttraction(attraction) {
             			<div class="card-text text-black">
             				<p>${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
             				<p>${checkForDetails(attraction)}</p>
+						</div>
+						<div class="card-body">
+							<button>Add To Trip</button>
 						</div>
 					</div>
 				</div>
