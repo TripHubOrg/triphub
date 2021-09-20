@@ -1,17 +1,37 @@
 package com.codeup.capstonestarter.data.address;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "addresses")
 public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 100)
     private String name;
+
+    @Column(nullable = false, length = 100)
     private String addressLine1;
+
+    @Column(nullable = false, length = 100)
     private String addressLine2;
+
+    @Column(nullable = false, length = 100)
     private String addressLine3;
+
+    @Column(nullable = false, length = 100)
     private String city;
+
+    @Column(nullable = false, length = 100)
     private String state_province;
+
+    @Column(nullable = false, length = 100)
     private String postal_code;
 
-    public Address() {
-    }
+    public Address() {}
 
     public Address(Long id, String name, String addressLine1, String addressLine2, String addressLine3, String city, String state_province, String postal_code) {
         this.id = id;

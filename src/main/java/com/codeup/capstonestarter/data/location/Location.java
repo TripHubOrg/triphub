@@ -1,15 +1,25 @@
 package com.codeup.capstonestarter.data.location;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "location")
 public class Location {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 100)
     private String location_name;
+
+    @Column(nullable = false, length = 100)
     private BigDecimal lon;
+
+    @Column(nullable = false, length = 100)
     private BigDecimal lat;
 
-    public Location() {
-    }
+    public Location() {}
 
     public Location(Long id, String location_name, BigDecimal lon, BigDecimal lat) {
         this.id = id;
