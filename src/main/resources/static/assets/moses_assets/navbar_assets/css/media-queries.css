@@ -17,10 +17,10 @@
 
 @media (max-width: 767px) {
 	
-	.top-content { padding: 20px 0 100px 0; }
-	.top-content h1 { font-size: 22px; }
-	.top-content .description { margin: 10px 0 0 0; }
-	.top-content a.btn { margin: 5px; }
+	.home-content { padding: 20px 0 100px 0; }
+	.home-content h1 { font-size: 22px; }
+	.home-content .description { margin: 10px 0 0 0; }
+	.home-content a.btn { margin: 5px; }
 	
 	.section-description p { padding: 0; }
 	
