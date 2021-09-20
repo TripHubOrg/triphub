@@ -137,8 +137,8 @@ export function BeginAttractionsEvents() {
 
 function renderAttraction(attraction) {
 	$("#attractionsList").append(`
-		<div class="col">
-			<div id="card${attraction.xid}" class="card bg-transparent text-white my-3 p-2 border-0" style="min-height:275px" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
+		<div class="col my-2">
+			<div id="card${attraction.xid}" class="card bg-transparent text-white border-0" style="min-height:275px" data-bs-toggle="collapse" data-bs-target="#${attraction.xid}">
 				<img class="card-img img-responsive border collapsed d-block" src="${checkForImage(attraction)}" alt="event-img" style="object-fit: cover; overflow:hidden; max-height:300px; width: 100% text-shadow: 2px 2px grey">
 				<div class="card-img-overlay d-flex align-items-center justify-content-center">
 					<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
@@ -147,8 +147,8 @@ function renderAttraction(attraction) {
 						</h1>
 					</div>	
 				</div>
-            	
-            	<div class="collapse" id="${attraction.xid}">
+        	</div>
+        	<div class="collapse" id="${attraction.xid}">
             		<div class="card card-body">
             			<div class="card-title text-black">${attraction.name}</div>
             			<div class="card-text text-black">
@@ -159,8 +159,7 @@ function renderAttraction(attraction) {
 							<button>Add To Trip</button>
 						</div>
 					</div>
-				</div>
-        	</div>
+			</div>
 		</div>
         `)
 	// renderedAttractionInfoList.push(attraction)

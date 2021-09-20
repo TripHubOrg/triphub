@@ -1,5 +1,6 @@
 let fakeAttractions = fakeData()
 
+
 export function fakeData(){
 	return {
 		tripLocation: 'Trip 1',
@@ -54,16 +55,21 @@ export default function Triptrack(props) {
                 <h1 class="col-12">${fakeAttractions.tripLocation}</h1>
                 <div class="col-12">
                 	<div class="row justify-content-center ">
+                		<div  class="col-3 m-0 p-0">
                         	<label for="fromDate">From</label>
-                        	<input class="dateInputs" id="fromDate" name="fromDate"> 
+                        	<input class="dateInputs" id="fromDate" name="fromDate" data-value="${fakeAttractions.tripStart}"> 
+						</div>
                     	<div class="col-3 m-0 p-0">
                         	<label for="toDate">To</label>
-                        	<input id="toDate" type="date" value="${fakeAttractions.tripEnd}">
+                        	<input id="toDate" type="date" data-value="${fakeAttractions.tripEnd}">
                     	</div>
 					</div>
                     
                 </div>
             </header>
+            <div class="row">
+            	<button class="col">Add An Event</button>
+			</div>
             <section class="TriptrackAtractionsList my-2">
 				${fakeAttractions.spots.map( spot => 
 					`<div class="row p-0 my-3" id="${spot.id}">
@@ -95,7 +101,7 @@ export default function Triptrack(props) {
 					<div class="row justify-content-between">
 						<button class="col-2 btn btn-info" type="submit">Add To Calendar</button>
 						<div class="col-2 text-end p-0">
-							<button class="btn btn-info" type="submit">Edit</button>
+							<button class="btn btn-info" type="submit">Delete</button>
 							<button class="btn btn-info" type="submit">Save</button>
 						</div>
 					</div>
@@ -109,10 +115,8 @@ export default function Triptrack(props) {
 }
 
 export function TripTrackOnLoad(){
-	console.log('IS THIS WORKING')
-	$(document).ready(function (){
-		$('.dateInputs').attr('type', 'date')
-	})
+	$('#fromDate').pickadate();
+	$('#toDate').pickadate();
 }
 
 function renderAttractionList(attractions) {
