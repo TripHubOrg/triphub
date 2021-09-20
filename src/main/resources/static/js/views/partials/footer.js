@@ -1,6 +1,6 @@
 export default function Footer(props) {
     return `
-<footer id="dk-footer" class="dk-footer">
+<footer>
         <div class="copyright">
             <div class="container">
                 <div class="row">
