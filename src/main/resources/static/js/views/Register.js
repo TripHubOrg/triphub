@@ -36,6 +36,14 @@ export default function Register(props) {
     <button type="submit" class="btn btn-primary">Sign in</button>
   </div>
 </form>
+this is cool
+<form action="#">
+                                    <div class="form-row">
+                                        <div class="col dk-footer-form">
+                                            <input type="email" class="form-control" placeholder="Email Address">
+                                            <button type="submit">
+                                                <i class="fa fa-send"></i>
+                                            </button>
 </body>
 </html>`;
 }
