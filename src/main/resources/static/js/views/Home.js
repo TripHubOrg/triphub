@@ -16,7 +16,7 @@ export default function Home(props) {
 			</div>
 			
 			<div>
-				<img src="../assets/blonde-1867768_1920.jpg" alt="" class="home-img" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 1440px; height: 810px; z-index: -1; left: 0px; top: -169px;">
+				<img src="../assets/blonde-1867768_1920.jpg" alt="" class="home-img">
 			</div>
 		</div>
 	</div>
