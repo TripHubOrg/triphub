@@ -28,15 +28,13 @@ public class Trip {
     @Column(nullable = false)
     private String endDate;
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     @Column(nullable = false)
-    private Role role = Role.USER;
+    private User owner;
 
-    public enum Role {USER, ADMIN}
-
-    @OneToMany(mappedBy = "trips")
+    @ManyToMany(mappedBy = "trips")
     @JsonIgnoreProperties("trips")
-    private Collection<User> users;
+    private Collection<User> collaborators;
 
 
     public Trip() {}

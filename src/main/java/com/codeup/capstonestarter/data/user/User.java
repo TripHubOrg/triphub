@@ -4,9 +4,10 @@ import com.codeup.capstonestarter.data.trip.Trip;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Collection;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -32,19 +33,17 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "trips_id")
-    private Trip trips;
+    private Trip trip;
 
-    public Trip getTrips() {
-        return trips;
-    }
+    @OneToMany
+    @JoinColumn()
+    private Collection<Trip> owned_trips;
 
-    public void setTrips(Trip trips) {
-        this.trips = trips;
-    }
+    @ManyToMany
+    @JoinColumn()
+    private Collection<Trip> collab_trips;
 
-    public enum Role {USER, ADMIN}
-
-    public User(String full_name,Long id, String username, String email, String password) {
+    public User(String full_name, Long id, String username, String email, String password) {
         this.full_name = full_name;
         this.id = id;
         this.username = username;
@@ -53,7 +52,8 @@ public class User {
 
     }
 
-    public User() {}
+    public User() {
+    }
 
     public String setfull_name() {
         return full_name;
@@ -63,7 +63,7 @@ public class User {
         this.full_name = full_name;
     }
 
-    public User(String username){
+    public User(String username) {
         this.username = username;
     }
 
@@ -98,14 +98,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
 
 }
