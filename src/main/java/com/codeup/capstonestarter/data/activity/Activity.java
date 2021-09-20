@@ -1,22 +1,36 @@
 package com.codeup.capstonestarter.data.activity;
 
-import com.codeup.capstonestarter.data.address.Address;
-import com.codeup.capstonestarter.data.location.Location;
-import com.codeup.capstonestarter.data.trip.Trip;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "activity")
 public class Activity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Trip trip;
-    private Location location;
-    private Address address;
-    private ActivityDetail details;
+
+    @Column(nullable = false, length = 100)
+    private String trip;
+
+    @Column(nullable = false, length = 100)
+    private String location;
+
+    @Column(nullable = false, length = 100)
+    private String address;
+
+    @Column(nullable = false, length = 100)
+    private String details;
+
+    @Column(nullable = false, length = 100)
     private String starDate;
+
+    @Column(nullable = false, length = 100)
     private String endDate;
 
     public Activity() {
     }
 
-    public Activity(Long id, Trip trip, Location location, Address address, ActivityDetail details, String starDate, String endDate) {
+    public Activity(Long id, String trip, String location, String address, String details, String starDate, String endDate) {
         this.id = id;
         this.trip = trip;
         this.location = location;
@@ -34,35 +48,35 @@ public class Activity {
         this.id = id;
     }
 
-    public Trip getTrip() {
+    public String getTrip() {
         return trip;
     }
 
-    public void setTrip(Trip trip) {
+    public void setTrip() {
         this.trip = trip;
     }
 
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation() {
         this.location = location;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress() {
         this.address = address;
     }
 
-    public ActivityDetail getDetails() {
+    public String getDetails() {
         return details;
     }
 
-    public void setDetails(ActivityDetail details) {
+    public void setDetails() {
         this.details = details;
     }
 

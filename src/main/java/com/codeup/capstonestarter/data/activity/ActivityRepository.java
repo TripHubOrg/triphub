@@ -1,4 +1,6 @@
 package com.codeup.capstonestarter.data.activity;
 
-public class ActivityRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ActivityRepository extends JpaRepository<Activity,Long> {
 }

@@ -1,4 +1,6 @@
 package com.codeup.capstonestarter.data.location;
 
-public class LocationRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LocationRepository extends JpaRepository<Location,Long> {
 }
