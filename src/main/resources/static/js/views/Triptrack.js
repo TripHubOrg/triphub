@@ -1,6 +1,7 @@
-let fakeAttractions =
+let fakeAttractions = fakeData()
 
-	{
+export function fakeData(){
+	return {
 		tripLocation: 'Trip 1',
 		tripStart: '2021-09-12',
 		tripEnd: '2021-10-02',
@@ -43,8 +44,7 @@ let fakeAttractions =
 			}
 		]
 	}
-
-
+}
 // noinspection SpellCheckingInspection
 export default function Triptrack(props) {
 	return `
