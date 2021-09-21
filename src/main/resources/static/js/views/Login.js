@@ -1,24 +1,21 @@
 export default function login() {
-    return `<!DOCTYPE html>
-<html lang="en">
-        <title>login form</title>
+    return `
         <div class="container">
-            <form name="myform" >
-                <div>
-                    <h1 id="title">Login</h1>
-                    <div id="box" class="rounded-circle">
-                       <label>Username</label>
-                       </br></br>
-                       <input type="text" class="form-control" name="user">
-                       </br>
-                       <label>Password </label>
-                       </br> </br>
-                       <input type="password" class="form-control" name="pass">
-                       </br></br>
-                       <a href="#" id="login" onclick="loginEvent()">login</a>
+            <div class="row justify-content-center pt-5">
+                <div class="col-12 text-center">
+                    <h1 class="my-5" id="title">Login</h1>
+                    <div class="row-col-1">
+                       <label for="userName" class="col-5 form-label">Username</label>
+                       <input type="text" class="col-5 mx-auto form-control" name="user" id="userName">
                     </div>
-               </div>
-            </form>
+                    <div class="row-col-1">
+                       <label class="col-5 form-label" for="password">Password </label>
+                       <input type="password" class="col-5 mx-auto form-control" name="pass" id="password">
+                    </div>
+                    <button class="btn btn-info">Login In</button>
+            </div>
+                </form>
+            </div>
         </div>
 </html>`
 }
