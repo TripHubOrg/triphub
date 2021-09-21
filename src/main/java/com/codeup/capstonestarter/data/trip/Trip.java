@@ -28,12 +28,22 @@ public class Trip {
     @Column(nullable = false)
     private String endDate;
 
-    @ManyToOne
-    @Column(nullable = false)
+    @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     private User owner;
 
-    @ManyToMany(mappedBy = "trips")
-    @JsonIgnoreProperties("trips")
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {/*CascadeType.MERGE, */CascadeType.DETACH, CascadeType.REFRESH},
+            targetEntity = User.class
+)
+    @JoinTable(
+            name="user_trip",
+            //What are your two foreign keys for your two tables
+            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "trip_id", nullable = false, updatable = false)},
+            foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+    )
     private Collection<User> collaborators;
 
 
@@ -97,12 +107,20 @@ public class Trip {
         this.endDate = endDate;
     }
 
-    public Collection<User> getUsers() {
-        return users;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setUsers(Collection<User> users) {
-        this.users = users;
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public Collection<User> getCollaborators() {
+        return collaborators;
+    }
+
+    public void setCollaborators(Collection<User> collaborators) {
+        this.collaborators = collaborators;
     }
 }
 

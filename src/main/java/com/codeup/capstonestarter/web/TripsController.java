@@ -16,13 +16,11 @@ public class TripsController {
     @PostMapping
     private void createTrips(@RequestBody Trip newTrips) {
 
-        System.out.println(newTrips.getUsers());
         System.out.println(newTrips.getStarDate());
         System.out.println(newTrips.getEndDate());
         System.out.println(newTrips.getLocation_id());
         System.out.println(newTrips.getTimezone());
         System.out.println(newTrips.getStarDate());
-        System.out.println(newTrips.getUsers());
 
 //        tripRepository.
 //        emailService.prepareAndSend(newTrips, "test", "the is new post");

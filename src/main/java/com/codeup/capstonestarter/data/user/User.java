@@ -31,8 +31,10 @@ public class User {
     @Column(nullable = false)
     private Role role = Role.USER;
 
-    @ManyToOne
-    @JoinColumn(name = "trips_id")
+    public enum Role {USER, ADMIN,}
+
+
+    @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     private Trip trip;
 
     @OneToMany
@@ -99,4 +101,11 @@ public class User {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
