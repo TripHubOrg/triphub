@@ -39,12 +39,12 @@ body{
 }
 
 #title{
-    color:white;
+    color:#000000;
     /*width:50%;*/
     /*height:35px;*/
     font-size:25px;
     box-shadow:15px 15px 25px black;
-    background:grey;
+    background:#f25a3f;
     animation:example 1s linear alternate;
 }
 @keyframes example {
@@ -63,7 +63,7 @@ body{
 .form-control{
     width:30%;
     border-bottom:15px;
-    border: solid green;
+    border: solid #f25a3f;
     box-shadow:9px 9px 25px black;
     margin-bottom:20px;
     margin-left:10px;
@@ -96,7 +96,7 @@ body{
 
 #box{
     background:white;
-    border:2px solid green;
+    border:2px #f35b3f;
     /*padding:55px;*/
     box-shadow:3px 3px 10px black;
     border-radius: 10px;
@@ -460,7 +460,7 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
 /****************************** START FOOTER ********************************/
 
 
-body { color: #ccc }
+body { color: #000000 }
 .footer-widget p {
     margin-bottom: 27px;
 }
@@ -475,7 +475,7 @@ p {
     display: block;
     width: 115px;
     height: 3px;
-    background: #007bff; }
+    background: #f96742; }
 
 .animate-border:after {
     position: absolute;
@@ -484,8 +484,8 @@ p {
     height: 3px;
     left: 0;
     bottom: 0;
-    border-left: 10px solid #fff;
-    border-right: 10px solid #fff;
+    border-left: 10px solid #000000;
+    border-right: 10px solid #000000;
     -webkit-animation: animborder 2s linear infinite;
     animation: animborder 2s linear infinite; }
 
@@ -684,9 +684,9 @@ p {
     padding: 12px 24px 12px 17px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    border: 1px solid #007bff;
-    background: #007bff;
-    color: #fff; }
+    border: 1px solid #f25a3f;
+    background: #f25a3f;
+    color: #000000; }
 .dk-footer-form button:hover {
     cursor: pointer; }
 
@@ -770,6 +770,17 @@ p {
     background: #FA6742;
     border-color: #FA6742; }
 
+.btn-info {
+    color: #000;
+    background-color: #FA6742;
+    border-color: #FA6742;
+}
+
+.btn-primary {
+    color: #000000;
+    background-color: #FA6742;
+    border-color: #FA6742;
+}
 /* Credit to https://bootsnipp.com/snippets/ooa9M  */
 
 /****************************** END FOOTER ********************************/
