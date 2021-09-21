@@ -11,6 +11,7 @@ h1{
     .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl{
         width: 30rem !important;
         height: 10rem !important;
+
     }
 }
 
