@@ -11,13 +11,13 @@ export default function Footer(props) {
                         <div class="copyright-menu">
                             <ul>
                                 <li>
-                                    <a href="#" class="animate-border border-black">Home</a>
+                                    <a href="#"  id="footerHome" class="animate-border border-black">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="animate-border border-black">About Us</a>
+                                    <a href="#" id="footerAboutUs" class="animate-border border-black">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="animate-border border-black">Credits</a>
+                                    <a href="#" id="footerCredits" class="animate-border border-black">Credits</a>
                                 </li>
                             </ul>
                         </div>
@@ -28,3 +28,4 @@ export default function Footer(props) {
 <!-- Credit to https://bootsnipp.com/snippets/ooa9M -->
       </footer>`
 }
+
