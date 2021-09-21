@@ -14,6 +14,14 @@ let sliceEnd = 7;
 
 let renderedAttractionInfoList = [];
 let fakeTripData = fakeData()
+let placeholderImages = [
+	'../../assets/default_pics/airport-2373727_1920.jpg',
+	'../../assets/default_pics/cosmos-4888643_1920.jpg',
+	'../../assets/default_pics/highway-5451834_1920.jpg',
+	'../../assets/default_pics/luggage-1149289_1920.jpg',
+	'../../assets/default_pics/passport-2714675_1920.jpg',
+	'../../assets/default_pics/windmills-1850214_1920.jpg'
+]
 
 //****************Variables for Infinite Scrolling*************
 let scrollTarget;
@@ -183,10 +191,11 @@ function addAttractionClickEvents() {
 
 //check if attraction has an image
 function checkForImage(attraction) {
+	let randomNum = Math.floor(Math.random() * 5)
 	if (attraction.hasOwnProperty('preview')) {
 		return attraction.preview.source
 	} else {
-		return '#'
+		return placeholderImages[randomNum]
 	}
 }
 
