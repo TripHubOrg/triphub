@@ -11,7 +11,8 @@ export default function Footer(props) {
                         <div class="copyright-menu">
                             <ul>
                                 <li>
-                                    <a href="#"  id="footerHome" class="animate-border border-black">Home</a>
+                                    <a href="#"  id="footerHome" class="animate-border border-black"
+                                    onclick="window.location.href='http://localhost:8080/'">Home</a>
                                 </li>
                                 <li>
                                     <a href="#" id="footerAboutUs" class="animate-border border-black">About Us</a>
@@ -29,3 +30,12 @@ export default function Footer(props) {
       </footer>`
 }
 
+export function footerLinks(){
+
+}
+
+function footerHome(){
+    $("#footerHome").click(function () {
+    });
+
+}
