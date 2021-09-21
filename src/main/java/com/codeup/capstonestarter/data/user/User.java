@@ -30,6 +30,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.USER;
+    public enum Role {USER, ADMIN};
 
     @ManyToOne
     @JoinColumn(name = "trips_id")
@@ -99,4 +100,11 @@ public class User {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

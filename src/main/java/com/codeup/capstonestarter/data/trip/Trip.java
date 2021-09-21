@@ -28,13 +28,13 @@ public class Trip {
     @Column(nullable = false)
     private String endDate;
 
-    @ManyToOne
-    @Column(nullable = false)
-    private User owner;
+//    @ManyToOne
+//    @Column(nullable = false)
+//    private User owner;
 
-    @ManyToMany(mappedBy = "trips")
-    @JsonIgnoreProperties("trips")
-    private Collection<User> collaborators;
+//    @ManyToMany(mappedBy = "trips")
+//    @JsonIgnoreProperties("trips")
+//    private Collection<User> collaborators;
 
 
     public Trip() {}
@@ -97,12 +97,20 @@ public class Trip {
         this.endDate = endDate;
     }
 
-    public Collection<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
+//    public User getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(User owner) {
+//        this.owner = owner;
+//    }
+//
+//    public Collection<User> getCollaborators() {
+//        return collaborators;
+//    }
+//
+//    public void setCollaborators(Collection<User> collaborators) {
+//        this.collaborators = collaborators;
+//    }
 }
 

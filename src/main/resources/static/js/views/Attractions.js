@@ -10,7 +10,15 @@ var currentKeyIndex;
 let limit = 100;
 let offset = 0;
 let sliceStart = 0;
-let sliceEnd = 7;
+let sliceEnd = 7
+let placeholderImages = [
+	'../../assets/default_pics/airport-2373727_1920.jpg',
+	'../../assets/default_pics/cosmos-4888643_1920.jpg',
+	'../../assets/default_pics/highway-5451834_1920.jpg',
+	'../../assets/default_pics/luggage-1149289_1920.jpg',
+	'../../assets/default_pics/passport-2714675_1920.jpg',
+	'../../assets/default_pics/windmills-1850214_1920.jpg'
+]
 
 let renderedAttractionInfoList = [];
 let fakeTripData = fakeData()
@@ -127,7 +135,7 @@ function filteredAttractions(attractionsPropertiesArray) {
 }
 
 export function BeginAttractionsEvents() {
-    Mapbox();
+	Mapbox();
 	// renderAttractions(attractionsArray)
 	filteredAttractions(attractionsArray)
 	//and set target, meaning what the observer will observe for executing callback
@@ -172,7 +180,7 @@ function addAttractionClickEvents() {
 	let parent = $(this).children('.card-img-overlay')
 	let child = parent.children()[0]
 
-	if ($(child).hasClass('notHidden')){
+	if ($(child).hasClass('notHidden')) {
 		$(child).prop('hidden', 'true')
 		$(child).removeClass('notHidden')
 	} else {
@@ -183,15 +191,17 @@ function addAttractionClickEvents() {
 
 //check if attraction has an image
 function checkForImage(attraction) {
+	let randomNum = Math.floor(Math.random() * 5)
+
 	if (attraction.hasOwnProperty('preview')) {
 		return attraction.preview.source
 	} else {
-		return '#'
+		return placeholderImages[randomNum]
 	}
 }
 
-function checkForDetails(attraction){
-	if (attraction.hasOwnProperty('wikipedia_extracts')){
+function checkForDetails(attraction) {
+	if (attraction.hasOwnProperty('wikipedia_extracts')) {
 		return attraction.wikipedia_extracts.text
 	} else {
 		return ''
