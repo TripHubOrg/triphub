@@ -3,11 +3,13 @@
  * @param URI
  * @returns {*}
  */
-import Home, {BeginAllEvents} from "./views/home.js";
-import AttractionsView, {BeginAttractionsEvents} from "./views/attractions.js";
+import Home, {BeginAllEvents} from "./views/Home.js";
+import AttractionsView, {BeginAttractionsEvents} from "./views/Attractions.js";
 import Register, {RegisterEvent} from "./views/Register.js";
-import login, {loginEvent} from "./views/login.js";
-import trip from "./views/Trip.js";
+import login, {loginEvent} from "./views/Login.js";
+import trips from "./views/Trips.js";
+import userhomepage from "./views/Userhomepage.js";
+import Triptrack, {TripTrackOnLoad} from "./views/Triptrack.js";
 
 
 export default function router(URI) {
@@ -26,36 +28,48 @@ export default function router(URI) {
             title: 'Home',
             viewEvent: BeginAllEvents
         },
-        '/attractions':{
+        '/attractions': {
             returnView: AttractionsView,
             state: {},
             uri: '/attractions',
             title: 'Attractions',
             viewEvent: BeginAttractionsEvents
         },
-        '/register':{
+        '/register': {
             returnView: Register,
             state: {},
             uri: '/register',
             title: 'Register',
             viewEvent: RegisterEvent
         },
-        '/trip':{
-            returnView: trip,
+        '/trips': {
+            returnView: trips,
             state: {},
-            uri: '/trip',
-            title: 'Trip',
+            uri: '/trips',
+            title: 'Trips',
         },
-        '/login':{
+        '/login': {
             returnView: login,
             state: {},
             uri: '/login',
             title: 'Login',
             viewEvent: loginEvent
+        },
+        '/triptrack': {
+            returnView: Triptrack,
+            state: {},
+            uri: '/triptrack',
+            title: 'Triptrack',
+            viewEvent: TripTrackOnLoad
+        },
+        '/userhomepage': {
+            returnView: userhomepage,
+            state: {},
+            uri: '/userhomepage',
+            title: 'UserHomePage',          
+            
         }
-
-    }
-
+    };
     return routes[URI];
 }
 

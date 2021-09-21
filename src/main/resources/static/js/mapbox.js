@@ -1,5 +1,5 @@
 import * as KEYS from "../js/keys.js"
-import {attractionsRequest} from "./views/attractions.js";
+import {attractionsRequest} from "./views/Attractions.js";
 import createView from "./createView.js";
 
 mapboxgl.accessToken = KEYS.mapboxKey();
