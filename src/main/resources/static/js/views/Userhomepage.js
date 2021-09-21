@@ -1,10 +1,13 @@
 export default function userhomepage() {
     return `
 <div class="container">
-    <h1 class="text-center text-black">My Page</h1>
 
+<div class="border shadow">
+    <h1 class="text-center">My Page</h1>
     <hr>
+</div>
 
+<br>
     <!-- Start button -->
     <div class="container ">
         <div class="d-grid gap-2 col-6 mx-auto">
@@ -65,7 +68,7 @@ export default function userhomepage() {
 
 export function routeToTripTrack() {
     $(".card").click(function () {
-        window.location.href='http://localhost:8080/triptrack';
+        window.location.href = 'http://localhost:8080/triptrack';
         return false;
     });
 }
