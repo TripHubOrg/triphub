@@ -1,7 +1,7 @@
 export default function login() {
     return `
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center pt-5">
                 <div class="col-12 text-center">
                     <h1 class="my-5" id="title">Login</h1>
                     <div class="row-col-1">
