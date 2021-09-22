@@ -3,13 +3,15 @@ h1{
     font-size: 5rem;
 }
 
-#geocoder-container{
-        height: 7rem !important;
-    }
+/*#geocoder-container{*/
+/*        height: 7rem !important;*/
+/*    }*/
 
-.mapboxgl-ctrl-geocoder, .mapboxgl-ctrl{
-        width: 30rem !important;
-        height: 10rem !important;
+.mapboxgl-ctrl-geocoder, .mapboxgl-ctrl, .mapboxgl-ctrl-geocoder--input{
+    width: 50rem !important;
+    height: 7rem !important;
+    max-width: 50rem !important;
+    font-size: 3rem;
     }
 
 
@@ -692,7 +694,6 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
 
 .copyright {
     padding: 28px 0;
-    margin-top: 55px;
     background-color: #202020; }
 .copyright span,
 .copyright a {
