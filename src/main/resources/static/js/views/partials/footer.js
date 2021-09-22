@@ -1,6 +1,6 @@
 export default function Footer(props) {
     return `
-<footer>
+<footer class="align-self-end p-0">
         <div class="copyright">
             <div class="container">
                 <div class="row">

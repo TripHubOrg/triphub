@@ -8,7 +8,7 @@ export function fakeData(){
 		tripEnd: '2021-10-02',
 		spots: [
 			{
-				name: 'Spot1',
+				name: 'Activity1',
 				id: 1,
 				starDate: '2021-09-13',
 				endDate: '2021-09-13',
@@ -17,7 +17,7 @@ export function fakeData(){
 				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Lectus urna duis convallis convallis tellus id interdum velit.'
 			},
 			{
-				name: 'Spot2',
+				name: 'Activity2',
 				id: 2,
 				starDate: '2021-09-14',
 				endDate: '2021-09-14',
@@ -26,7 +26,7 @@ export function fakeData(){
 				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero nunc consequat interdum varius sit amet mattis. Turpis cursus in hac habitasse platea dictumst quisque sagittis.'
 			},
 			{
-				name: 'Spot3',
+				name: 'Activity3',
 				id: 3,
 				starDate: '2021-09-15',
 				endDate: '2021-09-15',
@@ -35,7 +35,7 @@ export function fakeData(){
 				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi leo urna molestie at elementum eu facilisis. Morbi tristique senectus et netus et malesuada fames ac.'
 			},
 			{
-				name: 'Spot4',
+				name: 'Activity4',
 				id: 4,
 				starDate: '2021-09-16',
 				endDate: '2021-09-16',
@@ -70,7 +70,7 @@ export default function Triptrack(props) {
             <div class="row my-5">
             	<button class="col btn">Add An Event</button>
 			</div>
-            <section class="TriptrackAtractionsList my-2 row row-cols-lg-2 row-cols-1">
+            <section class="TriptrackAtractionsList my-2 mx-1 row row-cols-lg-2 row-cols-1">
 					${fakeAttractions.spots.map( spot =>
 					`<div class="col my-2 border-bottom">
 						<div class="container-fluid p-1">
@@ -118,8 +118,20 @@ export default function Triptrack(props) {
 }
 
 export function TripTrackOnLoad(){
-	$('#fromDate').pickadate();
-	$('#toDate').pickadate();
+	if ( $('#app').hasClass('home-img')){
+		$('#app').removeClass('home-img')
+	}
+
+	$('#fromDate').pickadate({
+		formatSubmit: 'yyyy-mm-dd'
+	});
+	$('#toDate').pickadate({
+		formatSubmit: 'yyyy-mm-dd'
+	});
+	$('.dateInput').pickadate({
+		formatSubmit: 'yyyy-mm-dd'
+	});
+
 }
 
 function renderAttractionList(attractions) {
