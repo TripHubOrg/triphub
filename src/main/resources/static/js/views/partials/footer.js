@@ -1,6 +1,6 @@
 export default function Footer(props) {
     return `
-<footer>
+<footer class="align-self-end p-0">
         <div class="copyright">
             <div class="container">
                 <div class="row">
@@ -11,13 +11,14 @@ export default function Footer(props) {
                         <div class="copyright-menu">
                             <ul>
                                 <li>
-                                    <a href="#" class="animate-border border-black">Home</a>
+                                    <a href="#"  id="footerHome" class="animate-border border-black"
+                                    onclick="window.location.href='http://localhost:8080/'">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="animate-border border-black">About Us</a>
+                                    <a href="#" id="footerAboutUs" class="animate-border border-black">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="animate-border border-black">Credits</a>
+                                    <a href="#" id="footerCredits" class="animate-border border-black">Credits</a>
                                 </li>
                             </ul>
                         </div>
@@ -27,4 +28,14 @@ export default function Footer(props) {
         </div>
 <!-- Credit to https://bootsnipp.com/snippets/ooa9M -->
       </footer>`
+}
+
+export function footerLinks(){
+
+}
+
+function footerHome(){
+    $("#footerHome").click(function () {
+    });
+
 }

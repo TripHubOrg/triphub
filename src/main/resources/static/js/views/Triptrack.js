@@ -8,7 +8,7 @@ export function fakeData(){
 		tripEnd: '2021-10-02',
 		spots: [
 			{
-				name: 'Spot1',
+				name: 'Activity1',
 				id: 1,
 				starDate: '2021-09-13',
 				endDate: '2021-09-13',
@@ -17,7 +17,7 @@ export function fakeData(){
 				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere lorem. Lectus urna duis convallis convallis tellus id interdum velit.'
 			},
 			{
-				name: 'Spot2',
+				name: 'Activity2',
 				id: 2,
 				starDate: '2021-09-14',
 				endDate: '2021-09-14',
@@ -26,7 +26,7 @@ export function fakeData(){
 				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Libero nunc consequat interdum varius sit amet mattis. Turpis cursus in hac habitasse platea dictumst quisque sagittis.'
 			},
 			{
-				name: 'Spot3',
+				name: 'Activity3',
 				id: 3,
 				starDate: '2021-09-15',
 				endDate: '2021-09-15',
@@ -35,7 +35,7 @@ export function fakeData(){
 				details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi leo urna molestie at elementum eu facilisis. Morbi tristique senectus et netus et malesuada fames ac.'
 			},
 			{
-				name: 'Spot4',
+				name: 'Activity4',
 				id: 4,
 				starDate: '2021-09-16',
 				endDate: '2021-09-16',
@@ -49,7 +49,7 @@ export function fakeData(){
 // noinspection SpellCheckingInspection
 export default function Triptrack(props) {
 	return `
-		<div class="tripTrackContainer container">
+		<div class="tripTrackContainer container-fluid px-5">
             <header class="locationFromTo text-center row">
                 <h3 class="col-12">Trip To</h3>
                 <h1 class="col-12">${fakeAttractions.tripLocation}</h1>
@@ -67,56 +67,71 @@ export default function Triptrack(props) {
                     
                 </div>
             </header>
-            <div class="row">
-            	<button class="col">Add An Event</button>
+            <div class="row my-5">
+            	<button class="col btn">Add An Event</button>
 			</div>
-            <section class="TriptrackAtractionsList my-2">
-				${fakeAttractions.spots.map( spot => 
-					`<div class="row p-0 my-3" id="${spot.id}">
-						<div class="col-12 date p-0">
-							<input id="EventId" type="date" value="${spot.starDate}" width="10px">
-						</div>
-						<div class="col-12 p-0 attraction card">
-							<div id="cardForAttraction" class="card bg-transparent m-0 p-0" style="height: 250px" data-bs-toggle="collapse" data-bs-target="#thisSpot${spot.id}">
-								<img class="card-img img-responsive collapsed d-block" src="${spot.image}" alt="event-img" style="object-fit: cover; height:100%; width: 100%; text-shadow: 2px 2px grey">
-								<div class="card-img-overlay text-white d-flex align-items-center justify-content-center">
-									<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
-										<h1 class="text-center">
-											${spot.name}
-										</h1>
+            <section class="TriptrackAtractionsList my-2 mx-1 row row-cols-lg-2 row-cols-1">
+					${fakeAttractions.spots.map( spot =>
+					`<div class="col my-2 border-bottom">
+						<div class="container-fluid p-1">
+							<div class="row">
+							<div class="col-12 date p-0" id="${spot.id}">
+								<input class="dateInput" id="start${spot.id}" data-value="${spot.starDate}" width="10px">
+							</div>
+							<div class="col-12 p-0 attraction card">
+								<div id="cardForAttraction" class="card bg-transparent m-0 p-0" style="height: 250px" data-bs-toggle="collapse" data-bs-target="#thisSpot${spot.id}">
+									<img class="card-img img-responsive collapsed d-block" src="${spot.image}" alt="event-img" style="object-fit: cover; height:100%; width: 100%; text-shadow: 2px 2px grey">
+									<div class="card-img-overlay text-white d-flex align-items-center justify-content-center">
+										<div class="title notHidden" style="background-color:rgba(255,127,80,0.65)">
+											<h1 class="text-center">
+												${spot.name}
+											</h1>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				<div class="col-12 collapse" id="thisSpot${spot.id}">
-							<div class="card-body text-red">
-								<div class="card-title text-black">${spot.name}</div>
-								<div class="card-text text-red">
-									<p>${spot.address}</p>
-									<p>${spot.details}</p>
+							<div class="col-12 collapse" id="thisSpot${spot.id}">
+								<div class="card-body">
+									<div class="card-title text-black">${spot.name}</div>
+									<div class="card-text text-red">
+										<p>${spot.address}</p>
+										<p>${spot.details}</p>
+									</div>
 								</div>
 							</div>
+							<div class="col-12 py-1">
+								<div class="row justify-content-between">
+									<button class="col-lg-4 col-4 btn btn-info" type="submit">Add To Calendar</button>
+									<div class="col-lg-4 col-4 text-end p-0">
+										<button class="btn btn-info" type="submit">Delete</button>
+										<button class="btn btn-info" type="submit">Save</button>
+									</div>
+								</div>
+							</div>	
 						</div>
-				<div class="col-12 py-1">
-					<div class="row justify-content-between">
-						<button class="col-2 btn btn-info" type="submit">Add To Calendar</button>
-						<div class="col-2 text-end p-0">
-							<button class="btn btn-info" type="submit">Delete</button>
-							<button class="btn btn-info" type="submit">Save</button>
 						</div>
 					</div>
-				</div>
-            </div>
-					`
-				).join('')}
+						`).join('')}
             </section>
         </div>
 	`;
 }
 
 export function TripTrackOnLoad(){
-	$('#fromDate').pickadate();
-	$('#toDate').pickadate();
+	if ( $('#app').hasClass('home-img')){
+		$('#app').removeClass('home-img')
+	}
+
+	$('#fromDate').pickadate({
+		formatSubmit: 'yyyy-mm-dd'
+	});
+	$('#toDate').pickadate({
+		formatSubmit: 'yyyy-mm-dd'
+	});
+	$('.dateInput').pickadate({
+		formatSubmit: 'yyyy-mm-dd'
+	});
+
 }
 
 function renderAttractionList(attractions) {
