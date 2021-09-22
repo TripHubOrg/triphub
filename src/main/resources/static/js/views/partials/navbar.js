@@ -26,7 +26,7 @@ export default function Navbar(props){
                         <a class="scroll-link" href="/triptrack" data-link><i class="fas fa-envelope"></i> Triptracks</a>
                     </li>
                     <li>
-                        <a class="scroll-link" href="/userhomepage" data-link><i class="fas fa-envelope"></i> (test)Userhomepage)</a>
+                        <a class="scroll-link" href="/userhomepage" data-link><i class="fas fa-envelope"></i>Userhomepage)</a>
                     </li>
                     <li>
                         <a href="#otherSections" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle" role="button" aria-controls="otherSections">
