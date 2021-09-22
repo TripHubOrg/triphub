@@ -8,38 +8,42 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ViewController {
 
-//    @Value("${OPEN_TRIP_MAP_API_KEY_WAGNER}")
-//    private String keyWagner;
-//    @Value("${OPEN_TRIP_MAP_API_KEY_RAUL}")
-//    private String keyRaul;
-//    @Value("${OPEN_TRIP_MAP_API_KEY_MOSES}")
-//    private String keyMoses;
-//    @Value("${OPEN_TRIP_MAP_API_KEY_NATHAN}")
-//    private String keyNathan;
+    @Value("${OPEN_TRIP_MAP_API_KEY_WAGNER}")
+    private String keyWagner;
+    @Value("${OPEN_TRIP_MAP_API_KEY_RAUL}")
+    private String keyRaul;
+    @Value("${OPEN_TRIP_MAP_API_KEY_MOSES}")
+    private String keyMoses;
+    @Value("${OPEN_TRIP_MAP_API_KEY_NATHAN}")
+    private String keyNathan;
+    @Value("${MAPBOX_KEY}")
+    private String keyMapbox;
 
     @RequestMapping({"/", "/home" , "/login", "/register", "/attractions", "/triptrack","/trips","/userhomepage"})
     public String showView(){
         return "index";
     }
 
-//    @RequestMapping(path = "/js/keys.js", produces = "application/javascript")
-//    @ResponseBody
-//    public String apikey() {
-//        // add more export functions and key args as you need them
-//        return String.format("export function openTripMapAPIKeyRaul(){\n" +
-//                "    return `%s`;\n" +
-//                "}\n" +
-//                "export function openTripMapAPIKeyWagner(){\n" +
-//                "    return `%s`;\n" +
-//                "}\n" +
-//                "export function openTripMapAPIKeyNathan(){\n" +
-//                "    return `%s`;\n" +
-//                "}\n" +
-//                "export function openTripMapAPIKeyMoses(){\n" +
-//                "    return `%s`;\n" +
-//                "}\n" +
-//                "}", keyRaul,keyWagner,keyNathan,keyMoses);
-//    }
+    @RequestMapping(path = "/js/keys.js", produces = "application/javascript")
+    @ResponseBody
+    public String apikey() {
+        // add more export functions and key args as you need them
+        return String.format("export function openTripMapAPIKeyRaul(){\n" +
+                "    return `%s`;\n" +
+                "}\n" +
+                "export function openTripMapAPIKeyWagner(){\n" +
+                "    return `%s`;\n" +
+                "}\n" +
+                "export function openTripMapAPIKeyNathan(){\n" +
+                "    return `%s`;\n" +
+                "}\n" +
+                "export function openTripMapAPIKeyMoses(){\n" +
+                "    return `%s`;\n" +
+                "}\n" +
+                "export function mapboxKey() {\n" +
+           " return `%s`;\n" +
+                "}", keyRaul,keyWagner,keyNathan,keyMoses,keyMapbox);
+    }
 }
 
 
