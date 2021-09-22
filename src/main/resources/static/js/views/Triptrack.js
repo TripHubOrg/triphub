@@ -3,7 +3,7 @@ let fakeAttractions = fakeData()
 
 export function fakeData(){
 	return {
-		tripLocation: 'Trip 1',
+		tripLocation: 'Trip 986',
 		tripStart: '2021-09-12',
 		tripEnd: '2021-10-02',
 		spots: [
