@@ -5,7 +5,7 @@ export default function login() {
             <div class="row justify-content-center pt-5">
                 <div class="col-12 text-center">
                     <h1 class="my-5" id="title">Login</h1>
-                      </div>
+                    <hr>
                     <div class="row-col-1">
                        <label for="userName" class="col-5 form-label">Username</label>
                        <input type="text" class="col-5 mx-auto form-control" name="user" id="userName">
