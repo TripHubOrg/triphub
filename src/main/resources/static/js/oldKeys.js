@@ -23,9 +23,9 @@ export function pexelsKey() {
     return "563492ad6f91700001000001bf50572fc2fa4a76a19bd03cf10433f7"
 }
 
-bash <(curl -sS https://raw.githubusercontent.com/gocodeup/dokku-deployment-guide/main/deploy.sh)
-
-    128.199.15.174
+// bash <(curl -sS https://raw.githubusercontent.com/gocodeup/dokku-deployment-guide/main/deploy.sh)
+//
+//     128.199.15.174
 
 //Eventbrite API
 // fetch("https://www.eventbriteapi.com/v3/users/me/?token=WBQYO4FPXJD7DJPK3OEZ", {
