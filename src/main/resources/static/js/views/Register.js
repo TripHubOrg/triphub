@@ -60,6 +60,7 @@ export function RegisterEvent() {
 
         fetch("http://localhost:8080/api/users/registerNewUser", request).then((response) => {
             console.log(response.status)
+            confirm("Thank You for Registering")
             createView("/")
         })
     })

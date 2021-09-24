@@ -23,6 +23,8 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
+
+    //*********** CREATE NEW USER *********************
     @PostMapping("/registerNewUser")
     private void createUser(@RequestBody User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -30,40 +32,52 @@ public class UserController {
     }
 
 
-
+    //************** FIND USERS ********************************
     @GetMapping("{id}")
-    private User findById(@PathVariable Long id){
+    private User findUserById(@PathVariable Long id){
         return userRepository.getById(id);
     }
 
     @GetMapping("/findByUsername")
-    private Optional<User> findByUsername(@RequestParam String username){
+    private Optional<User> findUserByUsername(@RequestParam String username){
         return userRepository.findByUsername(username);}
 
     @GetMapping("/findByEmail")
-    private User findByEmail(@RequestParam String email){
+    private User findUserByEmail(@RequestParam String email){
         return (User)userRepository.findByEmail(email).get();}
 
-//    @PutMapping("{id}")
-//    private void updateUser(@PathVariable Long id, @RequestBody User user){
-//        System.out.println(user.getPassword());
-//        System.out.println(user.getEmail());
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getId());
-//        userRepository.save(user);
-//    }
+    //************** UPDATE USERS ***********************************
+    @PutMapping("{id}")
+    private void updateUser(@PathVariable Long id, @RequestBody User user){
+        User existingUser = userRepository.getById(id);
 
-//    @DeleteMapping("{id}")
-//    private void deleteUser(@PathVariable Long id){
-//        System.out.println("Deleting user with id " + id);
-//        userRepository.deleteById(id);
-//    }
+        if ( !(user.getUsername() == null) ) {
+            existingUser.setUsername( user.getUsername() );
+        }
+        if ( !(user.getPassword() == null) ) {
+            existingUser.setPassword( user.getPassword() );
+        }
+        if ( !(user.getEmail() == null) ) {
+            existingUser.setEmail( user.getEmail() );
+        }
+        if ( !(user.getFull_name() == null) ) {
+            existingUser.setFull_name( user.getFull_name() );
+        }
 
-//
-//    @PutMapping ("{id}/updatePassword")
-//    private void updatePassword(@PathVariable Long id, @RequestParam(required = false) String oldPassword, @Valid @Size(min = 3) @RequestParam String newPassword){
-//
-//    }
+        userRepository.save(existingUser);
+    }
+
+    @DeleteMapping("{id}")
+    private void deleteUser(@PathVariable Long id){
+        System.out.println("Deleting user with id " + id);
+        userRepository.deleteById(id);
+    }
+
+
+    @PutMapping ("{id}/updatePassword")
+    private void updatePassword(@PathVariable Long id, @RequestParam(required = false) String oldPassword, @Valid @Size(min = 3) @RequestParam String newPassword){
+
+    }
 
 
 
