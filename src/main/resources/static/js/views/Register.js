@@ -56,14 +56,27 @@ export function RegisterEvent() {
             },
             body: JSON.stringify(registerUser)
         }
-        console.log(request)
-
-        fetch("http://localhost:8080/api/users/registerNewUser", request).then((response) => {
-            console.log(response.status)
-            confirm("Thank You for Registering")
-            createView("/")
-        })
+        let passwords = [$('#password').val(), $('#confirmPassword').val()]
+        if (passwordsCheck(passwords)){
+            fetch("http://localhost:8080/api/users/registerNewUser", request).then((response) => {
+                console.log(response.status)
+                confirm("Thank You for Registering")
+                createView("/")
+            })
+        } else {
+            alert("Passwords do not match, please try again")
+            $('#password').val('')
+            $('#confirmPassword').val('')
+        }
     })
+}
+
+function passwordsCheck(passwords){
+    if(passwords[0] === passwords[1]){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function passwordValidation() {
