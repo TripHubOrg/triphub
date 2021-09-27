@@ -6,10 +6,11 @@
 import Home, {BeginAllEvents} from "./views/Home.js";
 import AttractionsView, {BeginAttractionsEvents} from "./views/Attractions.js";
 import Register, {RegisterEvent} from "./views/Register.js";
-import login, {loginEvent} from "./views/Login.js";
+import login from "./views/Login.js";
 import trips from "./views/Trips.js";
 import userhomepage, {routeToTripTrack} from "./views/Userhomepage.js";
 import Triptrack, {TripTrackOnLoad} from "./views/Triptrack.js";
+import LoginEvent from "./auth.js";
 
 
 export default function router(URI) {
@@ -53,7 +54,7 @@ export default function router(URI) {
             state: {},
             uri: '/login',
             title: 'Login',
-            viewEvent: loginEvent
+            viewEvent: LoginEvent
         },
         '/triptrack': {
             returnView: Triptrack,

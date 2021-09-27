@@ -2,13 +2,12 @@ package com.codeup.capstonestarter.web;
 
 import com.codeup.capstonestarter.data.user.User;
 import com.codeup.capstonestarter.data.user.UserRepository;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
