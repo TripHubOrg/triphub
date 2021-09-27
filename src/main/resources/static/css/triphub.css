@@ -74,7 +74,7 @@ body, html{
     width:30%;
     border-bottom:15px;
     border: solid #f25a3f;
-    box-shadow:9px 9px 25px black;
+    box-shadow:9px 9px 25px ;
     margin-bottom:20px;
     margin-left:10px;
     border-radius: 30px 0 30px 0;
@@ -88,7 +88,7 @@ body, html{
 
 #login{
     background:white;
-    box-shadow:9px 9px 25px black;
+    box-shadow:9px 9px 25px ;
     text-decoration:none;
     border:2px solid green;
     padding:5px 25px 5px 25px;
@@ -99,8 +99,8 @@ body, html{
 
 #login:focus{
     border:2px solid red;
-    box-shadow:9px 9px 25px black;
-    box-shadow:15px 15px 25px black;
+    box-shadow:9px 9px 25px ;
+    box-shadow:15px 15px 25px ;
 
 }
 
@@ -108,7 +108,7 @@ body, html{
     background:white;
     border:2px #f35b3f;
     /*padding:55px;*/
-    box-shadow:3px 3px 10px black;
+    box-shadow:3px 3px 10px ;
     border-radius: 10px;
     /*width:50%;*/
     animation:exam 1s linear alternate;
@@ -497,8 +497,8 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
     height: 3px;
     left: 0;
     bottom: 0;
-    border-left: 10px solid #000000;
-    border-right: 10px solid #000000;
+    border-left: 10px solid #EEF0EF;
+    border-right: 10px solid #EEF0EF;
     -webkit-animation: animborder 2s linear infinite;
     animation: animborder 2s linear infinite; }
 
@@ -588,13 +588,13 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
     border-color: #FA6742; }
 
 .btn-info {
-    color: #000;
+    color: #EEF0EF;
     background-color: #FA6742;
     border-color: #FA6742;
 }
 
 .btn-primary {
-    color: #000000;
+    color: #EEF0EF;
     background-color: #FA6742;
     border-color: #FA6742;
 }
