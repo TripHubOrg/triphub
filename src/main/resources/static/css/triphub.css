@@ -3,10 +3,6 @@ h1{
     font-size: 5rem;
 }
 
-/*#geocoder-container{*/
-/*        height: 7rem !important;*/
-/*    }*/
-
 .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl, .mapboxgl-ctrl-geocoder--input{
     width: 50rem !important;
     height: 7rem !important;
@@ -57,20 +53,6 @@ body, html{
 
 }
 
-/*@keyframes example {*/
-/*    100%{*/
-/*        transform:translate3d(0px,0px,0px);*/
-/*    }*/
-
-
-/*    0%{*/
-/*        transform:translate3d(210px,0px,0px);*/
-/*    }*/
-
-/*}*/
-
-
-
 .form-control{
     width:30%;
     border-bottom:15px;
@@ -84,11 +66,6 @@ body, html{
     border: solid red;
     box-shadow: 15px 15px 25px black;
 }
-
-
-/*}*/
-
-
 
 #login{
     background:white;
@@ -142,10 +119,8 @@ body, html{
 #box{
     background:white;
     border:2px #f35b3f;
-    /*padding:55px;*/
     box-shadow:3px 3px 10px ;
     border-radius: 10px;
-    /*width:50%;*/
     animation:exam 1s linear alternate;
 
 }
@@ -169,14 +144,10 @@ body, html{
     padding: 8px;
 }
 .login-ic i {
-    /*background: url()no-repeat 6px 6px;*/
     width: 38px;
     height: 38px;
     float: left;
     display: inline-block;
-}
-.login-ic i.icon {
-    /*background: url(../images/l.png)no-repeat 6px 6px;*/
 }
 
 .login-ic input[type="text"],.login-ic  input[type="password"] {
@@ -537,20 +508,6 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
     padding-bottom: 30px;
     font-size: 3rem;
 }
-
-/*.home-img {*/
-/*    position: absolute;*/
-/*    margin: 0px;*/
-/*    padding: 0px;*/
-/*    border: none;*/
-/*    width: 1440px;*/
-/*    height: 810px;*/
-/*    max-height: none;*/
-/*    max-width: none;*/
-/*    z-index: -999999;*/
-/*    left: 0px;*/
-/*    top: -169px;*/
-/*}*/
 
 .home-img {
     background-image: url("../assets/blonde-1867768_1920.jpg");

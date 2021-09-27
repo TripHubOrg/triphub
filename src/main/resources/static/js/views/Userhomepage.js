@@ -62,9 +62,7 @@ export default function userhomepage() {
 
                     <!-- end main container div -->
 </div>
-</div>
-
-             
+</div>    
 `
 }
 
