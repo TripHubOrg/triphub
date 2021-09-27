@@ -14,21 +14,20 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Long location_id;
+//    @Column(nullable = false)
+//    private Long location_id;
 
     @Column(nullable = false)
     private String country;
 
     @Column(nullable = false)
-    private String timezone;
-
-    @Column(nullable = false)
     private String starDate;
+
     @Column(nullable = false)
     private String endDate;
 
-    @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE})
+    @JsonIgnoreProperties({"owned_trips", "password"})
     private User owner;
 
     @ManyToMany(
@@ -39,25 +38,40 @@ public class Trip {
     @JoinTable(
             name="user_trip",
             //What are your two foreign keys for your two tables
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "trip_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "trip_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
             foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
             inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
     )
+    @JsonIgnoreProperties({"owned_trips", "password"})
     private Collection<User> collaborators;
 
 
     public Trip() {}
 
-    public Trip(Long id, Long location_id, String country, String timezone, String starDate, String endDate) {
+    public Trip(Long id, String country, String starDate, String endDate) {
         this.id = id;
-        this.location_id = location_id;
         this.country = country;
-        this.timezone = timezone;
         this.starDate = starDate;
         this.endDate = endDate;
     }
 
+    public Trip(Long id, String country, String starDate, String endDate, User owner) {
+        this.id = id;
+        this.country = country;
+        this.starDate = starDate;
+        this.endDate = endDate;
+        this.owner = owner;
+    }
+
+    public Trip(Long id, String country, String starDate, String endDate, User owner, Collection<User> collaborators) {
+        this.id = id;
+        this.country = country;
+        this.starDate = starDate;
+        this.endDate = endDate;
+        this.owner = owner;
+        this.collaborators = collaborators;
+    }
 
     public Long getId() {
         return id;
@@ -67,28 +81,12 @@ public class Trip {
         this.id = id;
     }
 
-    public Long getLocation_id() {
-        return location_id;
-    }
-
-    public void setLocation_id(Long location_id) {
-        this.location_id = location_id;
-    }
-
     public String getCountry() {
         return country;
     }
 
     public void setCountry(String country) {
         this.country = country;
-    }
-
-    public String getTimezone() {
-        return timezone;
-    }
-
-    public void setTimezone(String timezone) {
-        this.timezone = timezone;
     }
 
     public String getStarDate() {
