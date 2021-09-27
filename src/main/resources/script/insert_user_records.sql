@@ -1,5 +1,5 @@
 INSERT INTO users (full_name, username, email, password,role)
-VALUES ('admintest', 'admin', 'admin@yahoo.com','admin','user');
+VALUES ('Montest', 'mon', 'mon@yahoo.com','mon','mon');
 
 
 SELECT * FROM users;
