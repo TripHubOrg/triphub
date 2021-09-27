@@ -1,5 +1,5 @@
 export default function userhomepage() {
-	return `
+    return `
 <div class="container">
 
 <div class="border shadow">
@@ -9,21 +9,21 @@ export default function userhomepage() {
 
 <br>
     <!-- Start button -->
-    <div class="container ">
+    <div class="row ">
         <div class="d-grid gap-2 col-6 mx-auto">
             <button class="btn rounded-pill text-white" type="button" style="background:#f35b3f"
                     onclick="window.location.href='http://localhost:8080/'">Plan A Trip
             </button>
         </div>
-    <div>
+    </div>
             <!-- end button -->
 
 
             <br>
             <!-- Start horizontal Scrolling -->
 
-            <div class="container">
-                <div class="row justify-content-between">
+            
+                <div class="row justify-content-center">
                     <div class="col-4">
                         Your Trips
                     </div>
@@ -62,13 +62,15 @@ export default function userhomepage() {
 
                     <!-- end main container div -->
 </div>
+</div>
+
              
 `
 }
 
 export function routeToTripTrack() {
-	$(".card").click(function () {
-		window.location.href = 'http://localhost:8080/triptrack';
-		return false;
-	});
+    $(".card").click(function () {
+        window.location.href = 'http://localhost:8080/triptrack';
+        return false;
+    });
 }
