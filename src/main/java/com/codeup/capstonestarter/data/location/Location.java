@@ -1,5 +1,7 @@
 package com.codeup.capstonestarter.data.location;
 
+import com.codeup.capstonestarter.data.trip.Trip;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -18,6 +20,9 @@ public class Location {
 
     @Column(nullable = false, length = 100)
     private BigDecimal lat;
+
+    @OneToOne(mappedBy = "location")
+    private Trip trip;
 
     public Location() {}
 

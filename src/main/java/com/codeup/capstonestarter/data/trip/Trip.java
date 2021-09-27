@@ -1,5 +1,6 @@
 package com.codeup.capstonestarter.data.trip;
 
+import com.codeup.capstonestarter.data.location.Location;
 import com.codeup.capstonestarter.data.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,8 +15,9 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(nullable = false)
-//    private Long location_id;
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
 
     @Column(nullable = false)
     private String country;

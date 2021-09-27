@@ -13,8 +13,8 @@ import java.util.Collection;
 @RequestMapping(value = "/api/trips", headers = "Accept=application/json")
 public class TripsController {
 
-    private TripRepository tripRepository;
-    private UserRepository userRepository;
+    private final TripRepository tripRepository;
+    private final UserRepository userRepository;
 
     public TripsController(TripRepository tripRepository, UserRepository userRepository) {
         this.tripRepository = tripRepository;
