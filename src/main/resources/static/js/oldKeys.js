@@ -1,26 +1,26 @@
 export function openTripMapAPIKeyRaul() {
-    return "5ae2e3f221c38a28845f05b64b72b5500852f25750bcf6d74f919cc7"
+	return "5ae2e3f221c38a28845f05b64b72b5500852f25750bcf6d74f919cc7"
 }
 
 export function openTripMapAPIKeyMoses() {
-    return "5ae2e3f221c38a28845f05b65817c7a2eaf0fb48b1422f392a64f5a1"
+	return "5ae2e3f221c38a28845f05b65817c7a2eaf0fb48b1422f392a64f5a1"
 }
 
 export function openTripMapAPIKeyNathan() {
-    return "5ae2e3f221c38a28845f05b6f6b9e76ad9363d2ee73715cbb7fef090"
+	return "5ae2e3f221c38a28845f05b6f6b9e76ad9363d2ee73715cbb7fef090"
 }
 
 export function openTripMapAPIKeyWagner() {
-    return "5ae2e3f221c38a28845f05b60e8b29a4f011a183b093125960a633e0"
+	return "5ae2e3f221c38a28845f05b60e8b29a4f011a183b093125960a633e0"
 }
 
 export function mapboxKey() {
-    return "pk.eyJ1IjoicmNtYXJ0aW5lejI0NDEiLCJhIjoiY2t0YTlpMGowMTk1bDJ1bnVobmNvbG11biJ9.QxNyjtiIfIH6OyQI2Y5riQ"
+	return "pk.eyJ1IjoicmNtYXJ0aW5lejI0NDEiLCJhIjoiY2t0YTlpMGowMTk1bDJ1bnVobmNvbG11biJ9.QxNyjtiIfIH6OyQI2Y5riQ"
 }
 
 export function pexelsKey() {
 //must give credit (https://help.pexels.com/hc/en-us/articles/900005851903-How-should-I-give-credit-Can-I-use-your-logo-)
-    return "563492ad6f91700001000001bf50572fc2fa4a76a19bd03cf10433f7"
+	return "563492ad6f91700001000001bf50572fc2fa4a76a19bd03cf10433f7"
 }
 
 // bash <(curl -sS https://raw.githubusercontent.com/gocodeup/dokku-deployment-guide/main/deploy.sh)
@@ -124,4 +124,3 @@ export function pexelsKey() {
 //         },
 //
 //     })
-

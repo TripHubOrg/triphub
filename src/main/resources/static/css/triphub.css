@@ -57,15 +57,6 @@ body, html{
 
 }
 
-#title{
-    color:#000000;
-    /*width:50%;*/
-    /*height:35px;*/
-    font-size:25px;
-    box-shadow:15px 15px 25px black;
-    background:#f25a3f;
-    animation:example 1s linear alternate;
-}
 @keyframes example {
     100%{
         transform:translate3d(0px,0px,0px);

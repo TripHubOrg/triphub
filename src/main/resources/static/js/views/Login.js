@@ -2,13 +2,10 @@ export default function login() {
     return `
         <div class="container">
         </html>
-            <header>
-                 <h1 class="attractionsTitle">Attractions</h1>
-                    <hr>
-            </header>
             <div class="row justify-content-center pt-5">
                 <div class="col-12 text-center">
                     <h1 class="my-5" id="title">Login</h1>
+                    <hr>
                     <div class="row-col-1">
                        <label for="userName" class="col-5 form-label">Username</label>
                        <input type="text" class="col-5 mx-auto form-control" name="user" id="userName">
