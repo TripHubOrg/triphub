@@ -107,47 +107,6 @@ body, html{
     box-shadow: 15px 15px 25px;
 }
 
-
-/*#box{*/
-/*    background:white;*/
-/*    border:2px #f35b3f;*/
-/*    !*padding:55px;*!*/
-/*    box-shadow:3px 3px 10px black;*/
-/*    border-radius: 10px;*/
-/*    !*width:50%;*!*/
-/*    animation:exam 1s linear alternate;*/
-/*}*/
-
-/*@keyframes exam {*/
-/*    100%{*/
-/*        transform:translate3d(0px,0px,0px)*/
-/*    }*/
-
-/*    0%{*/
-
-/*        transform:translate3d(-210px,0px,0px)*/
-/*    }*/
-/*}*/
-
-/*!*label{*!*/
-/*!*    box-shadow:5px 5px 10px black;*!*/
-/*!*    background: black;*!*/
-/*!*    color:white;*!*/
-/*!*    padding:10px;*!*/
-/*!*    border-radius: 10px;*!*/
-/*!*    width:30%;*!*/
-/*!*}*!*/
-
-/*input[type=text], input[type=password]{*/
-/*    outline:black;*/
-/*}*/
-
-
-.login-form{
-
-    padding:100px 0px 50px 0px;
-
-}
 .login-form h1{
     font-size:2em;
     color:#fff;
@@ -162,11 +121,6 @@ body, html{
     width: 130px;
     height: 130px;
     display: block;
-    /*-webkit-transform: rotate(45deg) translate3d(0, 0, 0);*/
-    /*-moz-transform: rotate(45deg) translate3d(0, 0, 0);*/
-    /*-ms-transform: rotate(45deg) translate3d(0, 0, 0);*/
-    /*-o-transform: rotate(45deg) translate3d(0, 0, 0);*/
-    /*transform: rotate(45deg) translate3d(0, 0, 0);*/
     margin: 0 auto 4em;
     background: #fff;
     position: relative;
@@ -182,11 +136,6 @@ body, html{
     left: 11px;
 }
 .top-login span img {
-    /*-webkit-transform: rotate(-45deg) translate3d(0, 0, 0);*/
-    /*-moz-transform: rotate(-45deg) translate3d(0, 0, 0);*/
-    /*-ms-transform: rotate(-45deg) translate3d(0, 0, 0);*/
-    /*-o-transform: rotate(-45deg) translate3d(0, 0, 0);*/
-    /*transform: rotate(-45deg) translate3d(0, 0, 0);*/
     margin: 20px 0 0 20px;
 }
 
