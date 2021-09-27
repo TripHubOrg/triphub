@@ -10,6 +10,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties(value = {"password"}, allowSetters = true)
 public class User {
 
     @Id
