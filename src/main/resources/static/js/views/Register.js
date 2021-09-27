@@ -16,23 +16,23 @@ export default function Register(props) {
                 <input  id="full-Name" name="full-Name" type="text" class="form-control mx-auto"/>
               </div>
               <div class="col-md-12">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control mx-auto" id="inputEmail4">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control mx-auto" id="email">
               </div>
                <div class="col-md-12">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control mx-auto" id="username">
               </div>
               <div class="col-md-12">
-                <label for="inputPassword" class="form-label">Password</label>
-                <input type="password" class="form-control mx-auto" id="inputPassword4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control mx-auto" id="password">
               </div>
               <div class="col-md-12">
-                <label for="confirmPassword4" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control mx-auto" id="confirmPassword4">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control mx-auto" id="confirmPassword">
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary mx-auto">Sign in</button>
+                <button id="register-btn" type="submit" class="btn btn-primary mx-auto">Sign in</button>
               </div>
             </div>
         </div>
@@ -44,7 +44,7 @@ export function RegisterEvent() {
     $("#register-btn").click(function () {
 
         let registerUser = {
-            fullname: $("#full-Name").val(),
+            full_name: $("#full-Name").val(),
             username: $("#username").val(),
             password: $("#password").val(),
             email: $("#email").val()
@@ -56,13 +56,27 @@ export function RegisterEvent() {
             },
             body: JSON.stringify(registerUser)
         }
-        console.log(request)
-
-        fetch("http://localhost:8080/api/users", request).then((response) => {
-            console.log(response.status)
-            createView("/")
-        })
+        let passwords = [$('#password').val(), $('#confirmPassword').val()]
+        if (passwordsCheck(passwords)){
+            fetch("http://localhost:8080/api/users/registerNewUser", request).then((response) => {
+                console.log(response.status)
+                confirm("Thank You for Registering")
+                createView("/")
+            })
+        } else {
+            alert("Passwords do not match, please try again")
+            $('#password').val('')
+            $('#confirmPassword').val('')
+        }
     })
+}
+
+function passwordsCheck(passwords){
+    if(passwords[0] === passwords[1]){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function passwordValidation() {
