@@ -24,14 +24,13 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Column
+    @Column(nullable = false, length = 100)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role = Role.USER;
+//    @Enumerated(EnumType.STRING)
+//    @Column(nullable = false)
+//    private Role role = Role.USER;
 
-    public enum Role {USER, ADMIN,}
 
 
     @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
@@ -101,11 +100,11 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-    }
+//    public Role getRole() {
+//        return role;
+//    }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 }

@@ -47,7 +47,6 @@ export function RegisterEvent() {
             fullname: $("#full-Name").val(),
             username: $("#username").val(),
             password: $("#password").val(),
-            confirmPassword: $("#confirmPassword").val(),
             email: $("#email").val()
         }
         let request = {
@@ -59,7 +58,7 @@ export function RegisterEvent() {
         }
         console.log(request)
 
-        fetch("http://localhost:8080/users", request).then((response) => {
+        fetch("http://localhost:8080/api/users", request).then((response) => {
             console.log(response.status)
             createView("/")
         })
