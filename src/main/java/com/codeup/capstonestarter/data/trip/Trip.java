@@ -2,8 +2,8 @@ package com.codeup.capstonestarter.data.trip;
 
 import com.codeup.capstonestarter.data.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
+
 import java.util.Collection;
 
 @Entity
