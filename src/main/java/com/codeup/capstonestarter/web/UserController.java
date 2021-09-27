@@ -4,6 +4,7 @@ import com.codeup.capstonestarter.data.user.User;
 import com.codeup.capstonestarter.data.user.UserRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +26,7 @@ public class UserController {
 
 
     //*********** CREATE NEW USER *********************
-    @PostMapping("/registerNewUser")
+    @PostMapping("/registerNewUser")// Remove endpoint after speaking with Wagner on frontEnd
     private void createUser(@RequestBody User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -45,6 +46,11 @@ public class UserController {
     @GetMapping("/findByEmail")
     private User findUserByEmail(@RequestParam String email){
         return (User)userRepository.findByEmail(email).get();}
+
+    @GetMapping("/me")
+    private User findCurrentUser(OAuth2Authentication auth){
+        return userRepository.findByEmail(auth.getName()).get();
+    }
 
     //************** UPDATE USERS ***********************************
     @PutMapping("{id}")

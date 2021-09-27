@@ -51,28 +51,37 @@ public class Trip {
 
     public Trip() {}
 
-    public Trip(Long id, String country, String starDate, String endDate) {
-        this.id = id;
-        this.country = country;
+    public Trip(Location location, String starDate, String endDate){
+        this.location = location;
         this.starDate = starDate;
         this.endDate = endDate;
     }
 
-    public Trip(Long id, String country, String starDate, String endDate, User owner) {
+    public Trip(Long id, String country, String starDate, String endDate, Location location) {
+        this.id = id;
+        this.country = country;
+        this.starDate = starDate;
+        this.endDate = endDate;
+        this.location = location;
+    }
+
+    public Trip(Long id, String country, String starDate, String endDate, User owner, Location location) {
         this.id = id;
         this.country = country;
         this.starDate = starDate;
         this.endDate = endDate;
         this.owner = owner;
+        this.location = location;
     }
 
-    public Trip(Long id, String country, String starDate, String endDate, User owner, Collection<User> collaborators) {
+    public Trip(Long id, String country, String starDate, String endDate, User owner, Collection<User> collaborators, Location location) {
         this.id = id;
         this.country = country;
         this.starDate = starDate;
         this.endDate = endDate;
         this.owner = owner;
         this.collaborators = collaborators;
+        this.location = location;
     }
 
     public Long getId() {
@@ -121,6 +130,14 @@ public class Trip {
 
     public void setCollaborators(Collection<User> collaborators) {
         this.collaborators = collaborators;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
 
