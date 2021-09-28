@@ -25,7 +25,7 @@ public class Activity {
     private Address address;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "activityDetail_id", referencedColumnName = "id")
     private ActivityDetail activityDetail;
 
     @Column(nullable = false, length = 100)

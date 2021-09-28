@@ -50,7 +50,7 @@ public class Trip {
     private Collection<User> collaborators;
 
     @OneToMany(mappedBy = "trip")
-    @JsonIgnoreProperties("user")
+    @JsonIgnoreProperties("trip")
     private Collection<Activity> activities;
 
     public Trip() {}
@@ -67,6 +67,17 @@ public class Trip {
         this.starDate = starDate;
         this.endDate = endDate;
         this.location = location;
+    }
+
+    public Trip(Long id, Location location, String country, String starDate, String endDate, User owner, Collection<User> collaborators, Collection<Activity> activities) {
+        this.id = id;
+        this.location = location;
+        this.country = country;
+        this.starDate = starDate;
+        this.endDate = endDate;
+        this.owner = owner;
+        this.collaborators = collaborators;
+        this.activities = activities;
     }
 
     public Trip(Long id, String country, String starDate, String endDate, User owner, Location location) {
