@@ -23,15 +23,14 @@ public class TripsController {
     }
 
     @PostMapping
-    private void createTrip(@RequestBody Trip newTrip, OAuth2Authentication auth) {
-        User owner = userRepository.findByEmail(auth.getName()).get();
-        newTrip.setOwner(owner);
+    private void createTrip(@RequestBody Trip newTrip) {
+//        User owner = userRepository.findByEmail(auth.getName()).get();
+//        newTrip.setOwner(owner);
         tripRepository.save(newTrip);
     }
 
     @PutMapping("/addTripCollaborators")
     private void addCollaborators(@RequestBody Trip trip){
-
         tripRepository.save(setCollaborators(trip));
     }
 

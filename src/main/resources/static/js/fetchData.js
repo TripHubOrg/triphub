@@ -14,7 +14,6 @@ export default function fetchData(state, request) {
         promises.push(
             fetch(baseUri + state[pieceOfState], request)
                 .then(function (res) {
-                    console.log(res)
                     return res.json();
                 }));
     }
@@ -26,3 +25,5 @@ export default function fetchData(state, request) {
         return props;
     });
 }
+
+
