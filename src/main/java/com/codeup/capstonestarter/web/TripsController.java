@@ -31,7 +31,6 @@ public class TripsController {
 
     @PutMapping("/addTripCollaborators")
     private void addCollaborators(@RequestBody Trip trip){
-
         tripRepository.save(setCollaborators(trip));
     }
 
