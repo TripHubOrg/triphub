@@ -68,7 +68,7 @@ export default function Triptrack(props) {
                 </div>
             </header>
             <div class="row my-5">
-            	<button class="col btn">Add An Event</button>
+            	<button class="col btn btn-primary mx-auto">Add An Event</button>
 			</div>
             <section class="TriptrackAtractionsList my-2 mx-1 row row-cols-lg-2 row-cols-1">
 					${fakeAttractions.spots.map( spot =>
@@ -76,6 +76,7 @@ export default function Triptrack(props) {
 						<div class="container-fluid p-1">
 							<div class="row">
 							<div class="col-12 date p-0" id="${spot.id}">
+							<i class="fas fa-envelope"></i>
 								<input class="dateInput" id="start${spot.id}" data-value="${spot.starDate}" width="10px">
 							</div>
 							<div class="col-12 p-0 attraction card">
