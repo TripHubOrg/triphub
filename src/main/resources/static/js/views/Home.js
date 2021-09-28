@@ -29,5 +29,25 @@ function addBackgroundImage(){
 	$('#app').addClass('home-img')
 }
 
+export function checkBackgroundImage(){
+	let background = $('#app');
+
+	if(background.hasClass("home-img")){
+		background.removeClass("home-img")
+	}else if (background.hasClass('login-img')){
+		background.removeClass("login-img")
+	}else if(background.hasClass('register-img')){
+		background.removeClass("register-img")
+	}else if(background.hasClass('trip-img')){
+		background.removeClass("trip-img")
+	} else if(background.hasClass('triptrack-img')){
+		background.removeClass("triptrack-img")
+	}
+
+	//add the name of selector you want to add as background
+	background.addClass("")
+
+}
+
 
 
