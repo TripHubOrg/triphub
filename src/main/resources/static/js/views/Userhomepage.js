@@ -1,3 +1,5 @@
+import {addUserGeocoder} from "../mapbox.js";
+
 export default function userhomepage() {
     return `
 <div class="container">
@@ -9,11 +11,33 @@ export default function userhomepage() {
 
 <br>
     <!-- Start button -->
-    <div class="row ">
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button class="btn rounded-pill text-white" type="button" style="background:#f35b3f"
-                    onclick="window.location.href='http://localhost:8080/'">Plan A Trip
+    <div class="row">
+        <div class="d-grid gap-2 col-6 mx-auto p-2">
+            <button class="btn rounded-pill text-white" type="button" style="background:#f35b3f"  data-bs-toggle="collapse" data-bs-target="#newTrip">
+            Create a New Trip
             </button>
+        </div>
+    </div>
+    <div class="collapse row justify-content-center" id="newTrip">
+        <div class="col-12 pt-2">
+            <div class="row justify-content-center ">
+                <div  class="col-2 ml-2">
+                    <label for="fromDate">From</label>
+                    <input class="dateInputs" id="fromDate" name="fromDate" data-value=""> 
+                </div>
+                <div class="col-2">
+                    <label for="toDate">To</label>
+                    <input id="toDate" type="date" data-value="">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 d-flex mx-auto pt-2">
+            <div class="row justify-content-center d-flex mx-auto">
+                <div id="geocoder-container" class=""></div>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-center mx-auto pt-2">
+            <buttton class="btn rounded-pill" style="background:#f35b3f" type="button">Begin Your Adventure</buttton>
         </div>
     </div>
             <!-- end button -->
@@ -67,6 +91,7 @@ export default function userhomepage() {
 }
 
 export function routeToTripTrack() {
+    addUserGeocoder()
     $(".card").click(function () {
         window.location.href = 'http://localhost:8080/triptrack';
         return false;

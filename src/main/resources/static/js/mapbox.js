@@ -61,6 +61,15 @@ function addGeocodeToMap(geocoder) {
 	});
 }
 
+export function addUserGeocoder(){
+	geocoder = createGeocoder();
+	geocoder.addTo("#geocoder-container")
+
+	geocoder.on("result", function(data){
+		console.log(data)
+	})
+}
+
 export function MapBoxCoordinates(){
 	return lonlat;
 }
