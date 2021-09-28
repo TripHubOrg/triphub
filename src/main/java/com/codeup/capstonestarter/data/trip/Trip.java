@@ -1,5 +1,6 @@
 package com.codeup.capstonestarter.data.trip;
 
+import com.codeup.capstonestarter.data.activity.Activity;
 import com.codeup.capstonestarter.data.location.Location;
 import com.codeup.capstonestarter.data.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -48,6 +49,9 @@ public class Trip {
     @JsonIgnoreProperties({"owned_trips", "password"})
     private Collection<User> collaborators;
 
+    @OneToMany(mappedBy = "trip")
+    @JsonIgnoreProperties("user")
+    private Collection<Activity> activities;
 
     public Trip() {}
 

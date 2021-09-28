@@ -1,5 +1,9 @@
 package com.codeup.capstonestarter.data.activity;
 
+import com.codeup.capstonestarter.data.address.Address;
+import com.codeup.capstonestarter.data.location.Location;
+import com.codeup.capstonestarter.data.trip.Trip;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,17 +13,20 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
-    private String trip;
+   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+    private Trip trip;
 
-    @Column(nullable = false, length = 100)
-    private String location;
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id", referencedColumnName = "id")
+    private Location location;
 
-    @Column(nullable = false, length = 100)
-    private String address;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
 
-    @Column(nullable = false, length = 100)
-    private String details;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private ActivityDetail activityDetail;
 
     @Column(nullable = false, length = 100)
     private String starDate;
@@ -30,12 +37,12 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(Long id, String trip, String location, String address, String details, String starDate, String endDate) {
+    public Activity(Long id, Trip trip, Location location, Address address, ActivityDetail activityDetail, String starDate, String endDate) {
         this.id = id;
         this.trip = trip;
         this.location = location;
         this.address = address;
-        this.details = details;
+        this.activityDetail = activityDetail;
         this.starDate = starDate;
         this.endDate = endDate;
     }
@@ -48,36 +55,36 @@ public class Activity {
         this.id = id;
     }
 
-    public String getTrip() {
+    public Trip getTrip() {
         return trip;
     }
 
-    public void setTrip() {
+    public void setTrip(Trip trip) {
         this.trip = trip;
     }
 
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
-    public void setLocation() {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress() {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public String getDetails() {
-        return details;
+    public ActivityDetail getActivityDetail() {
+        return activityDetail;
     }
 
-    public void setDetails() {
-        this.details = details;
+    public void setActivityDetail(ActivityDetail activityDetail) {
+        this.activityDetail = activityDetail;
     }
 
     public String getStarDate() {
