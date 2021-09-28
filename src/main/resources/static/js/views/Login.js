@@ -22,7 +22,7 @@ export default function login(){
                 </div>
                 
                 <div class="log-bwn">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Login" id="login-btn">
                 </div>
                 
             </form>
