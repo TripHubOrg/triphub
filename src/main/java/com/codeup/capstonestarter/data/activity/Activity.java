@@ -3,6 +3,7 @@ package com.codeup.capstonestarter.data.activity;
 import com.codeup.capstonestarter.data.address.Address;
 import com.codeup.capstonestarter.data.location.Location;
 import com.codeup.capstonestarter.data.trip.Trip;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -14,11 +15,12 @@ public class Activity {
     private Long id;
 
    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+   @JsonIgnoreProperties({"location", "country", "getStartDate", "endDate", "owner", "collaborators"})
     private Trip trip;
 
-    @OneToOne (cascade = CascadeType.ALL)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private Location location;
+//    @OneToOne (cascade = CascadeType.ALL)
+//    @JoinColumn(name = "location_id", referencedColumnName = "id")
+//    private Location location;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
@@ -29,7 +31,7 @@ public class Activity {
     private ActivityDetail activityDetail;
 
     @Column(nullable = false, length = 100)
-    private String starDate;
+    private String startDate;
 
     @Column(nullable = false, length = 100)
     private String endDate;
@@ -37,15 +39,6 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(Long id, Trip trip, Location location, Address address, ActivityDetail activityDetail, String starDate, String endDate) {
-        this.id = id;
-        this.trip = trip;
-        this.location = location;
-        this.address = address;
-        this.activityDetail = activityDetail;
-        this.starDate = starDate;
-        this.endDate = endDate;
-    }
 
     public Long getId() {
         return id;
@@ -63,13 +56,6 @@ public class Activity {
         this.trip = trip;
     }
 
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
 
     public Address getAddress() {
         return address;
@@ -88,11 +74,11 @@ public class Activity {
     }
 
     public String getStarDate() {
-        return starDate;
+        return startDate;
     }
 
     public void setStarDate(String starDate) {
-        this.starDate = starDate;
+        this.startDate = starDate;
     }
 
     public String getEndDate() {
