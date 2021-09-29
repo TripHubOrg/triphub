@@ -99,6 +99,14 @@ public class Trip {
         this.location = location;
     }
 
+    public Trip(Long id, Location location, String country, String starDate, String endDate) {
+        this.id = id;
+        this.location = location;
+        this.country = country;
+        this.starDate = starDate;
+        this.endDate = endDate;
+    }
+
     public Long getId() {
         return id;
     }

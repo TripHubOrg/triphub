@@ -58,6 +58,7 @@ export function RegisterEvent() {
         }
         let passwords = [$('#password').val(), $('#confirmPassword').val()]
         if (passwordsCheck(passwords)){
+
             fetch("http://localhost:8080/api/users/registerNewUser", request).then((response) => {
                 console.log(response.status)
                 confirm("Thank You for Registering")
