@@ -67,7 +67,7 @@ export default function Triptrack(props) {
                 </div>
             </header>
             <div class="row my-5">
-            	<button class="col btn btn-primary mx-auto">Add An Event</button>
+            	<button class="col addevent-btn mx-auto">Add An Event</button>
 			</div>
             <section class="TriptrackAtractionsList my-2 mx-1 row row-cols-lg-2 row-cols-1">
 					${fakeAttractions.spots.map( spot =>

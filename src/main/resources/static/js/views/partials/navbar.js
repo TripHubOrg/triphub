@@ -23,10 +23,7 @@ export default function Navbar(props){
                         <a class="scroll-link text-decoration-none" href="/register" data-link><i class="fas fa-pencil-alt"></i> Sign up </a>
                     </li>
                     <li>
-                        <a class="scroll-link text-decoration-none" href="/triptrack" data-link><i class="fas fa-envelope"></i> Triptracks</a>
-                    </li>
-                    <li>
-                        <a class="scroll-link text-decoration-none" href="/userhomepage" data-link><i class="fas fa-envelope"></i>Userhomepage</a>
+                        <a class="scroll-link text-decoration-none" href="/userhomepage" data-link><i class="fas fa-envelope"></i>My Trips</a>
                     </li>
                 </ul>
 
