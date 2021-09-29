@@ -28,6 +28,16 @@ public class ActivityController {
         activity.setTrip(trip);
         activityRepository.save(activity);
     }
+  
+    @PutMapping("{id}")
+    private void editActivities(@PathVariable Long id, @RequestBody Activity activity) {
+        System.out.println(activity.getStarDate());
+        System.out.println(activity.getEndDate());
+        System.out.println(activity.getAddress());
+        System.out.println(activity.getLocation());
+    }
+
+
 
 }
 

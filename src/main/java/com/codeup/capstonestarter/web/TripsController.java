@@ -33,6 +33,14 @@ public class TripsController {
         return newTrip;
     }
 
+    @PostMapping("/makingTrip")
+    private void createTrip(@RequestBody Trip newTrip) {
+        User owner = userRepository.getById(newTrip.getOwner().getId());
+        newTrip.setOwner(owner);
+        tripRepository.save(newTrip);
+    }
+
+
     @PutMapping("/addTripCollaborators")
     private void addCollaborators(@RequestBody Trip trip){
         tripRepository.save(setCollaborators(trip));
@@ -68,10 +76,17 @@ public class TripsController {
         return existingTrip;
     }
 
-//    @PutMapping("{id}")
-//        private void editTrips (@PathVariable Long id, @RequestBody Trip trip) {
-//            System.out.println(trip.getStarDate());
-//        }
+    @PutMapping("/editTrip{id}")
+        private void editTrips (@PathVariable Long id,@RequestBody Trip trip) {
+        Trip editTrip = tripRepository.getById(id);
+
+        editTrip.setstartDate(trip.getstartDate());
+        editTrip.setEndDate((trip.getEndDate()));
+
+        tripRepository.save(editTrip);
+
+
+        }
 
 
 }
