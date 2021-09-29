@@ -31,7 +31,7 @@ public class TripsController {
 //        newTrip.setOwner(owner);
         System.out.println(newTrip.getStarDate());
         System.out.println(newTrip.getEndDate());
-//        tripRepository.save(newTrip);
+        tripRepository.save(newTrip);
     }
 
     @PutMapping("/addTripCollaborators")
