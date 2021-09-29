@@ -1,5 +1,8 @@
-let fakeAttractions = fakeData()
+import router from "../router.js";
+import {getHeaders} from "../auth.js";
 
+let fakeAttractions = fakeData()
+var props;
 
 export function fakeData(){
 	return {
@@ -49,7 +52,10 @@ export function fakeData(){
 // noinspection SpellCheckingInspection
 export default function Triptrack(props) {
 	console.log(props)
+	editBTNTest(props);
 	return `
+
+
 		<div class="tripTrackContainer container-fluid px-5">
             <header class="locationFromTo text-center row">
                 <h3 class="col-12">Trip To</h3>
@@ -62,11 +68,14 @@ export default function Triptrack(props) {
 						</div>
                     	<div class="col-3 m-0 p-0">
                         	<label for="toDate">To</label>
-                        	<input id="toDate" type="date" data-value="${props.endDate}">
+                        	<input id="toDate" type="date" name="toDate" data-value="${props.endDate}">
                     	</div>
 					</div>
                 </div>
             </header>
+            
+            <button id="editBTN" >Save Changrs</button>
+            
             <div class="row my-5">
             	<button class="col addevent-btn mx-auto">Add An Event</button>
 			</div>
@@ -133,6 +142,7 @@ export function TripTrackOnLoad(){
 		formatSubmit: 'yyyy-mm-dd'
 	});
 
+	editBTN();
 }
 
 function renderAttractionList(attractions) {
@@ -177,3 +187,36 @@ function renderAttractionList(attractions) {
 		)
 	})
 }
+
+function toGetUserID() {
+	let route = router('/triptrack');
+	fetch(`/api/users/me`).then(res => {
+		return res.json();
+	}).then(data => {
+		return data
+	})
+}
+
+function editBTN(){
+	$("#editBTN").click(function (){
+		console.log(props)
+		let body = {
+			startDate: `${$('[name="fromDate_submit"]').val()}`,
+			endDate: `${$('[name="toDate_submit"]').val()}`,
+		}
+		let request = {
+			method: "PUT",
+			headers: getHeaders(),
+			body: JSON.stringify(body)
+		};
+
+		fetch(`/api/trips/editTrip${props.id}`,request).then((response) => {
+			console.log(response.status);
+		})
+	})
+}
+
+function editBTNTest(data){
+	 props = data
+}
+

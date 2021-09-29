@@ -90,6 +90,7 @@ export function routeToTripTrack() {
 
 function newTripEvent(dates) {
 	$('#submitNewTrip').click(function () {
+		console.log(geocoderData)
 		let body = {
 			country: `${geocoderData.result.context[2].text}`,
 			endDate: `${$('[name="toDate_submit"]').val()}`,
