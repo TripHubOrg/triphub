@@ -29,7 +29,7 @@ public class TripsController {
     private void createTrip(@RequestBody Trip newTrip) {
 //        User owner = userRepository.findByEmail(auth.getName()).get();
 //        newTrip.setOwner(owner);
-        System.out.println(newTrip.getStarDate());
+        System.out.println(newTrip.getstartDate());
         System.out.println(newTrip.getEndDate());
         tripRepository.save(newTrip);
     }

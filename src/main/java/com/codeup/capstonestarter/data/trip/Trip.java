@@ -24,7 +24,7 @@ public class Trip {
     private String country;
 
     @Column(nullable = false)
-    private String starDate;
+    private String startDate;
 
     @Column(nullable = false)
     private String endDate;
@@ -54,59 +54,7 @@ public class Trip {
     private Collection<Activity> activities;
 
     public Trip() {}
-
-    public Trip(Location location, String starDate, String endDate){
-        this.location = location;
-        this.starDate = starDate;
-        this.endDate = endDate;
-    }
-
-    public Trip(Long id, String country, String starDate, String endDate, Location location) {
-        this.id = id;
-        this.country = country;
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.location = location;
-    }
-
-    public Trip(Long id, Location location, String country, String starDate, String endDate, User owner, Collection<User> collaborators, Collection<Activity> activities) {
-        this.id = id;
-        this.location = location;
-        this.country = country;
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.owner = owner;
-        this.collaborators = collaborators;
-        this.activities = activities;
-    }
-
-    public Trip(Long id, String country, String starDate, String endDate, User owner, Location location) {
-        this.id = id;
-        this.country = country;
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.owner = owner;
-        this.location = location;
-    }
-
-    public Trip(Long id, String country, String starDate, String endDate, User owner, Collection<User> collaborators, Location location) {
-        this.id = id;
-        this.country = country;
-        this.starDate = starDate;
-        this.endDate = endDate;
-        this.owner = owner;
-        this.collaborators = collaborators;
-        this.location = location;
-    }
-
-    public Trip(Long id, Location location, String country, String starDate, String endDate) {
-        this.id = id;
-        this.location = location;
-        this.country = country;
-        this.starDate = starDate;
-        this.endDate = endDate;
-    }
-
+    
     public Long getId() {
         return id;
     }
@@ -123,12 +71,12 @@ public class Trip {
         this.country = country;
     }
 
-    public String getStarDate() {
-        return starDate;
+    public String getstartDate() {
+        return startDate;
     }
 
-    public void setStarDate(String starDate) {
-        this.starDate = starDate;
+    public void setstartDate(String startDate) {
+        this.startDate = startDate;
     }
 
     public String getEndDate() {
