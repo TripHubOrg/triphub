@@ -144,10 +144,14 @@ body, html{
     padding: 8px;
 }
 .login-ic i {
+    background: url("../assets/icons8-user-30.png")no-repeat 6px 6px;
     width: 38px;
     height: 38px;
     float: left;
     display: inline-block;
+}
+.login-ic i.icon {
+    background: url(".././assets/icons8-lock-30.png")no-repeat 6px 6px;
 }
 
 .login-ic input[type="text"],.login-ic  input[type="password"] {
