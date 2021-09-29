@@ -18,6 +18,7 @@ public class Trip {
 
     @OneToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("trip")
     private Location location;
 
     @Column(nullable = false)

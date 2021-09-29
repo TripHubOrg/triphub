@@ -48,20 +48,21 @@ export function fakeData(){
 }
 // noinspection SpellCheckingInspection
 export default function Triptrack(props) {
+	console.log(props)
 	return `
 		<div class="tripTrackContainer container-fluid px-5">
             <header class="locationFromTo text-center row">
                 <h3 class="col-12">Trip To</h3>
-                <h1 class="col-12">${fakeAttractions.tripLocation}</h1>
+                <h1 class="col-12">${props.location.name}</h1>
                 <div class="col-12">
                 	<div class="row justify-content-center ">
                 		<div  class="col-3 m-0 p-0">
                         	<label for="fromDate">From</label>
-                        	<input class="dateInputs" id="fromDate" name="fromDate" data-value="${fakeAttractions.tripStart}"> 
+                        	<input class="dateInputs" id="fromDate" name="fromDate" data-value="${props.startDate}"> 
 						</div>
                     	<div class="col-3 m-0 p-0">
                         	<label for="toDate">To</label>
-                        	<input id="toDate" type="date" data-value="${fakeAttractions.tripEnd}">
+                        	<input id="toDate" type="date" data-value="${props.endDate}">
                     	</div>
 					</div>
                 </div>

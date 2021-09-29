@@ -26,12 +26,11 @@ public class TripsController {
     }
 
     @PostMapping
-    private void createTrip(@RequestBody Trip newTrip) {
-//        User owner = userRepository.findByEmail(auth.getName()).get();
-//        newTrip.setOwner(owner);
-        System.out.println(newTrip.getstartDate());
-        System.out.println(newTrip.getEndDate());
+    private Trip createTrip(@RequestBody Trip newTrip, OAuth2Authentication auth) {
+        User owner = userRepository.findByEmail(auth.getName()).get();
+        newTrip.setOwner(owner);
         tripRepository.save(newTrip);
+        return newTrip;
     }
 
     @PutMapping("/addTripCollaborators")
@@ -44,7 +43,7 @@ public class TripsController {
         locationRepository.getById(trip.getLocation().getId());
     }
 
-    @GetMapping("/getTrip{id}")
+    @GetMapping("{id}")
     private Trip getTripByID(@PathVariable Long id){
         return tripRepository.getById(id);
     }
