@@ -64,7 +64,6 @@ export default function Triptrack(props) {
                         	<input id="toDate" type="date" data-value="${fakeAttractions.tripEnd}">
                     	</div>
 					</div>
-                    
                 </div>
             </header>
             <div class="row my-5">

@@ -16,7 +16,7 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "location_id", referencedColumnName = "id")
     private Location location;
 
@@ -97,6 +97,14 @@ public class Trip {
         this.owner = owner;
         this.collaborators = collaborators;
         this.location = location;
+    }
+
+    public Trip(Long id, Location location, String country, String starDate, String endDate) {
+        this.id = id;
+        this.location = location;
+        this.country = country;
+        this.starDate = starDate;
+        this.endDate = endDate;
     }
 
     public Long getId() {

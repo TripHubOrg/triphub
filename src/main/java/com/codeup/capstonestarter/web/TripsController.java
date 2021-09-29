@@ -1,5 +1,6 @@
 package com.codeup.capstonestarter.web;
 
+import com.codeup.capstonestarter.data.location.LocationRepository;
 import com.codeup.capstonestarter.data.trip.Trip;
 import com.codeup.capstonestarter.data.trip.TripRepository;
 import com.codeup.capstonestarter.data.user.User;
@@ -16,22 +17,31 @@ public class TripsController {
 
     private final TripRepository tripRepository;
     private final UserRepository userRepository;
+    private final LocationRepository locationRepository;
 
-    public TripsController(TripRepository tripRepository, UserRepository userRepository) {
+    public TripsController(TripRepository tripRepository, UserRepository userRepository, LocationRepository locationRepository) {
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
+        this.locationRepository = locationRepository;
     }
 
     @PostMapping
     private void createTrip(@RequestBody Trip newTrip) {
 //        User owner = userRepository.findByEmail(auth.getName()).get();
 //        newTrip.setOwner(owner);
+        System.out.println(newTrip.getStarDate());
+        System.out.println(newTrip.getEndDate());
         tripRepository.save(newTrip);
     }
 
     @PutMapping("/addTripCollaborators")
     private void addCollaborators(@RequestBody Trip trip){
         tripRepository.save(setCollaborators(trip));
+    }
+
+    @PutMapping("/addLocation")
+    private void addLocationToTrip(@RequestBody Trip trip){
+        locationRepository.getById(trip.getLocation().getId());
     }
 
     @GetMapping("/getTrip{id}")
