@@ -1,3 +1,5 @@
+import createView from "../createView";
+
 let fakeAttractions = fakeData()
 
 
@@ -103,7 +105,7 @@ export default function Triptrack(props) {
 								<div class="row justify-content-between">
 									<button class="col-lg-4 col-4 btn btn-info" type="submit">Add To Calendar</button>
 									<div class="col-lg-4 col-4 text-end p-0">
-										<button class="btn btn-info" type="submit">Delete</button>
+										<button class="btn btn-info delete-btn" type="submit">Delete</button>
 										<button class="btn btn-info" type="submit">Save</button>
 									</div>
 								</div>
@@ -176,3 +178,24 @@ function renderAttractionList(attractions) {
 		)
 	})
 }
+
+function deleteActivity() {
+	let request = {
+		method: "Delete",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body:"id"
+	}
+		fetch("/{id}", request).then((response) => {
+			console.log(response.status)
+			confirm("deleted" + id )
+			createView("/")
+		})
+	}
+
+	// Get activityId and save it to a variable
+	// make a request to the endpoint
+	//pass the activityId into the endpoint based on
+	//what’s in the ActivityController
+
