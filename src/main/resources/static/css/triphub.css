@@ -20,7 +20,7 @@ h1{
     overflow-x: auto;
     overflow-y: hidden;
 }
-#insideOut {
+.insideOut {
     /*float: left;*/
     max-width: 33.333%;
     padding: .75rem;
