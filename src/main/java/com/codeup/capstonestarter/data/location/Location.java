@@ -1,6 +1,7 @@
 package com.codeup.capstonestarter.data.location;
 
 import com.codeup.capstonestarter.data.trip.Trip;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
