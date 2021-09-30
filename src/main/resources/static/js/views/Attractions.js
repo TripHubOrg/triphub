@@ -232,7 +232,7 @@ function addToBackend(){
 		};
 
 
-		fetch("/api/trips/)
+		fetch("/api/trips/")
 
 	})
 }
