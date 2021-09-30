@@ -111,5 +111,13 @@ public class Trip {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    public Collection<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Collection<Activity> activities) {
+        this.activities = activities;
+    }
 }
 
