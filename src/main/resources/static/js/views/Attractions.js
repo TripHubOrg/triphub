@@ -1,7 +1,8 @@
-import * as KEYS from "../keys.js"
+import * as KEYS from "../oldKeys.js"
 import createView from "../createView.js";
 import Mapbox from "../mapbox.js";
 import {fakeData} from "./Triptrack.js";
+import {getHeaders} from "../auth.js";
 
 
 var attractionsArray = [];
@@ -11,7 +12,6 @@ let limit = 100;
 let offset = 0;
 let sliceStart = 0;
 let sliceEnd = 7;
-let trip;
 
 let renderedAttractionInfoList = [];
 let fakeTripData = fakeData()
@@ -46,12 +46,12 @@ let callback = function (entries, observer) {
 //Lastly, need to instantiate a new IntersectionObserver object, like in  Java
 let observer = new IntersectionObserver(callback, option)
 
-
+let tripProps;
 //============== INITIAL VIEW BEFORE EVENTS LOAD =====================================================
 export default function AttractionsView(props) {
-	trip = props;
 	console.log(props)
-	return `<div class="container border shadow" id="attractionsPage">
+	tripProps = props;
+	return `<div class="container border shadow" id="attractionsPage" data-id=${props.id}>
                     <div id="geocoder-container" class="d-flex justify-content-center my-5"></div>
    			        <div id="map" style=" visibility: collapse"></div>
                     <header>
@@ -74,8 +74,11 @@ export function BeginAttractionsEvents() {
 	scrollTarget = document.getElementById('endOfList')
 	observer.observe(scrollTarget)
 
-	if(trip !== null){
-		addToTrips(trip);
+
+	console.log(tripProps)
+
+	if (tripProps.location ){
+		attractionsRequest([tripProps.location.lon, tripProps.location.lat])
 	}
 }
 
@@ -162,10 +165,10 @@ function renderAttraction(attraction) {
         	</div>
         	<div class="collapse" id="${attraction.xid}">
             		<div class="card card-body">
-            			<div class="card-title text-black">${attraction.name}</div>
+            			<div class="attTitle card-title text-black">${attraction.name}</div>
             			<div class="card-text text-black">
-            				<p>${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
-            				<p>${checkForDetails(attraction)}</p>
+            				<p class="address">${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
+            				<p class="details">${checkForDetails(attraction)}</p>
 					</div>
 					<button class="addToTrip">Add To Trip</button>
 			</div>
@@ -173,7 +176,6 @@ function renderAttraction(attraction) {
         `)
 	// renderedAttractionInfoList.push(attraction)
 	$(`#card${attraction.xid}`).on("click", addAttractionClickEvents)
-	$('.addToTrip').on("click", addToBackend)
 
 }
 
@@ -189,6 +191,8 @@ function addAttractionClickEvents() {
 		$(child).addClass('notHidden')
 		$(child).removeAttr('hidden')
 	}
+
+	addToBackend();
 }
 
 //check if attraction has an image
@@ -209,14 +213,28 @@ function checkForDetails(attraction){
 	}
 }
 
-function addToTrips(trip){
-	let coordinates = [trip.location.lon, trip.location.lat]
-	attractionsRequest(coordinates)
-}
-
 
 function addToBackend(){
-	console.log()
+	$('.addToTrip').off("click")
+	$('.addToTrip').on("click", function(){
+		let address = $(this).siblings().find('.address').text().split(',')
+		let details = $(this).siblings().find('.details').text()
+		let attName = $(this).siblings(".attTitle").text()
+
+		let body = {
+
+		}
+
+		let request = {
+			method: "PUT",
+			headers: getHeaders(),
+			body: JSON.stringify(body)
+		};
+
+
+		fetch("/api/trips/)
+
+	})
 }
 
 
