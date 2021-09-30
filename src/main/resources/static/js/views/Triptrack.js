@@ -1,8 +1,9 @@
 import router from "../router.js";
 import {getHeaders} from "../auth.js";
+import render from "../render.js";
 
 let fakeAttractions = fakeData()
-var props;
+let tripProps;
 
 export function fakeData(){
 	return {
@@ -52,6 +53,7 @@ export function fakeData(){
 // noinspection SpellCheckingInspection
 export default function Triptrack(props) {
 	console.log(props)
+	tripProps = props;
 	editBTNTest(props);
 	return `
 
@@ -78,10 +80,10 @@ export default function Triptrack(props) {
                 </div>
             </header>
             
-            <button id="editBTN" >Save Changrs</button>
+            <button id="editBTN" >Save Changes</button>
             
             <div class="row my-5">
-            	<button class="col addevent-btn mx-auto">Add An Event</button>
+            	<button  id="addAnEvent" class="col addevent-btn mx-auto">Add An Event</button>
 			</div>
             <section class="TriptrackAtractionsList my-2 mx-1 row row-cols-lg-2 row-cols-1">
 					${fakeAttractions.spots.map( spot =>
@@ -151,6 +153,7 @@ export function TripTrackOnLoad(){
 	});
 
 	editBTN();
+	addAnEvent(tripProps)
 }
 
 function renderAttractionList(attractions) {
@@ -227,6 +230,17 @@ function editBTN(){
 }
 
 function editBTNTest(data){
-	 props = data
+	 tripProps = data
+}
+
+function addAnEvent(props){
+	$('#addAnEvent').click(function(){
+		let route = router('/attractions');
+		fetch(`/api/trips/${props.id}`).then(res => {
+			return res.json();
+		}).then(data => {
+			render(data, route)
+		})
+	})
 }
 

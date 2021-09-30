@@ -40,7 +40,6 @@ public class ActivityController {
         System.out.println(activity.getStarDate());
         System.out.println(activity.getEndDate());
         System.out.println(activity.getAddress());
-        System.out.println(activity.getLocation());
     }
 
 //    @PostMapping
