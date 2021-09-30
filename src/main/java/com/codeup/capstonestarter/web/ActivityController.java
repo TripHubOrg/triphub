@@ -7,6 +7,10 @@ import com.codeup.capstonestarter.data.trip.TripRepository;
 import com.codeup.capstonestarter.data.user.User;
 import com.codeup.capstonestarter.data.user.UserRepository;
 import com.mysql.cj.conf.StringProperty;
+import com.codeup.capstonestarter.data.activity.ActivityDetailRepository;
+import com.codeup.capstonestarter.data.activity.ActivityRepository;
+import com.codeup.capstonestarter.data.trip.Trip;
+import com.codeup.capstonestarter.data.trip.TripRepository;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -22,6 +26,21 @@ public class ActivityController {
         this.activityRepository = activityRepository;
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
+
+    
+    @PostMapping
+    private void addActivityToTrip(@RequestBody Activity activity){
+        Trip trip = tripRepository.getById(activity.getTrip().getId());
+        activity.setTrip(trip);
+        activityRepository.save(activity);
+    }
+  
+    @PutMapping("{id}")
+    private void editActivities(@PathVariable Long id, @RequestBody Activity activity) {
+        System.out.println(activity.getStarDate());
+        System.out.println(activity.getEndDate());
+        System.out.println(activity.getAddress());
+        System.out.println(activity.getLocation());
     }
 
 //    @PostMapping
