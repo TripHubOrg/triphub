@@ -1,4 +1,5 @@
 import createView from "../createView.js";
+import {checkBackgroundImage} from "./Home.js";
 
 export default function Register(props) {
     return `
@@ -42,6 +43,9 @@ export default function Register(props) {
 }
 
 export function RegisterEvent() {
+
+    checkBackgroundImage('register-img');
+
     $("#register-btn").click(function () {
 
         let registerUser = {

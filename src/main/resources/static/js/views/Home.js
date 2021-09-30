@@ -22,14 +22,14 @@ export default function Home(props) {
 
 export function BeginAllEvents() {
 	Mapbox();
-	addBackgroundImage()
+	checkBackgroundImage('home-img');
 }
 
 function addBackgroundImage(){
 	$('#app').addClass('home-img')
 }
 
-export function checkBackgroundImage(){
+export function checkBackgroundImage(pic){
 	let background = $('#app');
 
 	if(background.hasClass("home-img")){
@@ -42,10 +42,12 @@ export function checkBackgroundImage(){
 		background.removeClass("trip-img")
 	} else if(background.hasClass('triptrack-img')){
 		background.removeClass("triptrack-img")
+	} else if(background.hasClass('attraction-img')){
+		background.removeClass("attraction-img")
 	}
 
 	//add the name of selector you want to add as background
-	background.addClass("")
+	background.addClass(pic)
 
 }
 

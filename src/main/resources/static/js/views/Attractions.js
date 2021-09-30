@@ -2,7 +2,9 @@ import * as KEYS from "../oldKeys.js"
 import createView from "../createView.js";
 import Mapbox from "../mapbox.js";
 import {fakeData} from "./Triptrack.js";
+import {checkBackgroundImage} from "./Home.js";
 import {getHeaders} from "../auth.js";
+
 
 
 var attractionsArray = [];
@@ -67,6 +69,7 @@ export default function AttractionsView(props) {
 
 //===================================================================================
 export function BeginAttractionsEvents() {
+	checkBackgroundImage('attraction-img');
 	Mapbox();
 	// renderAttractions(attractionsArray)
 	filteredAttractions(attractionsArray)
@@ -80,6 +83,7 @@ export function BeginAttractionsEvents() {
 	if (tripProps.location ){
 		attractionsRequest([tripProps.location.lon, tripProps.location.lat])
 	}
+
 }
 
 export function attractionsRequest(coordinates) {

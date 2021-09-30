@@ -2,6 +2,7 @@ import createView from "../createView.js";
 import router from "../router.js";
 import {getHeaders} from "../auth.js";
 import render from "../render.js";
+import {checkBackgroundImage} from "./Home.js";
 
 let fakeAttractions = fakeData()
 let tripProps;
@@ -149,6 +150,9 @@ export default function Triptrack(props) {
 }
 
 export function TripTrackOnLoad(){
+
+	checkBackgroundImage('triptrack-img');
+
 	if ( $('#app').hasClass('home-img')){
 		$('#app').removeClass('home-img')
 	}
