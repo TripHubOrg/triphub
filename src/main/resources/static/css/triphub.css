@@ -3,10 +3,6 @@ h1{
     font-size: 5rem;
 }
 
-/*#geocoder-container{*/
-/*        height: 7rem !important;*/
-/*    }*/
-
 .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl, .mapboxgl-ctrl-geocoder--input{
     width: 50rem !important;
     height: 7rem !important;
@@ -24,7 +20,7 @@ h1{
     overflow-x: auto;
     overflow-y: hidden;
 }
-#insideOut {
+.insideOut {
     /*float: left;*/
     max-width: 33.333%;
     padding: .75rem;
@@ -57,95 +53,137 @@ body, html{
 
 }
 
-#title{
-    color:#000000;
-    /*width:50%;*/
-    /*height:35px;*/
-    font-size:25px;
-    box-shadow:15px 15px 25px black;
-    background:#f25a3f;
-    animation:example 1s linear alternate;
-}
-@keyframes example {
-    100%{
-        transform:translate3d(0px,0px,0px);
-    }
-
-
-    0%{
-        transform:translate3d(210px,0px,0px);
-    }
-
-}
-
-
 .form-control{
     width:30%;
-    border-bottom:15px;
-    border: solid #f25a3f;
-    box-shadow:9px 9px 25px black;
     margin-bottom:20px;
     margin-left:10px;
-    border-radius: 30px 0 30px 0;
+    background: rgba(255, 255, 255, 0.40);
 }
-.form-control:focus{
-    border: solid red;
-    box-shadow:15px 15px 25px black;
-
-}
-
-
-#login{
-    background:white;
-    box-shadow:9px 9px 25px black;
-    text-decoration:none;
-    border:2px solid green;
-    padding:5px 25px 5px 25px;
-    font-size:15px;
-    color:black;
-    border-radius: 50px 0 50px 0;
+.form-control:focus {
+    border: solid #f25a3f;
+    box-shadow: 15px 15px 25px black;
 }
 
-#login:focus{
-    border:2px solid red;
-    box-shadow:9px 9px 25px black;
-    box-shadow:15px 15px 25px black;
+.random-line{
+    height: 5px;
+    max-width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+
+.login-form h1{
+    font-size:2em;
+    color:#fff;
+    font-weight:800;
+    text-transform:uppercase;
+    text-align:center;
+    margin-bottom:2em;
+}
+
+
+.top-login {
+    width: 130px;
+    height: 130px;
+    display: block;
+    margin: 0 auto 4em;
+    background: #fff;
+    position: relative;
+}
+.top-login span{
+    border: 2px solid #f25a3f;
+    width: 105px;
+    height: 105px;
+    display: block;
+    margin: 0px auto;
+    position: absolute;
+    top: 11px;
+    left: 11px;
+}
+.top-login span img {
+    margin: 20px 0 0 20px;
 }
 
 #box{
     background:white;
     border:2px #f35b3f;
-    /*padding:55px;*/
-    box-shadow:3px 3px 10px black;
+    box-shadow:3px 3px 10px ;
     border-radius: 10px;
-    /*width:50%;*/
     animation:exam 1s linear alternate;
+
 }
 
-@keyframes exam {
-    100%{
-        transform:translate3d(0px,0px,0px)
-    }
-
-    0%{
-
-        transform:translate3d(-210px,0px,0px)
-    }
+.login-logo{
+    height: 101px;
+    width: 101px;
+    position: absolute;
+    top: -20px;
+    left: -20px;
 }
 
-/*label{*/
-/*    box-shadow:5px 5px 10px black;*/
-/*    background: black;*/
-/*    color:white;*/
-/*    padding:10px;*/
-/*    border-radius: 10px;*/
-/*    width:30%;*/
-/*}*/
-
-input[type=text], input[type=password]{
-    outline:black;
+.login-top{
+    width: 460px;
+    display: block;
+    margin: 0 auto;
 }
+.login-ic {
+    background: rgba(255, 255, 255, 0.32);
+    margin-bottom:1.5em;
+    padding: 8px;
+}
+.login-ic i {
+    background: url("../assets/icons8-user-30.png")no-repeat 6px 6px;
+    width: 38px;
+    height: 38px;
+    float: left;
+    display: inline-block;
+}
+.login-ic i.icon {
+    background: url(".././assets/icons8-lock-30.png")no-repeat 6px 6px;
+}
+
+.login-ic input[type="text"],.login-ic  input[type="password"] {
+    /*float: left;*/
+    background: none;
+    outline: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-left: 1px solid #fff;
+    width: 82%;
+    display: inline-block;
+    margin-left: 7px;
+}
+.log-bwn {
+    text-align: center;
+}
+.log-bwn input[type="submit"] {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    padding: 13px 0;
+    background: #f25a3f;
+    display: inline-block;
+    width: 100%;
+    outline:none;
+    border:2px solid #f25a3f;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+.log-bwn input[type="submit"]:hover{
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    border:2px solid #fff;
+}
+
+
+
+
+
 
 /*Login In View End*/
 
@@ -463,22 +501,38 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
     font-size: 3rem;
 }
 
-/*.home-img {*/
-/*    position: absolute;*/
-/*    margin: 0px;*/
-/*    padding: 0px;*/
-/*    border: none;*/
-/*    width: 1440px;*/
-/*    height: 810px;*/
-/*    max-height: none;*/
-/*    max-width: none;*/
-/*    z-index: -999999;*/
-/*    left: 0px;*/
-/*    top: -169px;*/
-/*}*/
-
 .home-img {
+    background-image: url("../assets/pexels-luis-ruiz-1292843.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.login-img {
+    background-image: url("../assets/pexels-pixabay-220444.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.register-img {
     background-image: url("../assets/blonde-1867768_1920.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.trip-img {
+    background-image: url("../assets/blonde-1867768_1920.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.triptrack-img {
+    background-image: url("../assets/pexels-snapwire-129830.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.attraction-img {
+    background-image: url("../assets/pexels-pixabay-220444.jpg");
     background-size: cover;
     object-fit: cover;
     background-repeat: no-repeat;
@@ -506,8 +560,8 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
     height: 3px;
     left: 0;
     bottom: 0;
-    border-left: 10px solid #000000;
-    border-right: 10px solid #000000;
+    border-left: 10px solid #EEF0EF;
+    border-right: 10px solid #EEF0EF;
     -webkit-animation: animborder 2s linear infinite;
     animation: animborder 2s linear infinite; }
 
@@ -597,18 +651,163 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
     border-color: #FA6742; }
 
 .btn-info {
-    color: #000;
+    color: #EEF0EF;
     background-color: #FA6742;
     border-color: #FA6742;
 }
 
-.btn-primary {
-    color: #000000;
-    background-color: #FA6742;
-    border-color: #FA6742;
+.register-btn {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    padding: 13px 0;
+    background: #f25a3f;
+    display: inline-block;
+    width: 10%;
+    outline:none;
+    border:2px solid #f25a3f;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+
+.register-btn:hover {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    border:2px solid #fff;
+}
+
+.addevent-btn {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    padding: 13px 0;
+    background: #f25a3f;
+    display: inline-block;
+    width: 10%;
+    outline:none;
+    border:2px solid #f25a3f;
+    cursor:pointer;
+    text-transform:uppercase;
+}
+
+.addevent-btn:hover {
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    border:2px solid #fff;
 }
 /* Credit to https://bootsnipp.com/snippets/ooa9M  */
 
 /****************************** END FOOTER ********************************/
 
 
+/****************************** Start FAb ********************************/
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #fafbff;
+}
+.floatingButtonWrap {
+    display: block;
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+    z-index: 999999999;
+}
+
+.floatingButtonInner {
+    position: relative;
+}
+
+.floatingButton {
+    display: block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background: white;
+    background: -o-linear-gradient(45deg, #8769a9, #507cb3);
+    background: #FA6742;
+    color: #fff;
+    line-height: 50px;
+    position: absolute;
+    border-radius: 50% 50%;
+    bottom: 0px;
+    right: 0px;
+    border: 5px solid white;
+    /* opacity: 0.3; */
+    opacity: 1;
+    transition: all 0.4s;
+}
+
+.floatingButton .fa {
+    font-size: 15px !important;
+}
+
+.floatingButton.open,
+.floatingButton:hover,
+.floatingButton:focus,
+.floatingButton:active {
+    opacity: 1;
+    color: #fff;
+}
+
+
+.floatingButton .fa {
+    transform: rotate(0deg);
+    transition: all 0.4s;
+}
+
+.floatingButton.open .fa {
+    transform: rotate(270deg);
+}
+
+.floatingMenu {
+    position: absolute;
+    bottom: 60px;
+    right: 0px;
+    /* width: 200px; */
+    display: none;
+}
+
+.floatingMenu li {
+    width: 100%;
+    float: right;
+    list-style: none;
+    text-align: right;
+    margin-bottom: 5px;
+}
+
+.floatingMenu li a {
+    padding: 8px 15px;
+    display: inline-block;
+    background: #FA6742;
+    color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all 0.4s;
+    /* -webkit-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.22);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.22); */
+    -webkit-box-shadow: 1px 3px 5px rgba(211, 224, 255, 0.5);
+    box-shadow: 1px 3px 5px rgba(211, 224, 255, 0.5);
+}
+
+.floatingMenu li a:hover {
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+
+/****************************** End FAb ********************************/
+
+.title{
+    text-shadow: -1px 1px 2px #000,
+    1px 1px 2px #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000;
+}

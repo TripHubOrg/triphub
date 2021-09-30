@@ -1,5 +1,7 @@
 package com.codeup.capstonestarter.data.address;
 
+import com.codeup.capstonestarter.data.activity.Activity;
+
 import javax.persistence.*;
 
 @Entity
@@ -30,6 +32,9 @@ public class Address {
 
     @Column(nullable = false, length = 100)
     private String postal_code;
+
+    @OneToOne(mappedBy = "address")
+    private Activity activity;
 
     public Address() {}
 

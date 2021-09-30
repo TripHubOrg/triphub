@@ -1,5 +1,10 @@
 package com.codeup.capstonestarter.data.activity;
 
+import com.codeup.capstonestarter.data.address.Address;
+import com.codeup.capstonestarter.data.location.Location;
+import com.codeup.capstonestarter.data.trip.Trip;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,20 +14,24 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
-    private String trip;
+   @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+//   @JsonIgnoreProperties({"location", "country", "getStartDate", "endDate", "owner", "collaborators"})
+    private Trip trip;
+
+//    @OneToOne (cascade = CascadeType.ALL)
+//    @JoinColumn(name = "location_id", referencedColumnName = "id")
+//    private Location location;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    private Address address;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "activityDetail_id", referencedColumnName = "id")
+    private ActivityDetail activityDetail;
 
     @Column(nullable = false, length = 100)
-    private String location;
-
-    @Column(nullable = false, length = 100)
-    private String address;
-
-    @Column(nullable = false, length = 100)
-    private String details;
-
-    @Column(nullable = false, length = 100)
-    private String starDate;
+    private String startDate;
 
     @Column(nullable = false, length = 100)
     private String endDate;
@@ -30,15 +39,6 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(Long id, String trip, String location, String address, String details, String starDate, String endDate) {
-        this.id = id;
-        this.trip = trip;
-        this.location = location;
-        this.address = address;
-        this.details = details;
-        this.starDate = starDate;
-        this.endDate = endDate;
-    }
 
     public Long getId() {
         return id;
@@ -48,44 +48,37 @@ public class Activity {
         this.id = id;
     }
 
-    public String getTrip() {
+    public Trip getTrip() {
         return trip;
     }
 
-    public void setTrip() {
+    public void setTrip(Trip trip) {
         this.trip = trip;
     }
 
-    public String getLocation() {
-        return location;
-    }
 
-    public void setLocation() {
-        this.location = location;
-    }
-
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress() {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public String getDetails() {
-        return details;
+    public ActivityDetail getActivityDetail() {
+        return activityDetail;
     }
 
-    public void setDetails() {
-        this.details = details;
+    public void setActivityDetail(ActivityDetail activityDetail) {
+        this.activityDetail = activityDetail;
     }
 
     public String getStarDate() {
-        return starDate;
+        return startDate;
     }
 
     public void setStarDate(String starDate) {
-        this.starDate = starDate;
+        this.startDate = starDate;
     }
 
     public String getEndDate() {

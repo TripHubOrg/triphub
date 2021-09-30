@@ -1,5 +1,8 @@
 package com.codeup.capstonestarter.data.location;
 
+import com.codeup.capstonestarter.data.trip.Trip;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -11,7 +14,7 @@ public class Location {
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String location_name;
+    private String name;
 
     @Column(nullable = false, length = 100)
     private BigDecimal lon;
@@ -19,11 +22,14 @@ public class Location {
     @Column(nullable = false, length = 100)
     private BigDecimal lat;
 
+    @OneToOne(mappedBy = "location")
+    private Trip trip;
+
     public Location() {}
 
-    public Location(Long id, String location_name, BigDecimal lon, BigDecimal lat) {
+    public Location(Long id, String name, BigDecimal lon, BigDecimal lat) {
         this.id = id;
-        this.location_name = location_name;
+        this.name = name;
         this.lon = lon;
         this.lat = lat;
     }
@@ -36,12 +42,20 @@ public class Location {
         this.id = id;
     }
 
-    public String getLocation_name() {
-        return location_name;
+    public String getName() {
+        return name;
     }
 
-    public void setLocation_name(String location_name) {
-        this.location_name = location_name;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Trip getTrip() {
+        return trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
     }
 
     public BigDecimal getLon() {

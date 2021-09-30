@@ -1,6 +1,7 @@
 import * as KEYS from "../js/keys.js"
 import {attractionsRequest} from "./views/Attractions.js";
 import createView from "./createView.js";
+import {geocoderResults} from "./views/Userhomepage.js";
 
 mapboxgl.accessToken = KEYS.mapboxKey();
 let map;
@@ -59,6 +60,15 @@ function addGeocodeToMap(geocoder) {
 		marker.setPopup(displayPopup(event.result.place_name));
 
 	});
+}
+
+export function addUserGeocoder(){
+	geocoder = createGeocoder();
+	geocoder.addTo("#geocoder-container")
+
+	geocoder.on("result", function(data){
+		geocoderResults(data)
+	})
 }
 
 export function MapBoxCoordinates(){
