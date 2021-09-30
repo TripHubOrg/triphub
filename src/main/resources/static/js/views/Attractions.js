@@ -1,4 +1,4 @@
-import * as KEYS from "../keys.js"
+import * as KEYS from "../oldKeys.js"
 import createView from "../createView.js";
 import Mapbox from "../mapbox.js";
 import {fakeData} from "./Triptrack.js";
@@ -11,7 +11,6 @@ let limit = 100;
 let offset = 0;
 let sliceStart = 0;
 let sliceEnd = 7;
-let trip;
 
 let renderedAttractionInfoList = [];
 let fakeTripData = fakeData()
@@ -49,9 +48,8 @@ let observer = new IntersectionObserver(callback, option)
 
 //============== INITIAL VIEW BEFORE EVENTS LOAD =====================================================
 export default function AttractionsView(props) {
-	trip = props;
 	console.log(props)
-	return `<div class="container border shadow" id="attractionsPage">
+	return `<div class="container border shadow" id="attractionsPage" data-id=${props.id}>
                     <div id="geocoder-container" class="d-flex justify-content-center my-5"></div>
    			        <div id="map" style=" visibility: collapse"></div>
                     <header>
@@ -73,10 +71,6 @@ export function BeginAttractionsEvents() {
 	//and set target, meaning what the observer will observe for executing callback
 	scrollTarget = document.getElementById('endOfList')
 	observer.observe(scrollTarget)
-
-	if(trip !== null){
-		addToTrips(trip);
-	}
 }
 
 export function attractionsRequest(coordinates) {
@@ -210,13 +204,15 @@ function checkForDetails(attraction){
 }
 
 function addToTrips(trip){
+	console.log('Coming from AddToTrips')
+	console.log(trip)
 	let coordinates = [trip.location.lon, trip.location.lat]
 	attractionsRequest(coordinates)
 }
 
 
 function addToBackend(){
-	console.log()
+	console.log( $(this).siblings('.card') )
 }
 
 

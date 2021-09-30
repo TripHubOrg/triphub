@@ -240,6 +240,7 @@ function addAnEvent(props){
 		fetch(`/api/trips/${props.id}`).then(res => {
 			return res.json();
 		}).then(data => {
+			console.log(data)
 			render(data, route)
 		})
 	})
