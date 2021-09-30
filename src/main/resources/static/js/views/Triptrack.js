@@ -1,3 +1,4 @@
+import createView from "../createView.js";
 import router from "../router.js";
 import {getHeaders} from "../auth.js";
 import render from "../render.js";
@@ -120,7 +121,7 @@ export default function Triptrack(props) {
 								<div class="row justify-content-between">
 									<button class="col-lg-4 col-4 btn btn-info" type="submit">Add To Calendar</button>
 									<div class="col-lg-4 col-4 text-end p-0">
-										<button class="btn btn-info" type="submit">Delete</button>
+										<button class="btn btn-info delete-btn" type="submit">Delete</button>
 										<button class="btn btn-info" type="submit">Save</button>
 									</div>
 								</div>
@@ -200,6 +201,21 @@ function renderAttractionList(attractions) {
 		)
 	})
 }
+
+function deleteActivity() {
+	let request = {
+		method: "Delete",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body:"id"
+	}
+		fetch("/{id}", request).then((response) => {
+			console.log(response.status)
+			confirm("deleted" + id )
+			createView("/")
+		})
+	}
 
 function toGetUserID() {
 	let route = router('/triptrack');

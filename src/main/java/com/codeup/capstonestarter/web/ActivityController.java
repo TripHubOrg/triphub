@@ -4,13 +4,7 @@ import com.codeup.capstonestarter.data.activity.Activity;
 import com.codeup.capstonestarter.data.activity.ActivityRepository;
 import com.codeup.capstonestarter.data.trip.Trip;
 import com.codeup.capstonestarter.data.trip.TripRepository;
-import com.codeup.capstonestarter.data.user.User;
 import com.codeup.capstonestarter.data.user.UserRepository;
-import com.mysql.cj.conf.StringProperty;
-import com.codeup.capstonestarter.data.activity.ActivityDetailRepository;
-import com.codeup.capstonestarter.data.activity.ActivityRepository;
-import com.codeup.capstonestarter.data.trip.Trip;
-import com.codeup.capstonestarter.data.trip.TripRepository;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -42,12 +36,6 @@ public class ActivityController {
         System.out.println(activity.getAddress());
     }
 
-//    @PostMapping
-//    private void postActivities(@RequestBody Trip sameTrip) {
-//       User owner = userRepository.getById(sameTrip.getOwner().getId());
-//       sameTrip.setOwner(owner);
-//activityRepository.save(sameTrip);
-//    }
 
 @GetMapping("/getactivities")
     private Activity getActivities(@PathVariable Long id){
