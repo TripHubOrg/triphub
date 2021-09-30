@@ -1,4 +1,4 @@
-import createView from "../createView";
+import createView from "../createView.js";
 
 let fakeAttractions = fakeData()
 
