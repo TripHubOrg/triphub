@@ -26,7 +26,7 @@ public class ActivityController {
         this.activityRepository = activityRepository;
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
-
+    }
     
     @PostMapping
     private void addActivityToTrip(@RequestBody Activity activity){
