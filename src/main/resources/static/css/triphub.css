@@ -502,7 +502,37 @@ a.btn-customized-4.btn-customized-light.btn.btn-primary:not(:disabled):not(.disa
 }
 
 .home-img {
+    background-image: url("../assets/pexels-luis-ruiz-1292843.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.login-img {
+    background-image: url("../assets/pexels-pixabay-220444.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.register-img {
     background-image: url("../assets/blonde-1867768_1920.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.trip-img {
+    background-image: url("../assets/blonde-1867768_1920.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.triptrack-img {
+    background-image: url("../assets/pexels-snapwire-129830.jpg");
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+.attraction-img {
+    background-image: url("../assets/pexels-pixabay-220444.jpg");
     background-size: cover;
     object-fit: cover;
     background-repeat: no-repeat;

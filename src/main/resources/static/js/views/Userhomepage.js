@@ -2,6 +2,7 @@ import {addUserGeocoder} from "../mapbox.js";
 import {getHeaders} from "../auth.js";
 import render from "../render.js";
 import router from "../router.js";
+import {checkBackgroundImage} from "./Home.js";
 
 export default function userhomepage(props) {
 	console.log(props)
@@ -72,6 +73,8 @@ let start;
 let end;
 
 export function routeToTripTrack() {
+
+	checkBackgroundImage('trip-img');
 
 	start = $('#fromDate').pickadate({
 		formatSubmit: 'yyyy-mm-dd'

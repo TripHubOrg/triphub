@@ -2,6 +2,7 @@ import * as KEYS from "../keys.js"
 import createView from "../createView.js";
 import Mapbox from "../mapbox.js";
 import {fakeData} from "./Triptrack.js";
+import {checkBackgroundImage} from "./Home.js";
 
 
 var attractionsArray = [];
@@ -67,6 +68,7 @@ export default function AttractionsView(props) {
 
 //===================================================================================
 export function BeginAttractionsEvents() {
+	checkBackgroundImage('attraction-img');
 	Mapbox();
 	// renderAttractions(attractionsArray)
 	filteredAttractions(attractionsArray)
@@ -77,6 +79,7 @@ export function BeginAttractionsEvents() {
 	if(trip !== null){
 		addToTrips(trip);
 	}
+
 }
 
 export function attractionsRequest(coordinates) {

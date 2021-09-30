@@ -1,11 +1,15 @@
 import fetchData from "./fetchData.js";
 import createView from "./createView.js";
+import {checkBackgroundImage} from "./views/Home.js";
 
 /**
  * Adds a login event to allow the user to initially obtain a new OAuth2.0 token
  * On a successful response, sets the tokens into storage and redirects to the root
  */
 export default function LoginEvent() {
+
+    checkBackgroundImage('login-img');
+
         $("#login-btn").click(function () {
 
             let loginUser = {
