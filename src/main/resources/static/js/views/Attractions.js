@@ -74,7 +74,9 @@ export function BeginAttractionsEvents() {
 	scrollTarget = document.getElementById('endOfList')
 	observer.observe(scrollTarget)
 
-	addToTrips();
+	if(trip !== null){
+		addToTrips(trip);
+	}
 }
 
 export function attractionsRequest(coordinates) {
@@ -171,6 +173,7 @@ function renderAttraction(attraction) {
         `)
 	// renderedAttractionInfoList.push(attraction)
 	$(`#card${attraction.xid}`).on("click", addAttractionClickEvents)
+	$('.addToTrip').on("click", addToBackend)
 
 }
 
@@ -206,13 +209,16 @@ function checkForDetails(attraction){
 	}
 }
 
-function addToTrips(){
+function addToTrips(trip){
 	let coordinates = [trip.location.lon, trip.location.lat]
 	attractionsRequest(coordinates)
-	$('.addToTrip').click(function(){
-		console.log( $(this).siblings() )
-	})
 }
+
+
+function addToBackend(){
+	console.log()
+}
+
 
 
 
