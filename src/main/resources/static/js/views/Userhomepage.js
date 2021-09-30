@@ -91,7 +91,7 @@ export function routeToTripTrack() {
 	newTripEvent();
 }
 
-function newTripEvent(dates) {
+function newTripEvent() {
 	$('#submitNewTrip').click(function () {
 		console.log(geocoderData)
 		let body = {
@@ -116,7 +116,6 @@ function newTripEvent(dates) {
 			return response.json();
 		}).then(data => {
 			let route = router('/triptrack');
-
 			render(data, route)
 		});
 

@@ -15,7 +15,7 @@ public class Activity {
     private Long id;
 
    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
-   @JsonIgnoreProperties({"location", "country", "getStartDate", "endDate", "owner", "collaborators"})
+//   @JsonIgnoreProperties({"location", "country", "getStartDate", "endDate", "owner", "collaborators"})
     private Trip trip;
 
 //    @OneToOne (cascade = CascadeType.ALL)

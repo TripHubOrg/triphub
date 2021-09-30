@@ -46,7 +46,7 @@ public class TripsController {
 
     @PutMapping("/addActivties")
     private void addActivties(@RequestBody Trip trip){
-        tripRepository.save(setCollaborators(trip));
+        tripRepository.save(setActivities(trip));
     }
 
     @PutMapping("/addTripCollaborators")
@@ -84,15 +84,18 @@ public class TripsController {
         return existingTrip;
     }
 
+    @PutMapping("/addActivity")
     private Trip setActivities(Trip trip){
         Trip existingTrip = tripRepository.getById(trip.getId());
 
         Collection<Activity> activities = new ArrayList<>();
         Collection<Activity> potentialActivities = trip.getActivities();
         for(Activity activity : potentialActivities){
+            System.out.println(activity.getActivityDetail());
             activities.add(activity);
         }
         existingTrip.setActivities(activities);
+
         return existingTrip;
     }
 

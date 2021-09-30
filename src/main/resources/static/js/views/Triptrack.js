@@ -56,14 +56,9 @@ export function fakeData(){
 export default function Triptrack(props) {
 	console.log(props)
 	tripProps = props;
-	editBTNTest(props);
+	editBTN(props);
 	return `
-
-<!--<button class="btn btn-float btn-primary my-1" type="button"><i class="material-icons">favorite_border</i></button>-->
-
-
-           
-                       
+<!--<button class="btn btn-float btn-primary my-1" type="button"><i class="material-icons">favorite_border</i></button>-->    
 		<div class="tripTrackContainer container-fluid px-5">
             <header class="locationFromTo text-center row">
                 <h3 class="col-12">Trip To</h3>
@@ -133,11 +128,7 @@ export default function Triptrack(props) {
 						`).join('')}
             </section>
         </div>
-        
-
-`
-
-		;
+		`;
 }
 
 export function TripTrackOnLoad(){
@@ -230,10 +221,9 @@ function toGetUserID() {
 	})
 }
 
-function editBTN(){
+function editBTN(props){
 
 	$("#editBTN").click(function (){
-		console.log(props)
 		let body = {
 			startDate: `${$('[name="fromDate_submit"]').val()}`,
 			endDate: `${$('[name="toDate_submit"]').val()}`,
@@ -250,16 +240,13 @@ function editBTN(){
 	})
 }
 
-function editBTNTest(data){
-	 tripProps = data
-}
-
 function addAnEvent(props){
 	$('#addAnEvent').click(function(){
 		let route = router('/attractions');
 		fetch(`/api/trips/${props.id}`).then(res => {
 			return res.json();
 		}).then(data => {
+			console.log(data)
 			render(data, route)
 		})
 	})
