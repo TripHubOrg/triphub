@@ -80,8 +80,9 @@ export default function Triptrack(props) {
                 </div>
             </header>
             
-            <button id="editBTN" >Save Changes</button>
-            
+			<div class="row my-5">
+            	<button class="col addevent-btn mx-auto" id="editBTN">Save Changes</button>
+			</div>              
             <div class="row my-5">
             	<button  id="addAnEvent" class="col addevent-btn mx-auto">Add An Event</button>
 			</div>
