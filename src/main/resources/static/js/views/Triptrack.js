@@ -55,11 +55,15 @@ export default function Triptrack(props) {
 	editBTNTest(props);
 	return `
 
+<!--<button class="btn btn-float btn-primary my-1" type="button"><i class="material-icons">favorite_border</i></button>-->
 
+
+           
+                       
 		<div class="tripTrackContainer container-fluid px-5">
             <header class="locationFromTo text-center row">
                 <h3 class="col-12">Trip To</h3>
-                <h1 class="col-12">${props.location.name}</h1>
+                <h1 class="col-10">${props.location.name}</h1>
                 <div class="col-12">
                 	<div class="row justify-content-center ">
                 		<div  class="col-3 m-0 p-0">
@@ -124,7 +128,11 @@ export default function Triptrack(props) {
 						`).join('')}
             </section>
         </div>
-	`;
+        
+
+`
+
+		;
 }
 
 export function TripTrackOnLoad(){
@@ -183,6 +191,7 @@ function renderAttractionList(attractions) {
 					</div>
 				</div>
             </div>
+ 
 			`
 		)
 	})
@@ -198,6 +207,7 @@ function toGetUserID() {
 }
 
 function editBTN(){
+
 	$("#editBTN").click(function (){
 		console.log(props)
 		let body = {

@@ -1,5 +1,7 @@
 package com.codeup.capstonestarter.web;
 
+import com.codeup.capstonestarter.data.activity.Activity;
+import com.codeup.capstonestarter.data.activity.ActivityRepository;
 import com.codeup.capstonestarter.data.location.LocationRepository;
 import com.codeup.capstonestarter.data.trip.Trip;
 import com.codeup.capstonestarter.data.trip.TripRepository;
@@ -18,11 +20,13 @@ public class TripsController {
     private final TripRepository tripRepository;
     private final UserRepository userRepository;
     private final LocationRepository locationRepository;
+    private final ActivityRepository activityRepository;
 
-    public TripsController(TripRepository tripRepository, UserRepository userRepository, LocationRepository locationRepository) {
+    public TripsController(TripRepository tripRepository, UserRepository userRepository, LocationRepository locationRepository, ActivityRepository activityRepository) {
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
+        this.activityRepository = activityRepository;
     }
 
     @PostMapping
@@ -40,6 +44,10 @@ public class TripsController {
         tripRepository.save(newTrip);
     }
 
+    @PutMapping("/addActivties")
+    private void addActivties(@RequestBody Trip trip){
+        tripRepository.save(setCollaborators(trip));
+    }
 
     @PutMapping("/addTripCollaborators")
     private void addCollaborators(@RequestBody Trip trip){
@@ -73,6 +81,18 @@ public class TripsController {
             collaborators.add(collaborator);
         }
         existingTrip.setCollaborators(collaborators);
+        return existingTrip;
+    }
+
+    private Trip setActivities(Trip trip){
+        Trip existingTrip = tripRepository.getById(trip.getId());
+
+        Collection<Activity> activities = new ArrayList<>();
+        Collection<Activity> potentialActivities = trip.getActivities();
+        for(Activity activity : potentialActivities){
+            activities.add(activity);
+        }
+        existingTrip.setActivities(activities);
         return existingTrip;
     }
 
