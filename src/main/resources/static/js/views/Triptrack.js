@@ -217,10 +217,6 @@ function deleteActivity() {
 		})
 	}
 
-	// Get activityId and save it to a variable
-	// make a request to the endpoint
-	//pass the activityId into the endpoint based on
-	//what’s in the ActivityController
 function toGetUserID() {
 	let route = router('/triptrack');
 	fetch(`/api/users/me`).then(res => {
