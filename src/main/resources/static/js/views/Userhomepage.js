@@ -1,7 +1,10 @@
 import {addUserGeocoder} from "../mapbox.js";
-import createView from "../createView.js";
+import {getHeaders} from "../auth.js";
+import render from "../render.js";
+import router from "../router.js";
 
-export default function userhomepage() {
+export default function userhomepage(props) {
+	console.log(props)
 	return `
 <div class="container">
 
@@ -44,35 +47,16 @@ export default function userhomepage() {
         <br>
         <!-- Start horizontal Scrolling -->
             <div class="row justify-content-center">
-                <div class="col-4">
-                    Your Trips
-                </div>
-                <div class="col-4 text-primary"
-                     style="text-decoration: underline; cursor: pointer;z-index:9999">
-                    See all Trips
-                </div>
         <!-- End horizontal Scrolling -->
         <!--  Start Pictures in horizontal Scrolling -->
                 <div id="tripsPreview" class="row">
-                
                     <div class="row" id="topdown">
-
-                        <div id="insideOut" class="card">
-                                <div class="text-center text-white" style="background:#f35b3f">Trip 1</div>
+                    ${props.user.owned_trips.map(function (trip) {
+						return `<div data-id=${trip.id} class="card insideOut">
+                                <div class="text-center text-white" style="background:#f35b3f" >${trip.location.name}</div>
                             <img class="pictureControl" src="https://picsum.photos/300/200">
-                        </div>
-                        <div id="insideOut" class="card">
-                                <div class="text-center text-white" style="background:#f35b3f">Trip 2</div>
-                            <img class="pictureControl" src="https://picsum.photos/300/200">
-                        </div>
-                        <div id="insideOut" class="card">
-                                 <div class="text-center text-white" style="background:#f35b3f">Trip 3</div>
-                            <img class="pictureControl" src="https://picsum.photos/300/200">
-                        </div>
-                        <div id="insideOut" class="card">
-                                 <div class="text-center text-white" style="background:#f35b3f">Trip 4</div>
-                            <img class="pictureControl" src="https://picsum.photos/300/200">
-                        </div>
+                        </div>`
+	})}
                     </div>
                 </div>
                             <!-- End Pictures in Horizontal Scrolling -->
@@ -99,80 +83,54 @@ export function routeToTripTrack() {
 	addUserGeocoder()
 
 	$(".card").click(function () {
-		window.location.href = 'http://localhost:8080/triptrack';
-		return false;
+		getTripTrackView( $(this).attr('data-id') );
 	});
 	newTripEvent();
 }
 
 function newTripEvent(dates) {
 	$('#submitNewTrip').click(function () {
-		console.log("FROM CLICK EVENT")
-		console.log($('[name="fromDate_submit"]').val())
-		console.log(end.attr('data-value'))
-		console.log(dates)
+		console.log(geocoderData)
 		let body = {
-				country: `${geocoderData.result.context[2].text}`,
-				endDate:`${ $('[name="toDate_submit"]').val() }`,
-				location: {
-					name:`${geocoderData.result.place_name}`,
-					lon:`${parseFloat(geocoderData.result.geometry.coordinates[0])}`,
-					lat:`${parseFloat(geocoderData.result.geometry.coordinates[1])}`
-				},
-				startDate:`${ $('[name="fromDate_submit"]').val() }`
-			}
+			country: `${geocoderData.result.context[2].text}`,
+			endDate: `${$('[name="toDate_submit"]').val()}`,
+			location: {
+				name: `${geocoderData.result.place_name}`,
+				lon: `${parseFloat(geocoderData.result.geometry.coordinates[0])}`,
+				lat: `${parseFloat(geocoderData.result.geometry.coordinates[1])}`
+			},
+			startDate: `${$('[name="fromDate_submit"]').val()}`
+		}
 		console.log(body);
 		let request = {
 			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
+			headers: getHeaders(),
 			body: JSON.stringify(body)
 		};
 
-		fetch("http://localhost:8080/api/trips", request).then((response) => {
+		fetch("/api/trips", request).then((response) => {
 			console.log(response.status);
-		})
+			return response.json();
+		}).then(data => {
+			let route = router('/triptrack');
+
+			render(data, route)
+		});
 
 	})
-
-	/*
-	* {
-  "id": 0,
-  "location": {
-	"id": 0,
-	"name": "string",
-	"lon": 0,
-	"lat": 0,
-	"trip": "string"
-  },
-  "country": "string",
-  "starDate": "string",
-  "endDate": "string",
-  "owner": {
-	"id": 0,
-	"full_name": "string",
-	"username": "string",
-	"email": "string",
-	"owned_trips": [
-	  "string"
-	]
-  },
-  "collaborators": [
-	{
-	  "id": 0,
-	  "full_name": "string",
-	  "username": "string",
-	  "email": "string",
-	  "owned_trips": [
-		"string"
-	  ]
-	}
-  ]
-}*/
 }
 
-export function geocoderResults(gData){
+
+function getTripTrackView(id) {
+	let route = router('/triptrack');
+	fetch(`/api/trips/${id}`).then(res => {
+		return res.json();
+	}).then(data => {
+		render(data, route)
+	})
+}
+
+export function geocoderResults(gData) {
 	geocoderData = gData;
 	return geocoderData;
 }

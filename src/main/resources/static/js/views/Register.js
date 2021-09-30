@@ -7,9 +7,10 @@ export default function Register(props) {
     <title>Register</title>
 </head>
 <div class="container">
-    <div class="row-col-1 text-center pt-5">
+    <div class="row-col-1 text-center pt-3">
         <h1 class="col-12">Register</h1>
-        <div class="col">
+        <hr class="random-line">
+        <div class="col box-form">
             <div class="row">
               <div class="col-md-12">
                 <label for="full-Name" class="form-label">Full Name</label>
@@ -32,7 +33,7 @@ export default function Register(props) {
                 <input type="password" class="form-control mx-auto" id="confirmPassword">
               </div>
               <div class="col-12">
-                <button id="register-btn" type="submit" class="btn btn-primary mx-auto">Sign in</button>
+                <button id="register-btn" type="submit" class="register-btn mx-auto">Sign in</button>
               </div>
             </div>
         </div>

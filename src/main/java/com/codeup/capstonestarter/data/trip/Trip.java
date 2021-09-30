@@ -18,6 +18,7 @@ public class Trip {
 
     @OneToOne (cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.MERGE})
     @JoinColumn(name = "location_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("trip")
     private Location location;
 
     @Column(nullable = false)
@@ -109,6 +110,14 @@ public class Trip {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Collection<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Collection<Activity> activities) {
+        this.activities = activities;
     }
 }
 

@@ -2,8 +2,8 @@ export default function login(){
     return `
     <div class="login-form">
     
-        <div class="top-login">
-            <span><img src="../../assets/triphub.png" alt="" class="login-logo"></span>
+        <div class="top-login mt-5">
+            <span><img src="../../assets/triphub.png" alt="" class="login-logo "></span>
         </div>
         <h1>Login</h1>
         <div class="login-top">

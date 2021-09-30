@@ -7,7 +7,6 @@ import Home, {BeginAllEvents} from "./views/Home.js";
 import AttractionsView, {BeginAttractionsEvents} from "./views/Attractions.js";
 import Register, {RegisterEvent} from "./views/Register.js";
 import login from "./views/Login.js";
-import trips from "./views/Trips.js";
 import userhomepage, {routeToTripTrack} from "./views/Userhomepage.js";
 import Triptrack, {TripTrackOnLoad} from "./views/Triptrack.js";
 import LoginEvent from "./auth.js";
@@ -52,14 +51,18 @@ export default function router(URI) {
         },
         '/triptrack': {
             returnView: Triptrack,
-            state: {},
+            state: {
+                trip: "/api/trips/"
+            },
             uri: '/triptrack',
             title: 'Triptrack',
             viewEvent: TripTrackOnLoad
         },
         '/userhomepage': {
             returnView: userhomepage,
-            state: {},
+            state: {
+                user: "/api/users/me"
+            },
             uri: '/userhomepage',
             title: 'UserHomePage',
             viewEvent:routeToTripTrack,

@@ -11,6 +11,7 @@ let limit = 100;
 let offset = 0;
 let sliceStart = 0;
 let sliceEnd = 7;
+let trip;
 
 let renderedAttractionInfoList = [];
 let fakeTripData = fakeData()
@@ -48,6 +49,8 @@ let observer = new IntersectionObserver(callback, option)
 
 //============== INITIAL VIEW BEFORE EVENTS LOAD =====================================================
 export default function AttractionsView(props) {
+	trip = props;
+	console.log(props)
 	return `<div class="container border shadow" id="attractionsPage">
                     <div id="geocoder-container" class="d-flex justify-content-center my-5"></div>
    			        <div id="map" style=" visibility: collapse"></div>
@@ -63,8 +66,22 @@ export default function AttractionsView(props) {
 }
 
 //===================================================================================
+export function BeginAttractionsEvents() {
+	Mapbox();
+	// renderAttractions(attractionsArray)
+	filteredAttractions(attractionsArray)
+	//and set target, meaning what the observer will observe for executing callback
+	scrollTarget = document.getElementById('endOfList')
+	observer.observe(scrollTarget)
+
+	if(trip !== null){
+		addToTrips(trip);
+	}
+}
+
 export function attractionsRequest(coordinates) {
 	//&src_geom=wikidata&src_attr=wikidata
+	console.log(coordinates)
 	fetch(`https://api.opentripmap.com/0.1/en/places/radius?radius=16100&lon=${coordinates[0]}&lat=${coordinates[1]}&src_geom=wikidata&src_attr=wikidata&limit=${limit}&offset=${offset}&apikey=${KEYS.openTripMapAPIKeyMoses()}`, {
 		headers: {
 			"Content-Type": "application/json"
@@ -114,10 +131,6 @@ function fetchEventDetails(attractionsList) {
 	addAttractionClickEvents()
 }
 
-function renderEventDetails(filteredAttraction) {
-
-}
-
 function filteredAttractions(attractionsPropertiesArray) {
 	let filteredArray = [];
 	let notIncluded = [];
@@ -132,15 +145,6 @@ function filteredAttractions(attractionsPropertiesArray) {
 	// console.log(filteredArray);
 	// console.log(notIncluded);
 	return filteredArray;
-}
-
-export function BeginAttractionsEvents() {
-    Mapbox();
-	// renderAttractions(attractionsArray)
-	filteredAttractions(attractionsArray)
-	//and set target, meaning what the observer will observe for executing callback
-	scrollTarget = document.getElementById('endOfList')
-	observer.observe(scrollTarget)
 }
 
 function renderAttraction(attraction) {
@@ -162,16 +166,14 @@ function renderAttraction(attraction) {
             			<div class="card-text text-black">
             				<p>${attraction.address.house_number} ${attraction.address.road}, ${attraction.address.city}, ${attraction.address.state}, ${attraction.address.postcode} </p>
             				<p>${checkForDetails(attraction)}</p>
-						</div>
-						<div class="card-body">
-							<button>Add To Trip</button>
-						</div>
 					</div>
+					<button class="addToTrip">Add To Trip</button>
 			</div>
 		</div>
         `)
 	// renderedAttractionInfoList.push(attraction)
 	$(`#card${attraction.xid}`).on("click", addAttractionClickEvents)
+	$('.addToTrip').on("click", addToBackend)
 
 }
 
@@ -206,5 +208,18 @@ function checkForDetails(attraction){
 		return ''
 	}
 }
+
+function addToTrips(trip){
+	let coordinates = [trip.location.lon, trip.location.lat]
+	attractionsRequest(coordinates)
+}
+
+
+function addToBackend(){
+	console.log()
+}
+
+
+
 
 

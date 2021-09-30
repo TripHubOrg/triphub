@@ -1,7 +1,10 @@
 import createView from "../createView.js";
+import router from "../router.js";
+import {getHeaders} from "../auth.js";
+import render from "../render.js";
 
 let fakeAttractions = fakeData()
-
+let tripProps;
 
 export function fakeData(){
 	return {
@@ -50,26 +53,39 @@ export function fakeData(){
 }
 // noinspection SpellCheckingInspection
 export default function Triptrack(props) {
+	console.log(props)
+	tripProps = props;
+	editBTNTest(props);
 	return `
+
+<!--<button class="btn btn-float btn-primary my-1" type="button"><i class="material-icons">favorite_border</i></button>-->
+
+
+           
+                       
 		<div class="tripTrackContainer container-fluid px-5">
             <header class="locationFromTo text-center row">
                 <h3 class="col-12">Trip To</h3>
-                <h1 class="col-12">${fakeAttractions.tripLocation}</h1>
+                <h1 class="col-10">${props.location.name}</h1>
                 <div class="col-12">
                 	<div class="row justify-content-center ">
                 		<div  class="col-3 m-0 p-0">
                         	<label for="fromDate">From</label>
-                        	<input class="dateInputs" id="fromDate" name="fromDate" data-value="${fakeAttractions.tripStart}"> 
+                        	<input class="dateInputs" id="fromDate" name="fromDate" data-value="${props.startDate}"> 
 						</div>
                     	<div class="col-3 m-0 p-0">
                         	<label for="toDate">To</label>
-                        	<input id="toDate" type="date" data-value="${fakeAttractions.tripEnd}">
+                        	<input id="toDate" type="date" name="toDate" data-value="${props.endDate}">
                     	</div>
 					</div>
                 </div>
             </header>
+            
+			<div class="row my-5">
+            	<button class="col addevent-btn mx-auto" id="editBTN">Save Changes</button>
+			</div>              
             <div class="row my-5">
-            	<button class="col btn btn-primary mx-auto">Add An Event</button>
+            	<button  id="addAnEvent" class="col addevent-btn mx-auto">Add An Event</button>
 			</div>
             <section class="TriptrackAtractionsList my-2 mx-1 row row-cols-lg-2 row-cols-1">
 					${fakeAttractions.spots.map( spot =>
@@ -116,7 +132,11 @@ export default function Triptrack(props) {
 						`).join('')}
             </section>
         </div>
-	`;
+        
+
+`
+
+		;
 }
 
 export function TripTrackOnLoad(){
@@ -134,6 +154,8 @@ export function TripTrackOnLoad(){
 		formatSubmit: 'yyyy-mm-dd'
 	});
 
+	editBTN();
+	addAnEvent(tripProps)
 }
 
 function renderAttractionList(attractions) {
@@ -174,6 +196,7 @@ function renderAttractionList(attractions) {
 					</div>
 				</div>
             </div>
+ 
 			`
 		)
 	})
@@ -198,4 +221,47 @@ function deleteActivity() {
 	// make a request to the endpoint
 	//pass the activityId into the endpoint based on
 	//what’s in the ActivityController
+function toGetUserID() {
+	let route = router('/triptrack');
+	fetch(`/api/users/me`).then(res => {
+		return res.json();
+	}).then(data => {
+		return data
+	})
+}
+
+function editBTN(){
+
+	$("#editBTN").click(function (){
+		console.log(props)
+		let body = {
+			startDate: `${$('[name="fromDate_submit"]').val()}`,
+			endDate: `${$('[name="toDate_submit"]').val()}`,
+		}
+		let request = {
+			method: "PUT",
+			headers: getHeaders(),
+			body: JSON.stringify(body)
+		};
+
+		fetch(`/api/trips/editTrip${props.id}`,request).then((response) => {
+			console.log(response.status);
+		})
+	})
+}
+
+function editBTNTest(data){
+	 tripProps = data
+}
+
+function addAnEvent(props){
+	$('#addAnEvent').click(function(){
+		let route = router('/attractions');
+		fetch(`/api/trips/${props.id}`).then(res => {
+			return res.json();
+		}).then(data => {
+			render(data, route)
+		})
+	})
+}
 

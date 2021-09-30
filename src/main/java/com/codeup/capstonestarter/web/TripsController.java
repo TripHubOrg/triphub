@@ -1,5 +1,7 @@
 package com.codeup.capstonestarter.web;
 
+import com.codeup.capstonestarter.data.activity.Activity;
+import com.codeup.capstonestarter.data.activity.ActivityRepository;
 import com.codeup.capstonestarter.data.location.LocationRepository;
 import com.codeup.capstonestarter.data.trip.Trip;
 import com.codeup.capstonestarter.data.trip.TripRepository;
@@ -18,20 +20,33 @@ public class TripsController {
     private final TripRepository tripRepository;
     private final UserRepository userRepository;
     private final LocationRepository locationRepository;
+    private final ActivityRepository activityRepository;
 
-    public TripsController(TripRepository tripRepository, UserRepository userRepository, LocationRepository locationRepository) {
+    public TripsController(TripRepository tripRepository, UserRepository userRepository, LocationRepository locationRepository, ActivityRepository activityRepository) {
         this.tripRepository = tripRepository;
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
+        this.activityRepository = activityRepository;
     }
 
     @PostMapping
-    private void createTrip(@RequestBody Trip newTrip) {
-//        User owner = userRepository.findByEmail(auth.getName()).get();
-//        newTrip.setOwner(owner);
-        System.out.println(newTrip.getstartDate());
-        System.out.println(newTrip.getEndDate());
+    private Trip createTrip(@RequestBody Trip newTrip, OAuth2Authentication auth) {
+        User owner = userRepository.findByEmail(auth.getName()).get();
+        newTrip.setOwner(owner);
         tripRepository.save(newTrip);
+        return newTrip;
+    }
+
+    @PostMapping("/makingTrip")
+    private void createTrip(@RequestBody Trip newTrip) {
+        User owner = userRepository.getById(newTrip.getOwner().getId());
+        newTrip.setOwner(owner);
+        tripRepository.save(newTrip);
+    }
+
+    @PutMapping("/addActivties")
+    private void addActivties(@RequestBody Trip trip){
+        tripRepository.save(setCollaborators(trip));
     }
 
     @PutMapping("/addTripCollaborators")
@@ -44,7 +59,7 @@ public class TripsController {
         locationRepository.getById(trip.getLocation().getId());
     }
 
-    @GetMapping("/getTrip{id}")
+    @GetMapping("{id}")
     private Trip getTripByID(@PathVariable Long id){
         return tripRepository.getById(id);
     }
@@ -69,10 +84,29 @@ public class TripsController {
         return existingTrip;
     }
 
-//    @PutMapping("{id}")
-//        private void editTrips (@PathVariable Long id, @RequestBody Trip trip) {
-//            System.out.println(trip.getStarDate());
-//        }
+    private Trip setActivities(Trip trip){
+        Trip existingTrip = tripRepository.getById(trip.getId());
+
+        Collection<Activity> activities = new ArrayList<>();
+        Collection<Activity> potentialActivities = trip.getActivities();
+        for(Activity activity : potentialActivities){
+            activities.add(activity);
+        }
+        existingTrip.setActivities(activities);
+        return existingTrip;
+    }
+
+    @PutMapping("/editTrip{id}")
+        private void editTrips (@PathVariable Long id,@RequestBody Trip trip) {
+        Trip editTrip = tripRepository.getById(id);
+
+        editTrip.setstartDate(trip.getstartDate());
+        editTrip.setEndDate((trip.getEndDate()));
+
+        tripRepository.save(editTrip);
+
+
+        }
 
 
 }
